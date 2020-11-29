@@ -1,0 +1,138 @@
+fileFormatVersion: 2
+guid: 5fe9ad8507c385a4bb8c7200bb05df89
+timeCreated: 1522586846
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Blackhawk
+    100002: //RootNode
+    100004: Cube
+    100006: Cube_001
+    100008: Rotor
+    100010: Tail_Rotor
+    100012: uh60
+    100014: Door
+    100016: Door_001
+    100018: Blackhawk_001
+    100020: Rotor_Blur_Center
+    100022: Rotor_Center
+    100024: Tail_Rotor_Center
+    400000: Blackhawk
+    400002: //RootNode
+    400004: Cube
+    400006: Cube_001
+    400008: Rotor
+    400010: Tail_Rotor
+    400012: uh60
+    400014: Door
+    400016: Door_001
+    400018: Blackhawk_001
+    400020: Rotor_Blur_Center
+    400022: Rotor_Center
+    400024: Tail_Rotor_Center
+    2300000: Blackhawk
+    2300002: Cube
+    2300004: Cube_001
+    2300006: Rotor
+    2300008: Tail_Rotor
+    2300010: Door
+    2300012: Door_001
+    2300014: Blackhawk_001
+    2300016: Rotor_Blur_Center
+    2300018: Rotor_Center
+    2300020: Tail_Rotor_Center
+    3300000: Blackhawk
+    3300002: Cube
+    3300004: Cube_001
+    3300006: Rotor
+    3300008: Tail_Rotor
+    3300010: Door
+    3300012: Door_001
+    3300014: Blackhawk_001
+    3300016: Rotor_Blur_Center
+    3300018: Rotor_Center
+    3300020: Tail_Rotor_Center
+    4300000: Cube
+    4300002: Tail_Rotor
+    4300004: Cube_001
+    4300006: Blackhawk
+    4300008: Rotor
+    4300010: Door_001
+    4300012: Door
+    4300014: Blackhawk_001
+    4300016: Rotor_Blur_Center
+    4300018: Rotor_Center
+    4300020: Tail_Rotor_Center
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

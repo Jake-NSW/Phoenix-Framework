@@ -1,0 +1,710 @@
+fileFormatVersion: 2
+guid: 4369264cdd602bf4697f51f44db40998
+timeCreated: 1489758602
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm_L
+    100002: Arm_L_001
+    100004: Arm_R
+    100006: Arm_R_001
+    100008: Armature
+    100010: Cube
+    100012: Hand_L
+    100014: Hand_R
+    100016: Index_L
+    100018: Index_L_001
+    100020: Index_L_002
+    100022: Index_R
+    100024: Index_R_001
+    100026: Index_R_002
+    100028: //RootNode
+    100030: Javelin
+    100032: Javelin_Scope
+    100034: Pinky_L
+    100036: Pinky_L_001
+    100038: Pinky_L_002
+    100040: Pinky_R
+    100042: Pinky_R_001
+    100044: Pinky_R_002
+    100046: Thumb_L
+    100048: Thumb_L_001
+    100050: Thumb_L_002
+    100052: Thumb_R
+    100054: Thumb_R_001
+    100056: Thumb_R_002
+    100058: Wrist_L
+    100060: Wrist_R
+    100062: Javelin_Scope_Crosshair
+    400000: Arm_L
+    400002: Arm_L_001
+    400004: Arm_R
+    400006: Arm_R_001
+    400008: Armature
+    400010: Cube
+    400012: Hand_L
+    400014: Hand_R
+    400016: Index_L
+    400018: Index_L_001
+    400020: Index_L_002
+    400022: Index_R
+    400024: Index_R_001
+    400026: Index_R_002
+    400028: //RootNode
+    400030: Javelin
+    400032: Javelin_Scope
+    400034: Pinky_L
+    400036: Pinky_L_001
+    400038: Pinky_L_002
+    400040: Pinky_R
+    400042: Pinky_R_001
+    400044: Pinky_R_002
+    400046: Thumb_L
+    400048: Thumb_L_001
+    400050: Thumb_L_002
+    400052: Thumb_R
+    400054: Thumb_R_001
+    400056: Thumb_R_002
+    400058: Wrist_L
+    400060: Wrist_R
+    400062: Javelin_Scope_Crosshair
+    2300000: Javelin
+    2300002: Javelin_Scope
+    2300004: Javelin_Scope_Crosshair
+    3300000: Javelin
+    3300002: Javelin_Scope
+    3300004: Javelin_Scope_Crosshair
+    4300000: Javelin
+    4300002: Cube
+    4300004: Javelin_Scope
+    4300006: Javelin_Scope_Crosshair
+    7400000: Javelin Idle
+    7400002: ArmatureAction
+    7400004: Javelin Aim
+    7400006: Javelin Fire
+    7400008: Javelin Out Of Frame
+    7400010: Javelin Unholster
+    7400012: Javelin Kick
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Javelin Idle
+      takeName: Default Take
+      firstFrame: 1
+      lastFrame: 2
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Javelin
+        weight: 1
+      - path: Javelin_Scope
+        weight: 1
+      - path: Javelin_Scope_Crosshair
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Javelin Aim
+      takeName: Default Take
+      firstFrame: 11
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Javelin
+        weight: 1
+      - path: Javelin_Scope
+        weight: 1
+      - path: Javelin_Scope_Crosshair
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Javelin Fire
+      takeName: Default Take
+      firstFrame: 21
+      lastFrame: 56
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Javelin
+        weight: 1
+      - path: Javelin_Scope
+        weight: 1
+      - path: Javelin_Scope_Crosshair
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Javelin Out Of Frame
+      takeName: Default Take
+      firstFrame: 55
+      lastFrame: 56
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Javelin
+        weight: 1
+      - path: Javelin_Scope
+        weight: 1
+      - path: Javelin_Scope_Crosshair
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Javelin Unholster
+      takeName: Default Take
+      firstFrame: 56
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Javelin
+        weight: 1
+      - path: Javelin_Scope
+        weight: 1
+      - path: Javelin_Scope_Crosshair
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Javelin Kick
+      takeName: Default Take
+      firstFrame: 91
+      lastFrame: 106
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Javelin
+        weight: 1
+      - path: Javelin_Scope
+        weight: 1
+      - path: Javelin_Scope_Crosshair
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

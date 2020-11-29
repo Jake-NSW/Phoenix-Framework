@@ -1,0 +1,957 @@
+fileFormatVersion: 2
+guid: 1fc2c7514f2fd2440bd411a96d09cfbb
+timeCreated: 1495026447
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone
+    100004: Bone_001
+    100006: Bone_002
+    100008: Cube_001
+    100010: Cylinder
+    100012: Cylinder_002
+    100014: //RootNode
+    100016: Arm_L
+    100018: Arm_L_001
+    100020: Arm_R
+    100022: Arm_R_001
+    100024: Armature_001
+    100026: Cube
+    100028: Hand_L
+    100030: Hand_R
+    100032: Index_L
+    100034: Index_L_001
+    100036: Index_L_002
+    100038: Index_R
+    100040: Index_R_001
+    100042: Index_R_002
+    100044: Machine_Gun
+    100046: Pinky_L
+    100048: Pinky_L_001
+    100050: Pinky_L_002
+    100052: Pinky_R
+    100054: Pinky_R_001
+    100056: Pinky_R_002
+    100058: Thumb_L
+    100060: Thumb_L_001
+    100062: Thumb_L_002
+    100064: Thumb_R
+    100066: Thumb_R_001
+    100068: Thumb_R_002
+    100070: Wrist_L
+    100072: Wrist_R
+    400000: Armature
+    400002: Bone
+    400004: Bone_001
+    400006: Bone_002
+    400008: Cube_001
+    400010: Cylinder
+    400012: Cylinder_002
+    400014: //RootNode
+    400016: Arm_L
+    400018: Arm_L_001
+    400020: Arm_R
+    400022: Arm_R_001
+    400024: Armature_001
+    400026: Cube
+    400028: Hand_L
+    400030: Hand_R
+    400032: Index_L
+    400034: Index_L_001
+    400036: Index_L_002
+    400038: Index_R
+    400040: Index_R_001
+    400042: Index_R_002
+    400044: Machine_Gun
+    400046: Pinky_L
+    400048: Pinky_L_001
+    400050: Pinky_L_002
+    400052: Pinky_R
+    400054: Pinky_R_001
+    400056: Pinky_R_002
+    400058: Thumb_L
+    400060: Thumb_L_001
+    400062: Thumb_L_002
+    400064: Thumb_R
+    400066: Thumb_R_001
+    400068: Thumb_R_002
+    400070: Wrist_L
+    400072: Wrist_R
+    2300000: Cube_001
+    2300002: Cylinder_002
+    2300004: Machine_Gun
+    3300000: Cube_001
+    3300002: Cylinder_002
+    3300004: Machine_Gun
+    4300000: Cylinder_002
+    4300002: Cube_001
+    4300004: Cylinder
+    4300006: Machine_Gun
+    4300008: Cube
+    7400000: Machine Gun Held Idle
+    7400002: ArmatureAction
+    7400004: ArmatureAction_001
+    7400006: Machine Gun Held Aim
+    7400008: Machine Gun Held Fire
+    7400010: Machine Gun Held Overheat Start
+    7400012: Machine Gun Held Overheat End
+    7400014: Machine Gun Held Unholster
+    7400016: Machine Gun Held Sprint
+    7400018: Machine Gun Held Kick
+    9500000: //RootNode
+    13700000: Cylinder
+    13700002: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Machine Gun Held Idle
+      takeName: Default Take
+      firstFrame: 1
+      lastFrame: 2
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Machine_Gun
+        weight: 1
+      - path: Machine_Gun/Armature_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone/Bone_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone_002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Machine Gun Held Aim
+      takeName: Default Take
+      firstFrame: 11
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Machine_Gun
+        weight: 1
+      - path: Machine_Gun/Armature_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone/Bone_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone_002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Machine Gun Held Fire
+      takeName: Default Take
+      firstFrame: 21
+      lastFrame: 47
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 0
+      - path: Armature/Arm_L
+        weight: 0
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 0
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 0
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 0
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 0
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 0
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 0
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 0
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 0
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 0
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 0
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 0
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 0
+      - path: Armature/Arm_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 0
+      - path: Cube
+        weight: 0
+      - path: Cylinder
+        weight: 0
+      - path: Machine_Gun
+        weight: 0
+      - path: Machine_Gun/Armature_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone/Bone_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone_002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Machine Gun Held Overheat Start
+      takeName: Default Take
+      firstFrame: 51
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Machine_Gun
+        weight: 1
+      - path: Machine_Gun/Armature_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone/Bone_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone_002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Machine Gun Held Overheat End
+      takeName: Default Take
+      firstFrame: 90
+      lastFrame: 104
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Machine_Gun
+        weight: 1
+      - path: Machine_Gun/Armature_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone/Bone_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone_002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Machine Gun Held Unholster
+      takeName: Default Take
+      firstFrame: 121
+      lastFrame: 145
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Machine_Gun
+        weight: 1
+      - path: Machine_Gun/Armature_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone/Bone_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone_002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Machine Gun Held Sprint
+      takeName: Default Take
+      firstFrame: 152
+      lastFrame: 153
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Machine_Gun
+        weight: 1
+      - path: Machine_Gun/Armature_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone/Bone_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone_002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Machine Gun Held Kick
+      takeName: Default Take
+      firstFrame: 161
+      lastFrame: 171
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Machine_Gun
+        weight: 1
+      - path: Machine_Gun/Armature_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone/Bone_001
+        weight: 1
+      - path: Machine_Gun/Armature_001/Bone_002
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

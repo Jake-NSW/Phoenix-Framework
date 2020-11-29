@@ -1,0 +1,210 @@
+fileFormatVersion: 2
+guid: 06b154e8ddcb2f441977280034f3f992
+timeCreated: 1472731455
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Cube
+    100002: Cube_001
+    100004: Cube_002
+    100006: Cube_003
+    100008: Cube_004
+    100010: Cylinder_004
+    100012: //RootNode
+    100014: Track_Wheel
+    100016: Track_Wheel_001
+    100018: Track_Wheel_002
+    100020: Track_Wheel_003
+    100022: Track_Wheel_004
+    100024: Track_Wheel_005
+    100026: Track_Wheel_006
+    100028: Track_Wheel_007
+    100030: Track_Wheel_008
+    100032: Track_Wheel_009
+    100034: Cannon
+    100036: CannonBase
+    100038: Hull
+    100040: Hull2
+    100042: Tower
+    100044: Tracks_L
+    100046: Tracks_R
+    100048: Track_Wheels_L
+    100050: Track_Wheels_R
+    100052: Turret
+    100054: Turret_Base
+    400000: Cube
+    400002: Cube_001
+    400004: Cube_002
+    400006: Cube_003
+    400008: Cube_004
+    400010: Cylinder_004
+    400012: //RootNode
+    400014: Track_Wheel
+    400016: Track_Wheel_001
+    400018: Track_Wheel_002
+    400020: Track_Wheel_003
+    400022: Track_Wheel_004
+    400024: Track_Wheel_005
+    400026: Track_Wheel_006
+    400028: Track_Wheel_007
+    400030: Track_Wheel_008
+    400032: Track_Wheel_009
+    400034: Cannon
+    400036: CannonBase
+    400038: Hull
+    400040: Hull2
+    400042: Tower
+    400044: Tracks_L
+    400046: Tracks_R
+    400048: Track_Wheels_L
+    400050: Track_Wheels_R
+    400052: Turret
+    400054: Turret_Base
+    2300000: Cube
+    2300002: Cube_001
+    2300004: Cube_002
+    2300006: Cube_003
+    2300008: Cube_004
+    2300010: Cylinder_004
+    2300012: Track_Wheel
+    2300014: Track_Wheel_001
+    2300016: Track_Wheel_002
+    2300018: Track_Wheel_003
+    2300020: Track_Wheel_004
+    2300022: Track_Wheel_005
+    2300024: Track_Wheel_006
+    2300026: Track_Wheel_007
+    2300028: Track_Wheel_008
+    2300030: Track_Wheel_009
+    2300032: Cannon
+    2300034: CannonBase
+    2300036: Hull
+    2300038: Hull2
+    2300040: Tower
+    2300042: Tracks_L
+    2300044: Tracks_R
+    2300046: Track_Wheels_L
+    2300048: Track_Wheels_R
+    2300050: Turret
+    2300052: Turret_Base
+    3300000: Cube
+    3300002: Cube_001
+    3300004: Cube_002
+    3300006: Cube_003
+    3300008: Cube_004
+    3300010: Cylinder_004
+    3300012: Track_Wheel
+    3300014: Track_Wheel_001
+    3300016: Track_Wheel_002
+    3300018: Track_Wheel_003
+    3300020: Track_Wheel_004
+    3300022: Track_Wheel_005
+    3300024: Track_Wheel_006
+    3300026: Track_Wheel_007
+    3300028: Track_Wheel_008
+    3300030: Track_Wheel_009
+    3300032: Cannon
+    3300034: CannonBase
+    3300036: Hull
+    3300038: Hull2
+    3300040: Tower
+    3300042: Tracks_L
+    3300044: Tracks_R
+    3300046: Track_Wheels_L
+    3300048: Track_Wheels_R
+    3300050: Turret
+    3300052: Turret_Base
+    4300000: Track_Wheel_009
+    4300002: Track_Wheel_008
+    4300004: Track_Wheel_007
+    4300006: Track_Wheel_006
+    4300008: Track_Wheel_005
+    4300010: Track_Wheel_002
+    4300012: Cube_004
+    4300014: Cylinder_004
+    4300016: Track_Wheel_004
+    4300018: Track_Wheel_003
+    4300020: Track_Wheel_001
+    4300022: Cube_003
+    4300024: Cube_002
+    4300026: Track_Wheel
+    4300028: Cube_001
+    4300030: Cube
+    4300032: Tracks_R
+    4300034: Tower
+    4300036: CannonBase
+    4300038: Cannon
+    4300040: Hull2
+    4300042: Hull
+    4300044: Tracks_L
+    4300046: Track_Wheels_R
+    4300048: Track_Wheels_L
+    4300050: Turret_Base
+    4300052: Turret
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

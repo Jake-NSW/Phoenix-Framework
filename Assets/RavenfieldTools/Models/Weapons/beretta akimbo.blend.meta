@@ -1,0 +1,1211 @@
+fileFormatVersion: 2
+guid: 6d6d1e98d7ccfd34d9fa7825f920067a
+timeCreated: 1504870232
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm_L
+    100002: Arm_L_001
+    100004: Arm_R
+    100006: Arm_R_001
+    100008: Armature
+    100010: Beretta
+    100012: //RootNode
+    100014: Beretta_001
+    100016: Cube
+    100018: Hammer
+    100020: Hammer_001
+    100022: Hand_L
+    100024: Hand_R
+    100026: Index_L
+    100028: Index_L_001
+    100030: Index_L_002
+    100032: Index_R
+    100034: Index_R_001
+    100036: Index_R_002
+    100038: Magazine
+    100040: Magazine_001
+    100042: Pinky_L
+    100044: Pinky_L_001
+    100046: Pinky_L_002
+    100048: Pinky_R
+    100050: Pinky_R_001
+    100052: Pinky_R_002
+    100054: Slide
+    100056: Slide_001
+    100058: Thumb_L
+    100060: Thumb_L_001
+    100062: Thumb_L_002
+    100064: Thumb_R
+    100066: Thumb_R_001
+    100068: Thumb_R_002
+    100070: Wrist_L
+    100072: Wrist_R
+    400000: Arm_L
+    400002: Arm_L_001
+    400004: Arm_R
+    400006: Arm_R_001
+    400008: Armature
+    400010: Beretta
+    400012: //RootNode
+    400014: Beretta_001
+    400016: Cube
+    400018: Hammer
+    400020: Hammer_001
+    400022: Hand_L
+    400024: Hand_R
+    400026: Index_L
+    400028: Index_L_001
+    400030: Index_L_002
+    400032: Index_R
+    400034: Index_R_001
+    400036: Index_R_002
+    400038: Magazine
+    400040: Magazine_001
+    400042: Pinky_L
+    400044: Pinky_L_001
+    400046: Pinky_L_002
+    400048: Pinky_R
+    400050: Pinky_R_001
+    400052: Pinky_R_002
+    400054: Slide
+    400056: Slide_001
+    400058: Thumb_L
+    400060: Thumb_L_001
+    400062: Thumb_L_002
+    400064: Thumb_R
+    400066: Thumb_R_001
+    400068: Thumb_R_002
+    400070: Wrist_L
+    400072: Wrist_R
+    2300000: Beretta
+    2300002: Beretta_001
+    2300004: Hammer
+    2300006: Hammer_001
+    2300008: Magazine
+    2300010: Magazine_001
+    2300012: Slide
+    2300014: Slide_001
+    3300000: Beretta
+    3300002: Beretta_001
+    3300004: Hammer
+    3300006: Hammer_001
+    3300008: Magazine
+    3300010: Magazine_001
+    3300012: Slide
+    3300014: Slide_001
+    4300000: Beretta_001
+    4300002: Magazine_001
+    4300004: Slide_001
+    4300006: Hammer_001
+    4300008: Beretta
+    4300010: Hammer
+    4300012: Slide
+    4300014: Magazine
+    4300016: Cube
+    7400000: Beretta Akimbo Idle
+    7400002: ArmatureAction
+    7400004: Beretta Akimbo Idle Fire R
+    7400006: Beretta Akimbo Idle Fire L
+    7400008: Beretta Akimbo Aim
+    7400010: Beretta Akimbo Aim Fire R
+    7400012: Beretta Akimbo Aim Fire L
+    7400014: Beretta Akimbo Reload
+    7400016: Beretta Akimbo Sprint
+    7400018: Beretta Akimbo Kick
+    7400020: Beretta Akimbo Unholster
+    7400022: Beretta Akimbo Call
+    7400024: Beretta Akimbo Direct
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Beretta Akimbo Idle
+      takeName: Default Take
+      firstFrame: 1
+      lastFrame: 2
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Beretta
+        weight: 1
+      - path: Beretta/Hammer
+        weight: 1
+      - path: Beretta/Magazine
+        weight: 1
+      - path: Beretta/Slide
+        weight: 1
+      - path: Beretta_001
+        weight: 1
+      - path: Beretta_001/Hammer_001
+        weight: 1
+      - path: Beretta_001/Magazine_001
+        weight: 1
+      - path: Beretta_001/Slide_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Beretta Akimbo Idle Fire R
+      takeName: Default Take
+      firstFrame: 11
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Beretta
+        weight: 1
+      - path: Beretta/Hammer
+        weight: 1
+      - path: Beretta/Magazine
+        weight: 1
+      - path: Beretta/Slide
+        weight: 1
+      - path: Beretta_001
+        weight: 1
+      - path: Beretta_001/Hammer_001
+        weight: 1
+      - path: Beretta_001/Magazine_001
+        weight: 1
+      - path: Beretta_001/Slide_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Beretta Akimbo Idle Fire L
+      takeName: Default Take
+      firstFrame: 31
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Beretta
+        weight: 1
+      - path: Beretta/Hammer
+        weight: 1
+      - path: Beretta/Magazine
+        weight: 1
+      - path: Beretta/Slide
+        weight: 1
+      - path: Beretta_001
+        weight: 1
+      - path: Beretta_001/Hammer_001
+        weight: 1
+      - path: Beretta_001/Magazine_001
+        weight: 1
+      - path: Beretta_001/Slide_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Beretta Akimbo Aim
+      takeName: Default Take
+      firstFrame: 56
+      lastFrame: 57
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Beretta
+        weight: 1
+      - path: Beretta/Hammer
+        weight: 1
+      - path: Beretta/Magazine
+        weight: 1
+      - path: Beretta/Slide
+        weight: 1
+      - path: Beretta_001
+        weight: 1
+      - path: Beretta_001/Hammer_001
+        weight: 1
+      - path: Beretta_001/Magazine_001
+        weight: 1
+      - path: Beretta_001/Slide_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Beretta Akimbo Reload
+      takeName: Default Take
+      firstFrame: 61
+      lastFrame: 158
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Beretta
+        weight: 1
+      - path: Beretta/Hammer
+        weight: 1
+      - path: Beretta/Magazine
+        weight: 1
+      - path: Beretta/Slide
+        weight: 1
+      - path: Beretta_001
+        weight: 1
+      - path: Beretta_001/Hammer_001
+        weight: 1
+      - path: Beretta_001/Magazine_001
+        weight: 1
+      - path: Beretta_001/Slide_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Beretta Akimbo Sprint
+      takeName: Default Take
+      firstFrame: 163
+      lastFrame: 164
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Beretta
+        weight: 1
+      - path: Beretta/Hammer
+        weight: 1
+      - path: Beretta/Magazine
+        weight: 1
+      - path: Beretta/Slide
+        weight: 1
+      - path: Beretta_001
+        weight: 1
+      - path: Beretta_001/Hammer_001
+        weight: 1
+      - path: Beretta_001/Magazine_001
+        weight: 1
+      - path: Beretta_001/Slide_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Beretta Akimbo Kick
+      takeName: Default Take
+      firstFrame: 171
+      lastFrame: 185
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Beretta
+        weight: 1
+      - path: Beretta/Hammer
+        weight: 1
+      - path: Beretta/Magazine
+        weight: 1
+      - path: Beretta/Slide
+        weight: 1
+      - path: Beretta_001
+        weight: 1
+      - path: Beretta_001/Hammer_001
+        weight: 1
+      - path: Beretta_001/Magazine_001
+        weight: 1
+      - path: Beretta_001/Slide_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Beretta Akimbo Unholster
+      takeName: Default Take
+      firstFrame: 191
+      lastFrame: 215
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Beretta
+        weight: 1
+      - path: Beretta/Hammer
+        weight: 1
+      - path: Beretta/Magazine
+        weight: 1
+      - path: Beretta/Slide
+        weight: 1
+      - path: Beretta_001
+        weight: 1
+      - path: Beretta_001/Hammer_001
+        weight: 1
+      - path: Beretta_001/Magazine_001
+        weight: 1
+      - path: Beretta_001/Slide_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Beretta Akimbo Call
+      takeName: Default Take
+      firstFrame: 220
+      lastFrame: 237
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Beretta
+        weight: 1
+      - path: Beretta/Hammer
+        weight: 1
+      - path: Beretta/Magazine
+        weight: 1
+      - path: Beretta/Slide
+        weight: 1
+      - path: Beretta_001
+        weight: 1
+      - path: Beretta_001/Hammer_001
+        weight: 1
+      - path: Beretta_001/Magazine_001
+        weight: 1
+      - path: Beretta_001/Slide_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Beretta Akimbo Direct
+      takeName: Default Take
+      firstFrame: 241
+      lastFrame: 261
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Beretta
+        weight: 1
+      - path: Beretta/Hammer
+        weight: 1
+      - path: Beretta/Magazine
+        weight: 1
+      - path: Beretta/Slide
+        weight: 1
+      - path: Beretta_001
+        weight: 1
+      - path: Beretta_001/Hammer_001
+        weight: 1
+      - path: Beretta_001/Magazine_001
+        weight: 1
+      - path: Beretta_001/Slide_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

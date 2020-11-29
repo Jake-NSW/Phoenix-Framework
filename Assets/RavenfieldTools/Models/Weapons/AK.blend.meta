@@ -1,0 +1,1084 @@
+fileFormatVersion: 2
+guid: eae68f49c19d1304fb2905facf64bcb9
+timeCreated: 1481019415
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Arm_L
+    100004: Arm_L_001
+    100006: Arm_R
+    100008: Arm_R_001
+    100010: Armature
+    100012: Cube
+    100014: Hand_L
+    100016: Hand_R
+    100018: Index_L
+    100020: Index_L_001
+    100022: Index_L_002
+    100024: Index_R
+    100026: Index_R_001
+    100028: Index_R_002
+    100030: Pinky_L
+    100032: Pinky_L_001
+    100034: Pinky_L_002
+    100036: Pinky_R
+    100038: Pinky_R_001
+    100040: Pinky_R_002
+    100042: Thumb_L
+    100044: Thumb_L_001
+    100046: Thumb_L_002
+    100048: Thumb_R
+    100050: Thumb_R_001
+    100052: Thumb_R_002
+    100054: Wrist_L
+    100056: Wrist_R
+    100058: AK
+    100060: Magazine
+    100062: Slide
+    400000: //RootNode
+    400002: Arm_L
+    400004: Arm_L_001
+    400006: Arm_R
+    400008: Arm_R_001
+    400010: Armature
+    400012: Cube
+    400014: Hand_L
+    400016: Hand_R
+    400018: Index_L
+    400020: Index_L_001
+    400022: Index_L_002
+    400024: Index_R
+    400026: Index_R_001
+    400028: Index_R_002
+    400030: Pinky_L
+    400032: Pinky_L_001
+    400034: Pinky_L_002
+    400036: Pinky_R
+    400038: Pinky_R_001
+    400040: Pinky_R_002
+    400042: Thumb_L
+    400044: Thumb_L_001
+    400046: Thumb_L_002
+    400048: Thumb_R
+    400050: Thumb_R_001
+    400052: Thumb_R_002
+    400054: Wrist_L
+    400056: Wrist_R
+    400058: AK
+    400060: Magazine
+    400062: Slide
+    2300000: AK
+    2300002: Magazine
+    2300004: Slide
+    3300000: AK
+    3300002: Magazine
+    3300004: Slide
+    4300000: Cube
+    4300002: AK
+    4300004: Magazine
+    4300006: Slide
+    7400000: New AK Idle
+    7400002: ArmatureAction
+    7400004: New AK Aim
+    7400006: New AK Reload
+    7400008: New AK Unholster
+    7400010: New AK Sprint
+    7400012: New AK Kick
+    7400014: Goggles On
+    7400016: Goggles Off
+    7400018: Call Member
+    7400020: Direct Member
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: New AK Idle
+      takeName: Default Take
+      firstFrame: 1
+      lastFrame: 2
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: AK
+        weight: 1
+      - path: AK/Magazine
+        weight: 1
+      - path: AK/Slide
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: New AK Aim
+      takeName: Default Take
+      firstFrame: 5
+      lastFrame: 6
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: AK
+        weight: 1
+      - path: AK/Magazine
+        weight: 1
+      - path: AK/Slide
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: New AK Reload
+      takeName: Default Take
+      firstFrame: 11
+      lastFrame: 82
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: AK
+        weight: 1
+      - path: AK/Magazine
+        weight: 1
+      - path: AK/Slide
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: New AK Unholster
+      takeName: Default Take
+      firstFrame: 83
+      lastFrame: 112
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: AK
+        weight: 1
+      - path: AK/Magazine
+        weight: 1
+      - path: AK/Slide
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: New AK Sprint
+      takeName: Default Take
+      firstFrame: 115
+      lastFrame: 116
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: AK
+        weight: 1
+      - path: AK/Magazine
+        weight: 1
+      - path: AK/Slide
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: New AK Kick
+      takeName: Default Take
+      firstFrame: 121
+      lastFrame: 131
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: AK
+        weight: 1
+      - path: AK/Magazine
+        weight: 1
+      - path: AK/Slide
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 1
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Goggles On
+      takeName: Default Take
+      firstFrame: 135
+      lastFrame: 153
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: AK
+        weight: 0
+      - path: AK/Magazine
+        weight: 0
+      - path: AK/Slide
+        weight: 0
+      - path: Armature
+        weight: 0
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 0
+      - path: Cube
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Goggles Off
+      takeName: Default Take
+      firstFrame: 155
+      lastFrame: 172
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: AK
+        weight: 0
+      - path: AK/Magazine
+        weight: 0
+      - path: AK/Slide
+        weight: 0
+      - path: Armature
+        weight: 0
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 0
+      - path: Cube
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Call Member
+      takeName: Default Take
+      firstFrame: 175
+      lastFrame: 188
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: AK
+        weight: 0
+      - path: AK/Magazine
+        weight: 0
+      - path: AK/Slide
+        weight: 0
+      - path: Armature
+        weight: 0
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 0
+      - path: Cube
+        weight: 0
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Direct Member
+      takeName: Default Take
+      firstFrame: 190
+      lastFrame: 210
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: AK
+        weight: 0
+      - path: AK/Magazine
+        weight: 0
+      - path: AK/Slide
+        weight: 0
+      - path: Armature
+        weight: 0
+      - path: Armature/Arm_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Index_L/Index_L_002/Index_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Pinky_L/Pinky_L_002/Pinky_L_001
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002
+        weight: 1
+      - path: Armature/Arm_L/Arm_L_001/Wrist_L/Hand_L/Thumb_L/Thumb_L_002/Thumb_L_001
+        weight: 1
+      - path: Armature/Arm_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Index_R/Index_R_002/Index_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Pinky_R/Pinky_R_002/Pinky_R_001
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002
+        weight: 0
+      - path: Armature/Arm_R/Arm_R_001/Wrist_R/Hand_R/Thumb_R/Thumb_R_002/Thumb_R_001
+        weight: 0
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

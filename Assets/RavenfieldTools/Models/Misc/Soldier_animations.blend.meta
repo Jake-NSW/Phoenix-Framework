@@ -1,0 +1,1844 @@
+fileFormatVersion: 2
+guid: 429d615f9e67130499c57947a974ec45
+timeCreated: 1480940939
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm_L_001
+    100002: Arm_L_002
+    100004: Arm_L_003
+    100006: Arm_R_001
+    100008: Arm_R_002
+    100010: Arm_R_003
+    100012: Armature
+    100014: Bone
+    100016: Bone_001
+    100018: Bone_002
+    100020: Bone_003
+    100022: Bone_004
+    100024: Leg_L
+    100026: Leg_L_001
+    100028: Leg_L_002
+    100030: Leg_R
+    100032: Leg_R_001
+    100034: Leg_R_002
+    100036: Mouth
+    100038: Shoulder_L
+    100040: Shoulder_R
+    100042: Soldier
+    100044: //RootNode
+    100046: Soldier_Gear
+    100048: Foot_IK_Target_L
+    100050: Foot_IK_Target_R
+    400000: Arm_L_001
+    400002: Arm_L_002
+    400004: Arm_L_003
+    400006: Arm_R_001
+    400008: Arm_R_002
+    400010: Arm_R_003
+    400012: Armature
+    400014: Bone
+    400016: Bone_001
+    400018: Bone_002
+    400020: Bone_003
+    400022: Bone_004
+    400024: Leg_L
+    400026: Leg_L_001
+    400028: Leg_L_002
+    400030: Leg_R
+    400032: Leg_R_001
+    400034: Leg_R_002
+    400036: Mouth
+    400038: Shoulder_L
+    400040: Shoulder_R
+    400042: Soldier
+    400044: //RootNode
+    400046: Soldier_Gear
+    400048: Foot_IK_Target_L
+    400050: Foot_IK_Target_R
+    2300000: Soldier_Gear
+    2300002: Foot_IK_Target_L
+    2300004: Foot_IK_Target_R
+    3300000: Soldier_Gear
+    3300002: Foot_IK_Target_L
+    3300004: Foot_IK_Target_R
+    4300000: Mouth
+    4300002: Soldier
+    4300004: Soldier_Gear
+    4300006: Foot_IK_Target_L
+    4300008: Foot_IK_Target_R
+    7400000: Soldier Idle
+    7400002: ArmatureAction
+    7400004: Soldier Lean Right
+    7400006: Soldier Lean Left
+    7400008: Soldier Hail
+    7400010: Soldier Regroup
+    7400012: Soldier Move
+    7400014: Soldier Take Cover
+    7400016: Solder Hit L
+    7400018: Solder Hit R
+    7400020: Soldier Hurt
+    7400022: Soldier Pistol Idle
+    7400024: Soldier Pistol Lean Left
+    7400026: Soldier Pistol Lean Right
+    7400028: Soldier Smaw Idle
+    7400030: Soldier Smaw Lean Left
+    7400032: Soldier Smaw Lean Right
+    7400034: Soldier Use Turret
+    7400036: Soldier Idle Weapon Down
+    9500000: //RootNode
+    13700000: Mouth
+    13700002: Soldier
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Default Take' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Leg_R' has scale animation that will be
+      discarded.\n\t'Leg_L' has scale animation that will be discarded.\n\nClip 'ArmatureAction'
+      has import animation warnings that might lower retargeting quality:\nNote: Activate
+      translation DOF on avatar to improve retargeting quality.\n\t'Leg_R' has scale
+      animation that will be discarded.\n\t'Leg_L' has scale animation that will be
+      discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Soldier Idle
+      takeName: Default Take
+      firstFrame: 1
+      lastFrame: 2
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 1
+      - path: Foot_IK_Target_R
+        weight: 1
+      - path: Mouth
+        weight: 1
+      - path: Soldier
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Lean Right
+      takeName: Default Take
+      firstFrame: 11
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Lean Left
+      takeName: Default Take
+      firstFrame: 21
+      lastFrame: 22
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Hail
+      takeName: Default Take
+      firstFrame: 31
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Regroup
+      takeName: Default Take
+      firstFrame: 60
+      lastFrame: 96
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Move
+      takeName: Default Take
+      firstFrame: 97
+      lastFrame: 125
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Take Cover
+      takeName: Default Take
+      firstFrame: 126
+      lastFrame: 154
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Solder Hit L
+      takeName: Default Take
+      firstFrame: 156
+      lastFrame: 175
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Solder Hit R
+      takeName: Default Take
+      firstFrame: 176
+      lastFrame: 195
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Hurt
+      takeName: Default Take
+      firstFrame: 195
+      lastFrame: 277
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Pistol Idle
+      takeName: Default Take
+      firstFrame: 281
+      lastFrame: 282
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Pistol Lean Right
+      takeName: Default Take
+      firstFrame: 291
+      lastFrame: 292
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Pistol Lean Left
+      takeName: Default Take
+      firstFrame: 301
+      lastFrame: 302
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Smaw Idle
+      takeName: Default Take
+      firstFrame: 311
+      lastFrame: 312
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Smaw Lean Right
+      takeName: Default Take
+      firstFrame: 321
+      lastFrame: 322
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Smaw Lean Left
+      takeName: Default Take
+      firstFrame: 331
+      lastFrame: 332
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Use Turret
+      takeName: Default Take
+      firstFrame: 341
+      lastFrame: 342
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Soldier Idle Weapon Down
+      takeName: Default Take
+      firstFrame: 349
+      lastFrame: 350
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Bone_003/Bone_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_L/Arm_L_001/Arm_L_002/Arm_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002/Shoulder_R/Arm_R_001/Arm_R_002/Arm_R_003
+        weight: 1
+      - path: Armature/Bone/Leg_L
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001
+        weight: 1
+      - path: Armature/Bone/Leg_L/Leg_L_001/Leg_L_002
+        weight: 1
+      - path: Armature/Bone/Leg_R
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001
+        weight: 1
+      - path: Armature/Bone/Leg_R/Leg_R_001/Leg_R_002
+        weight: 1
+      - path: Foot_IK_Target_L
+        weight: 0
+      - path: Foot_IK_Target_R
+        weight: 0
+      - path: Mouth
+        weight: 0
+      - path: Soldier
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: Bone
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg_L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg_R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg_L_001
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg_R_001
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg_L_002
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg_R_002
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_001
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_002
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_003
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_004
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Shoulder_L
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Shoulder_R
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm_L_001
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm_R_001
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm_L_002
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm_R_002
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm_L_003
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm_R_003
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Soldier_animations(Clone)
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Armature
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Bone
+      position: {x: -0, y: -0.011965785, z: 0.6882065}
+      rotation: {x: 0.50000006, y: 0.49999997, z: -0.49999997, w: 0.50000006}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Bone_001
+      position: {x: -0.20007885, y: 0.000000015105535, z: 0}
+      rotation: {x: 0.00000012044546, y: 0.016591212, z: -0.0000000019778144, w: 0.9998624}
+      scale: {x: 0.9999999, y: 1.0000002, z: 0.9999999}
+      transformModified: 1
+    - name: Bone_002
+      position: {x: -0.24794683, y: 0.000000018719458, z: 0.00000000372529}
+      rotation: {x: -0.0000000016597201, y: -0.021983821, z: 0.000000005241354, w: 0.99975836}
+      scale: {x: 1.0000005, y: 1.0000004, z: 1.0000007}
+      transformModified: 1
+    - name: Bone_003
+      position: {x: -0.29530406, y: 0.000000020316552, z: -0.008297571}
+      rotation: {x: 0.00000012896543, y: 0.14618713, z: -0.000000052280583, w: 0.989257}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+      transformModified: 1
+    - name: Bone_004
+      position: {x: -0.07116131, y: 0.000000005372538, z: -0.000000016763806}
+      rotation: {x: -0.00000024667563, y: -0.14084934, z: 0.000000033581095, w: 0.99003106}
+      scale: {x: 1.0000001, y: 1, z: 1}
+      transformModified: 1
+    - name: Shoulder_R
+      position: {x: -0.26323813, y: 0.0762079, z: -0.013282001}
+      rotation: {x: -0.44566762, y: 0.54414195, z: 0.5489811, w: -0.45156366}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Arm_R_001
+      position: {x: -0.123832375, y: 0.000000009573123, z: 0.000000021672312}
+      rotation: {x: 0.02502116, y: 0.0751885, z: -0.0055304603, w: 0.99684}
+      scale: {x: 1.000001, y: 1.0000012, z: 1.0000002}
+      transformModified: 1
+    - name: Arm_R_002
+      position: {x: -0.2600644, y: 0.000000031664968, z: 0.000000032088792}
+      rotation: {x: -0.2893526, y: 0.027423091, z: -0.01688602, w: 0.9566808}
+      scale: {x: 0.9999999, y: 1, z: 0.9999998}
+      transformModified: 1
+    - name: Arm_R_003
+      position: {x: -0.22129993, y: 0.000000029802322, z: 0.000000037252903}
+      rotation: {x: -0.46792316, y: -0.0282329, z: -0.058153737, w: 0.8814017}
+      scale: {x: 1.0000015, y: 1.000001, z: 1.0000012}
+      transformModified: 1
+    - name: Shoulder_L
+      position: {x: -0.26323816, y: -0.07620787, z: -0.013281963}
+      rotation: {x: -0.44566783, y: -0.54414177, z: 0.5489812, w: 0.4515635}
+      scale: {x: 0.9999999, y: 1, z: 1}
+      transformModified: 1
+    - name: Arm_L_001
+      position: {x: -0.12383233, y: 0.000000009201788, z: -0.00000010126941}
+      rotation: {x: -0.025021035, y: 0.07518903, z: 0.0055305483, w: 0.99684006}
+      scale: {x: 1, y: 0.9999994, z: 1.0000006}
+      transformModified: 1
+    - name: Arm_L_002
+      position: {x: -0.2600645, y: 0.000000020489097, z: -0.00000005631773}
+      rotation: {x: 0.28935266, y: 0.02742246, z: 0.016886644, w: 0.95668066}
+      scale: {x: 1.0000001, y: 1.0000007, z: 1.0000004}
+      transformModified: 1
+    - name: Arm_L_003
+      position: {x: -0.22130007, y: 0.000000033527613, z: -0.00000011175871}
+      rotation: {x: 0.4679231, y: -0.028233021, z: 0.05815373, w: 0.8814018}
+      scale: {x: 1.0000006, y: 1.0000006, z: 1.0000012}
+      transformModified: 1
+    - name: Leg_R
+      position: {x: -0.17984043, y: 0.10957253, z: 0.006894108}
+      rotation: {x: -0.04316902, y: 0.9971715, z: -0.061495453, w: -0.0019517681}
+      scale: {x: 1.0000006, y: 1, z: 0.99993676}
+      transformModified: 1
+    - name: Leg_R_001
+      position: {x: -0.39253795, y: 0.000000033178367, z: -0.000000003143214}
+      rotation: {x: -0.012585739, y: 0.010337207, z: -0.0013515442, w: 0.9998665}
+      scale: {x: 0.9999999, y: 1, z: 0.9999998}
+      transformModified: 1
+    - name: Leg_R_002
+      position: {x: -0.4356885, y: 0.000000027721399, z: 0.000000003143214}
+      rotation: {x: 0.72850275, y: 0.06553184, z: 0.68186736, w: 0.0067995233}
+      scale: {x: 0.9999997, y: 0.9999999, z: 0.9999997}
+      transformModified: 1
+    - name: Leg_L
+      position: {x: -0.17984046, y: -0.1095725, z: 0.006894108}
+      rotation: {x: 0.04316917, y: 0.99717146, z: 0.061495464, w: -0.0019518912}
+      scale: {x: 1.0000005, y: 1, z: 0.9999367}
+      transformModified: 1
+    - name: Leg_L_001
+      position: {x: -0.3925379, y: 0.00000004877802, z: -0.00000000174623}
+      rotation: {x: 0.012585726, y: 0.0103372075, z: 0.0013515423, w: 0.9998665}
+      scale: {x: 0.99999994, y: 1, z: 0.9999999}
+      transformModified: 1
+    - name: Leg_L_002
+      position: {x: -0.43568847, y: 0.000000025218469, z: 0.000000002328306}
+      rotation: {x: 0.7285027, y: -0.06553198, z: 0.68186736, w: -0.006799422}
+      scale: {x: 0.9999997, y: 1, z: 0.9999999}
+      transformModified: 1
+    - name: Foot_IK_Target_L
+      position: {x: -0.18326, y: 0.0000000076272, z: 0.17449}
+      rotation: {x: 0.000000032227415, y: 0.6755902, z: 0.7372773, w: -0.000000029530986}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Foot_IK_Target_R
+      position: {x: 0.18326, y: 0.0000000076272, z: 0.17449}
+      rotation: {x: -0.00000005566289, y: 0.6755902, z: 0.7372773, w: 0.000000051005642}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Mouth
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Soldier
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

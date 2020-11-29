@@ -1,0 +1,178 @@
+fileFormatVersion: 2
+guid: 5db114056f87c80418b67a371681cca7
+timeCreated: 1441101779
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: jeep_hull
+    100004: Wheel_BL
+    100006: Wheel_BR
+    100008: Wheel_FL
+    100010: Wheel_FR
+    100012: Cylinder
+    100014: Cube
+    100016: Cube_001
+    100018: Cube_002
+    100020: Cube_003
+    100022: Seat_BL
+    100024: Seat_BR
+    100026: Seat_FL
+    100028: Seat_FR
+    100030: Wheel
+    100032: Hull
+    100034: Steering_Wheel
+    100036: Wheel_BL_Parent
+    100038: Wheel_BR_Parent
+    100040: Wheel_FL_Parent
+    100042: Wheel_FR_Parent
+    400000: //RootNode
+    400002: jeep_hull
+    400004: Wheel_BL
+    400006: Wheel_BR
+    400008: Wheel_FL
+    400010: Wheel_FR
+    400012: Cylinder
+    400014: Cube
+    400016: Cube_001
+    400018: Cube_002
+    400020: Cube_003
+    400022: Seat_BL
+    400024: Seat_BR
+    400026: Seat_FL
+    400028: Seat_FR
+    400030: Wheel
+    400032: Hull
+    400034: Steering_Wheel
+    400036: Wheel_BL_Parent
+    400038: Wheel_BR_Parent
+    400040: Wheel_FL_Parent
+    400042: Wheel_FR_Parent
+    2300000: jeep_hull
+    2300002: Wheel_BL
+    2300004: Wheel_BR
+    2300006: Wheel_FL
+    2300008: Wheel_FR
+    2300010: Cylinder
+    2300012: Cube
+    2300014: Cube_001
+    2300016: Cube_002
+    2300018: Cube_003
+    2300020: Seat_BL
+    2300022: Seat_BR
+    2300024: Seat_FL
+    2300026: Seat_FR
+    2300028: Wheel
+    2300030: Hull
+    2300032: Steering_Wheel
+    2300034: Wheel_BL_Parent
+    2300036: Wheel_BR_Parent
+    2300038: Wheel_FL_Parent
+    2300040: Wheel_FR_Parent
+    3300000: jeep_hull
+    3300002: Wheel_BL
+    3300004: Wheel_BR
+    3300006: Wheel_FL
+    3300008: Wheel_FR
+    3300010: Cylinder
+    3300012: Cube
+    3300014: Cube_001
+    3300016: Cube_002
+    3300018: Cube_003
+    3300020: Seat_BL
+    3300022: Seat_BR
+    3300024: Seat_FL
+    3300026: Seat_FR
+    3300028: Wheel
+    3300030: Hull
+    3300032: Steering_Wheel
+    3300034: Wheel_BL_Parent
+    3300036: Wheel_BR_Parent
+    3300038: Wheel_FL_Parent
+    3300040: Wheel_FR_Parent
+    4300000: Wheel_BR
+    4300002: Wheel_FR
+    4300004: Wheel_FL
+    4300006: Wheel_BL
+    4300008: jeep_hull
+    4300010: Cylinder
+    4300012: Cube_003
+    4300014: Cube_002
+    4300016: Cube_001
+    4300018: Cube
+    4300020: Seat_BR
+    4300022: Seat_FR
+    4300024: Seat_BL
+    4300026: Seat_FL
+    4300028: Wheel
+    4300030: Hull
+    4300032: Steering_Wheel
+    4300034: Wheel_FR_Parent
+    4300036: Wheel_BR_Parent
+    4300038: Wheel_BL_Parent
+    4300040: Wheel_FL_Parent
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
