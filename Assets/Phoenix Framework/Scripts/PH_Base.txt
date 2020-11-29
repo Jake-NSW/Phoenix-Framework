@@ -1,0 +1,18 @@
+﻿-- Register the behaviour
+behaviour("PH_Base")
+
+function PH_Base:Start()
+	-- Run when behaviour is created
+	print("Hello World")
+end
+
+function PH_Base:Update()
+	-- Run every frame
+	
+end
+
+_G.PhoenixDebug = {
+	SimplePrint = function(printString)
+		print("<color=orange>Phoenix - </color>" .. tostring(printString))
+	end,
+}
