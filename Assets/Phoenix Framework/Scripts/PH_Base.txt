@@ -15,4 +15,14 @@ _G.PhoenixDebug = {
 	SimplePrint = function(printString)
 		print("<color=orange>Phoenix - </color>" .. tostring(printString))
 	end,
+
+	BoolPrint = function(printString, state)
+		-- Changes the color depending on the bool value
+		PrintColorSwitch = {
+			["true"] = " - <color=aqua>true</color>",
+			["false"] = " - <color=yellow>false</color>"
+		}
+		-- Prints the string with the bool value
+		print("<color=orange>Phoenix - </color>" .. tostring(printString) .. PrintColorSwitch[tostring(state)])		
+	end,
 }

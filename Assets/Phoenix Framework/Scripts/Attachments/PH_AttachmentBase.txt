@@ -4,12 +4,13 @@ behaviour("PH_AttachmentBase")
 function PH_AttachmentBase:Start()
 	-- Run when behaviour is created
 	PhoenixAttachment.StoreComponents(self)
+	PhoenixAttachment.InitialSetup(self)
 	PhoenixAttachment.DisableOnStart(self)
 end
 
 function PH_AttachmentBase:Update()
 	if Input.GetKeyDown(KeyCode.T) then
-		self.UI_CanvasGroup.SetBool("activeSelf", not self.UI_CanvasGroup.GetBool("activeSelf"))
+		PhoenixAttachmentUI.ToggleVisibility(self, not self.UI_CanvasGroup.GetBool("activeSelf"))
 	end
 end
 
@@ -20,6 +21,13 @@ PhoenixAttachment = {
 		_G.PhoenixDebug.SimplePrint("Storing Components")
 		self.UI_CanvasGroup = self.targets.UI_CanvasGroup.gameObject.GetComponent(Animator) -- Returns the Animator
 		self.UI_Canvas = self.targets.UI_Canvas.gameObject.GetComponent(Canvas) -- Returns the Canvas
+		self.UI_CanvasBack = self.targets.UI_CanvasBack.gameObject.GetComponent(Canvas)
+	end,
+
+	InitialSetup = function (self)
+		-- Sets up the UI_CanvasBack Stuff
+		self.UI_CanvasBack.worldCamera = PlayerCamera.fpCamera
+		self.UI_CanvasBack.planeDistance = 0.5
 	end,
 
 	-- Disables Objects on start
@@ -31,6 +39,7 @@ PhoenixAttachment = {
 PhoenixAttachmentUI = {
 	-- Toggles the visibilty of the Attachment Hud
 	ToggleVisibility = function (self, state)
-
+		_G.PhoenixDebug.BoolPrint("Toggle Visibility", state)
+		self.UI_CanvasGroup.SetBool("activeSelf", state)
 	end
 }
