@@ -1,0 +1,14 @@
+﻿-- Register the behaviour
+behaviour("PH_AttachmentBase")
+
+function PH_AttachmentBase:Start()
+	-- Run when behaviour is created
+	print("Hello World")
+end
+
+function PH_AttachmentBase:Update()
+	if Input.GetKeyDown(KeyCode.T) then
+		local animator = self.targets.UI_CanvasGroup.gameObject.GetComponent(Animator)
+		animator.SetBool("activeSelf", not animator.GetBool("activeSelf"))
+	end
+end
