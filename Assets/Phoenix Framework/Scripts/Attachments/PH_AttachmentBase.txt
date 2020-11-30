@@ -12,7 +12,7 @@ end
 
 function PH_AttachmentBase:Update()
 	if Input.GetKeyDown(KeyCode.T) then
-		PhoenixAttachmentUI.ToggleVisibility(self, not self.UI_CanvasGroup.GetBool("activeSelf"))
+		PhoenixAttachment.ToggleAttachmentMenu(self, not self.UI_CanvasGroup.GetBool("activeSelf"))
 	end
 
 	if Input.GetKeyDown(KeyCode.F1) then
@@ -44,18 +44,25 @@ PhoenixAttachment = {
 		self.UI_CanvasBack.planeDistance = 0.5
 	end,
 
-	RenderAttachmentMenu = function (self, state)
+-- Handles the rendering for the attachment menu
+	ToggleAttachmentMenu = function (self, state)
 		RenderState = {
-			["true"] = function (self, state)
+			["true"] = function (self)
+				self.UI_CanvasGroup.SetBool("activeSelf", true)
+				Player.actor.activeWeapon.animator.SetBool("customization", true)
 
+				_G.PhoenixDebug.BoolPrint("Attachment Menu Status", true)
 			end,
 
-			["false"] = function (self, state)
+			["false"] = function (self)
+				self.UI_CanvasGroup.SetBool("activeSelf", false)
+				Player.actor.activeWeapon.animator.SetBool("customization", false)
 
+				_G.PhoenixDebug.BoolPrint("Attachment Menu Status", false)
 			end,
 		}
 
-		RenderState[tostring(state)](self, state)
+		RenderState[tostring(state)](self)
 	end,
 
 	-- Disables Objects on start
@@ -65,12 +72,6 @@ PhoenixAttachment = {
 }
 
 PhoenixAttachmentUI = {
-	-- Toggles the visibilty of the Attachment Hud
-	ToggleVisibility = function (self, state)
-		_G.PhoenixDebug.BoolPrint("Toggle Visibility", state)
-		self.UI_CanvasGroup.SetBool("activeSelf", state)
-	end,
-
 	-- Refreshes the attachment menu text
 	RefreshText = function (self)
 		local newWeaponName = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetString("weaponName")
