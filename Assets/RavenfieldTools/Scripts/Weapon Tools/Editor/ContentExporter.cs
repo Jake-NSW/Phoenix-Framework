@@ -32,7 +32,7 @@ public class ContentExporter : MonoBehaviour {
 
 			if(ok) {
 				string parameters = string.Format("-nointro -noworkshopmods -nocontentmods " +
-					"\"-testcontentmod {0}\" \"-map Vehicle Testing\" \"-testsession\"",
+					"\"-testcontentmod {0}\" \"-testcontentmod D:/Programs/SteamLibrary/steamapps/common/Ravenfield/ravenfield_Data/Mods/Ravenfield Tools Export/hoider_glock.rfc \" \"-map Vehicle Testing\" \"-testsession\"",
 					contentModPath);
 
 				Paths.LaunchGame(parameters);

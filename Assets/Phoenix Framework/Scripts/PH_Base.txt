@@ -2,27 +2,147 @@
 behaviour("PH_Base")
 
 function PH_Base:Start()
-	-- Run when behaviour is created
-	print("Hello World")
+	PhoenixBase.SetupEvents(self)
+	PhoenixBase.SetupMutatorSettings(self)
+	PhoenixBase.SetupKeybinds(self)
+	PhoenixBase.LoadAllScripts(self)
 end
 
-function PH_Base:Update()
-	-- Run every frame
-	
-end
-
+-- Responsible for handling the print log, can be used on any script
 _G.PhoenixDebug = {
 	SimplePrint = function(printString)
-		print("<color=orange>Phoenix - </color>" .. tostring(printString))
+		if printLog then
+			print("<color=orange>Phoenix - </color>" .. tostring(printString))
+		end
 	end,
 
 	BoolPrint = function(printString, state)
-		-- Changes the color depending on the bool value
-		PrintColorSwitch = {
-			["true"] = " - <color=aqua>true</color>",
-			["false"] = " - <color=yellow>false</color>"
-		}
-		-- Prints the string with the bool value
-		print("<color=orange>Phoenix - </color>" .. tostring(printString) .. PrintColorSwitch[tostring(state)])		
+		if printLog then
+			-- Changes the color depending on the bool value
+			local PrintColorSwitch = {
+				["true"] = " - <color=aqua>true</color>",
+				["false"] = " - <color=yellow>false</color>"
+			}
+			-- Prints the string with the bool value
+			print("<color=orange>Phoenix - </color>" .. tostring(printString) .. PrintColorSwitch[tostring(state)])		
+		end
 	end,
 }
+
+-- Data Container Functions, made my own so I could add a nil check!
+_G.PhoenixData = {
+
+	GetBool = function (self, dataContainer, id, isArray)
+		isArrayState = {
+			["true"] = function (self, dataContainer, id, isArray)
+
+			end,
+
+			["false"] = function (self, dataContainer, id, isArray)
+
+			end,
+		}
+
+		isArrayState[tostring(isArray)](self, dataContainer, id, isArray)
+	end,
+
+	GetString = function (self, dataContainer, id, isArray)
+
+	end,
+
+	GetFloat = function (self, dataContainer, id, isArray)
+
+	end,
+
+	GetInt = function (self, dataContainer, id, isArray)
+
+	end,
+
+	GetGameObject = function (self, dataContainer, id, isArray)
+
+	end,
+
+	GetSprite = function (self, dataContainer, id, isArray)
+
+	end,
+
+	GetAudioClip = function (self, dataContainer, id, isArray)
+
+	end,
+}
+
+-- Base funcitons
+PhoenixBase = {
+	-- Assigns GameEventspt
+	SetupEvents = function (self)
+		self.script.AddValueMonitor("ReturnActiveWeapon", "OnWeaponSwitch")
+		self.script.AddDebugValueMonitor("ReturnActiveWeaponName", "Current Weapon", Color.yellow)
+
+		GameEvents.onActorSpawn.AddListener(self, "OnActorSpawn")
+		GameEvents.onActorDied.AddListener(self, "OnActorDied")
+	end,
+
+	-- Stores Mutator values
+	SetupMutatorSettings = function (self)
+		printLog = self.script.mutator.GetConfigurationBool("bool_printLog")
+	end,
+
+	SetupKeybinds = function (self)
+
+	end,
+
+	-- Loads all scripts, to prevent later overhead
+	LoadAllScripts = function (self)
+
+	end
+}
+
+PhoenixEvents = {
+	OnPlayerSpawn = function (actor)
+		print("player spawned :P")
+	end,
+
+	OnPlayerDeath = function (actor)
+		print("player died :/")
+	end,
+
+	OnWeaponSwitch = function (newWeapon)
+		
+	end,
+}
+
+-- Functions to assign events
+
+-- OnActorSpawn
+function PH_Base:OnActorSpawn(actor)
+	if actor.isPlayer then
+		PhoenixEvents.OnPlayerSpawn(actor)
+	end
+
+end
+
+function PH_Base:OnActorDied(actor)
+	if actor.isPlayer then
+		PhoenixEvents.OnPlayerDeath(actor)
+	end
+end
+
+-- OnWeaponSwitch
+function PH_Base:OnWeaponSwitch(newWeapon)
+	PhoenixEvents.OnWeaponSwitch(newWeapon)
+end
+
+-- Returns the activeweapon, is for value monitor
+function PH_Base:ReturnActiveWeapon()
+	return Player.actor.activeWeapon
+end
+
+-- Returns the activeweapon's name, is for value monitor debug
+function PH_Base:ReturnActiveWeaponName()
+	if Player.actor.activeWeapon == nil then
+		return "None Equiped"
+	else
+		local wep = Player.actor.activeWeapon
+		return "Name - ".. wep.weaponEntry.name .. " | Phoenix - " .. "false"
+	end
+end

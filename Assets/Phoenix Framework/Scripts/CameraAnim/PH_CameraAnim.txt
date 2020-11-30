@@ -1,0 +1,13 @@
+﻿-- Created by Jake K (JakeSayingWoosh) - Wooshcrew.com / Copyright 2020
+behaviour("PH_CameraAnim")
+
+function PH_CameraAnim:Update()
+	if not Player.actor.isSwimming and not Player.actor.isDead and not Player.actor.isFallenOver and Player.actor.isInWater == false and Player.actor.isOnLadder == false then
+		local rotationFromProxy = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetGameObject("cameraAnimProxy").gameObject.transform.localRotation.eulerAngles
+		PlayerCamera.fpCameraLocalRotation = Quaternion.Euler(Vector3(rotationFromProxy.x, rotationFromProxy.z, rotationFromProxy.y * -1))
+	end
+end
+
+function PH_CameraAnim:OnDisable()
+	PlayerCamera.fpCameraLocalRotation = Quaternion.Euler(0, 0, 0)
+end

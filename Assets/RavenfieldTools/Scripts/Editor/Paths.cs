@@ -113,6 +113,7 @@ public static class Paths {
 
 		try {
 			System.Diagnostics.Process.Start(Paths.ExecutablePath(true), parameters);
+			Debug.Log(parameters);
 		}
 		catch(System.Exception e) {
 			EditorUtility.DisplayDialog("Could not launch Ravenfield", "The specified game executable could not be started, did you specify the right executable? Please find your game executable file with Ravenfield Tools -> Set Game Executable\n\nDetails: "+e.Message, "Ok");

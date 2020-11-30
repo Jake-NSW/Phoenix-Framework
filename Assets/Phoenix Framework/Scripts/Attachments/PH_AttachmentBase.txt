@@ -12,6 +12,10 @@ function PH_AttachmentBase:Update()
 	if Input.GetKeyDown(KeyCode.T) then
 		PhoenixAttachmentUI.ToggleVisibility(self, not self.UI_CanvasGroup.GetBool("activeSelf"))
 	end
+
+	if Input.GetKeyDown(KeyCode.F1) then
+		PhoenixAttachmentUI.RefreshText(self)
+	end
 end
 
 -- FUNCTIONS
@@ -26,8 +30,9 @@ PhoenixAttachment = {
 		self.UI_CanvasBack = self.targets.UI_CanvasBack.gameObject.GetComponent(Canvas) -- Returns Canvas
 
 		-- Canvas Text
-		self.UI_WeaponNameText = self.targets.UI_WeaponNameText.gameObject.GetComponent(TextMeshPro) -- Returns the TextMeshPro Text
-		self.UI_ProjectNameText = self.targets.UI_ProjectNameText.gameObject.GetComponent(TextMeshPro) -- Returns the TextMeshPro Text
+		self.UI_WeaponNameText = self.targets.UI_WeaponNameText.gameObject.GetComponent(TextMeshProUGUI) -- Returns the TextMeshPro Text
+		self.UI_WeaponHistoryTitle = self.targets.UI_WeaponHistoryTitle.gameObject.GetComponent(TextMeshProUGUI) -- Returns the TextMeshPro Text
+		self.UI_WeaponHistory = self.targets.UI_WeaponHistory.gameObject.GetComponent(TextMeshProUGUI)
 	end,
 
 	-- Gets called on start, Basically the constructor
@@ -50,7 +55,15 @@ PhoenixAttachmentUI = {
 		self.UI_CanvasGroup.SetBool("activeSelf", state)
 	end,
 
+	-- Refreshes the attachment menu text
 	RefreshText = function (self)
+		local newWeaponName = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetString("weaponName")
+		local newAuthorName = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetString("creatorName")
+		local newHistoryTitle = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetString("weaponHistoryTitle")
+		local newHistoryDesc = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetString("weaponHistory")
 		
+		self.UI_WeaponNameText.text = newWeaponName .. "<size=32> </size><size=16><color=#808080ff><align=right>By: " .. newAuthorName .. "</align></color></size>"
+		self.UI_WeaponHistoryTitle.text = newHistoryTitle
+		self.UI_WeaponHistory.text = newHistoryDesc
 	end,
 }
