@@ -19,11 +19,18 @@ PhoenixAttachment = {
 	-- Stores all the components on start
 	StoreComponents = function (self)
 		_G.PhoenixDebug.SimplePrint("Storing Components")
+
+		-- Base Canvas
 		self.UI_CanvasGroup = self.targets.UI_CanvasGroup.gameObject.GetComponent(Animator) -- Returns the Animator
 		self.UI_Canvas = self.targets.UI_Canvas.gameObject.GetComponent(Canvas) -- Returns the Canvas
-		self.UI_CanvasBack = self.targets.UI_CanvasBack.gameObject.GetComponent(Canvas)
+		self.UI_CanvasBack = self.targets.UI_CanvasBack.gameObject.GetComponent(Canvas) -- Returns Canvas
+
+		-- Canvas Text
+		self.UI_WeaponNameText = self.targets.UI_WeaponNameText.gameObject.GetComponent(TextMeshPro) -- Returns the TextMeshPro Text
+		self.UI_ProjectNameText = self.targets.UI_ProjectNameText.gameObject.GetComponent(TextMeshPro) -- Returns the TextMeshPro Text
 	end,
 
+	-- Gets called on start, Basically the constructor
 	InitialSetup = function (self)
 		-- Sets up the UI_CanvasBack Stuff
 		self.UI_CanvasBack.worldCamera = PlayerCamera.fpCamera
@@ -41,5 +48,9 @@ PhoenixAttachmentUI = {
 	ToggleVisibility = function (self, state)
 		_G.PhoenixDebug.BoolPrint("Toggle Visibility", state)
 		self.UI_CanvasGroup.SetBool("activeSelf", state)
-	end
+	end,
+
+	RefreshText = function (self)
+		
+	end,
 }
