@@ -31,15 +31,14 @@ _G.PhoenixDebug = {
 
 -- Data Container Functions, made my own so I could add a nil check!
 _G.PhoenixData = {
-
 	GetBool = function (self, dataContainer, id, isArray)
 		isArrayState = {
 			["true"] = function (self, dataContainer, id, isArray)
-
+				print("array state true")
 			end,
 
 			["false"] = function (self, dataContainer, id, isArray)
-
+				print("array state false")
 			end,
 		}
 
@@ -111,23 +110,23 @@ PhoenixEvents = {
 	end,
 }
 
--- Functions to assign events
 
--- OnActorSpawn
+-- Functions to assign events
+-- OnActorSpawn, calls on actor spawn.. duhh
 function PH_Base:OnActorSpawn(actor)
 	if actor.isPlayer then
 		PhoenixEvents.OnPlayerSpawn(actor)
 	end
 
 end
-
+-- OnActorDied, calls when the actor dies of course
 function PH_Base:OnActorDied(actor)
 	if actor.isPlayer then
 		PhoenixEvents.OnPlayerDeath(actor)
 	end
 end
 
--- OnWeaponSwitch
+-- OnWeaponSwitch, calls when the weapon switchs you dingus
 function PH_Base:OnWeaponSwitch(newWeapon)
 	PhoenixEvents.OnWeaponSwitch(newWeapon)
 end
