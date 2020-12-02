@@ -2,6 +2,9 @@
 behaviour("PH_Base")
 
 function PH_Base:Start()
+	_G.PhoenixBase = self
+
+	PhoenixBase.StoreComponents(self)
 	PhoenixBase.SetupEvents(self)
 	PhoenixBase.SetupMutatorSettings(self)
 	PhoenixBase.SetupKeybinds(self)
@@ -10,13 +13,13 @@ end
 
 -- Responsible for handling the print log, can be used on any script
 _G.PhoenixDebug = {
-	SimplePrint = function(printString)
+	SimplePrint = function (printString)
 		if printLog then
 			print("<color=orange>Phoenix - </color>" .. tostring(printString))
 		end
 	end,
 
-	BoolPrint = function(printString, state)
+	BoolPrint = function (printString, state)
 		if printLog then
 			-- Changes the color depending on the bool value
 			local PrintColorSwitch = {
@@ -27,51 +30,184 @@ _G.PhoenixDebug = {
 			print("<color=orange>Phoenix - </color>" .. tostring(printString) .. PrintColorSwitch[tostring(state)])		
 		end
 	end,
+
+	ScreenPrint = function (type, headerText, descText)
+		if consoleLog then
+			iconType = {
+				["warning"] = function () 
+					return _G.PhoenixBase.DEBUG_WarnIcon
+				end,
+				["error"] = function ()
+					return _G.PhoenixBase.DEBUG_ErrorIcon
+				end
+			}
+
+
+		end
+	end,
 }
 
 -- Data Container Functions, made my own so I could add a nil check!
 _G.PhoenixData = {
-	GetBool = function (self, dataContainer, id, isArray)
+	GetBool = function (dataContainer, id, isArray, nilValue)
 		isArrayState = {
-			["true"] = function (self, dataContainer, id, isArray)
-				print("array state true")
+			["true"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetBoolArray(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetBoolArray(id)
+				end
 			end,
 
-			["false"] = function (self, dataContainer, id, isArray)
-				print("array state false")
+			["false"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetBool(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetBool(id)
+				end
 			end,
 		}
-
-		isArrayState[tostring(isArray)](self, dataContainer, id, isArray)
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
 	end,
 
-	GetString = function (self, dataContainer, id, isArray)
+	GetString = function (dataContainer, id, isArray, nilValue)
+		isArrayState = {
+			["true"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetStringArray(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetStringArray(id)
+				end
+			end,
 
+			["false"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetString(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetString(id)
+				end
+			end,
+		}
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
 	end,
 
-	GetFloat = function (self, dataContainer, id, isArray)
+	GetFloat = function (dataContainer, id, isArray, nilValue)
+		isArrayState = {
+			["true"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetFloatArray(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetFloatArray(id)
+				end
+			end,
 
+			["false"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetFloat(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetFloat(id)
+				end
+			end,
+		}
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
 	end,
 
-	GetInt = function (self, dataContainer, id, isArray)
+	GetInt = function (dataContainer, id, isArray, nilValue)
+		isArrayState = {
+			["true"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetIntArray(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetIntArray(id)
+				end
+			end,
 
+			["false"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetInt(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetInt(id)
+				end
+			end,
+		}
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
 	end,
 
-	GetGameObject = function (self, dataContainer, id, isArray)
+	GetGameObject = function (dataContainer, id, isArray, nilValue)
+		isArrayState = {
+			["true"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetGameObjectArray(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetGameObjectArray(id)
+				end
+			end,
 
+			["false"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetGameObject(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetGameObject(id)
+				end
+			end,
+		}
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
 	end,
 
-	GetSprite = function (self, dataContainer, id, isArray)
+	GetSprite = function (dataContainer, id, isArray, nilValue)
+		isArrayState = {
+			["true"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetSpriteArray(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetSpriteArray(id)
+				end
+			end,
 
+			["false"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetSprite(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetSprite(id)
+				end
+			end,
+		}
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
 	end,
 
-	GetAudioClip = function (self, dataContainer, id, isArray)
+	GetAudioClip = function (dataContainer, id, isArray, nilValue)
+		isArrayState = {
+			["true"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetAudioClipArray(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetAudioClipArray(id)
+				end
+			end,
 
+			["false"] = function (dataContainer, id, isArray, nilValue)
+				if dataContainer == nil or dataContainer.GetAudioClip(id) == nil then
+					return nilValue
+				else
+					return dataContainer.GetAudioClip(id)
+				end
+			end,
+		}
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
 	end,
 }
 
 -- Base funcitons
 PhoenixBase = {
+	StoreComponents = function (self)
+		-- Debug Stuff
+		self.DEBUG_ConsoleNest = self.targets.DEBUG_ConsoleNest.gameObject.transform -- Returns transform
+		self.DEBUG_ConsoleCount = self.targets.DEBUG_ConsoleCount.gameObject.GetComponent(TextMeshProUGUI)
+		self.DEBUG_ConsoleListingPrefab = self.targets.DEBUG_ConsoleListingPrefab.gameObject
+		self.DEBUG_ClearConsoleButton = self.targets.DEBUG_ClearConsoleButton.gameObject
+		self.DEBUG_WarnIcon = self.targets.DEBUG_WarnIcon.gameObject
+		self.DEBUG_ErrorIcon = self.targets.DEBUG_ErrorIcon.gameObject
+	end,
 	-- Assigns GameEventspt
 	SetupEvents = function (self)
 		self.script.AddValueMonitor("ReturnActiveWeapon", "OnWeaponSwitch")
@@ -84,6 +220,7 @@ PhoenixBase = {
 	-- Stores Mutator values
 	SetupMutatorSettings = function (self)
 		printLog = self.script.mutator.GetConfigurationBool("bool_printLog")
+		consoleLog = self.script.mutator.GetConfigurationBool("bool_modderConsole")
 	end,
 
 	SetupKeybinds = function (self)
@@ -106,7 +243,9 @@ PhoenixEvents = {
 	end,
 
 	OnWeaponSwitch = function (newWeapon)
-		
+		-- global variable for active weapon stuff
+		_G.currentWeapon = newWeapon -- Returns weapon
+		_G.currentWeaponData = newWeapon.gameObject.GetComponent(DataContainer) -- Returns a Data Container
 	end,
 }
 
@@ -141,7 +280,8 @@ function PH_Base:ReturnActiveWeaponName()
 	if Player.actor.activeWeapon == nil then
 		return "None Equiped"
 	else
+		local phoenix = _G.PhoenixData.GetBool(_G.currentWeaponData, "usePhoenixFramework", false, "false")
 		local wep = Player.actor.activeWeapon
-		return "Name - ".. wep.weaponEntry.name .. " | Phoenix - " .. "false"
+		return "Name - ".. wep.weaponEntry.name .. " | Phoenix - " .. tostring(phoenix)
 	end
 end

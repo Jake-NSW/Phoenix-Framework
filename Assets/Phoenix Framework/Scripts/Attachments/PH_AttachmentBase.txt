@@ -6,8 +6,6 @@ function PH_AttachmentBase:Start()
 	PhoenixAttachment.StoreComponents(self)
 	PhoenixAttachment.InitialSetup(self)
 	PhoenixAttachment.DisableOnStart(self)
-
-	_G.PhoenixData.GetBool(self, nil, nil, true)
 end
 
 function PH_AttachmentBase:Update()
@@ -35,6 +33,7 @@ PhoenixAttachment = {
 		self.UI_WeaponNameText = self.targets.UI_WeaponNameText.gameObject.GetComponent(TextMeshProUGUI) -- Returns the TextMeshPro Text
 		self.UI_WeaponHistoryTitle = self.targets.UI_WeaponHistoryTitle.gameObject.GetComponent(TextMeshProUGUI) -- Returns the TextMeshPro Text
 		self.UI_WeaponHistory = self.targets.UI_WeaponHistory.gameObject.GetComponent(TextMeshProUGUI)
+		self.UI_WeaponProjectName = self.targets.UI_WeaponProjectName.gameObject.GetComponent(TextMeshProUGUI)
 	end,
 
 	-- Gets called on start, Basically the constructor
@@ -47,21 +46,24 @@ PhoenixAttachment = {
 -- Handles the rendering for the attachment menu
 	ToggleAttachmentMenu = function (self, state)
 		RenderState = {
+			-- Does this if the state is == to true
 			["true"] = function (self)
-				self.UI_CanvasGroup.SetBool("activeSelf", true)
-				Player.actor.activeWeapon.animator.SetBool("customization", true)
+				self.UI_CanvasGroup.SetBool("activeSelf", true) -- Plays animation stuff
+				_G.currentWeapon.animator.SetBool("customization", true) -- Sets the customization bool to true
 
-				_G.PhoenixDebug.BoolPrint("Attachment Menu Status", true)
+				_G.PhoenixDebug.BoolPrint("Attachment Menu Status", true) -- Debug prints that it actually finished it
 			end,
 
+			-- Does this if the state is == to false
 			["false"] = function (self)
-				self.UI_CanvasGroup.SetBool("activeSelf", false)
-				Player.actor.activeWeapon.animator.SetBool("customization", false)
+				self.UI_CanvasGroup.SetBool("activeSelf", false) -- Plays animation stuff
+				_G.currentWeapon.animator.SetBool("customization", false) -- Sets the customization bool to false
 
-				_G.PhoenixDebug.BoolPrint("Attachment Menu Status", false)
+				_G.PhoenixDebug.BoolPrint("Attachment Menu Status", false) -- Debug prints that it actually finished it
 			end,
 		}
 
+		-- Executes the actual render state
 		RenderState[tostring(state)](self)
 	end,
 
@@ -73,14 +75,16 @@ PhoenixAttachment = {
 
 PhoenixAttachmentUI = {
 	-- Refreshes the attachment menu text
-	RefreshText = function (self)
-		local newWeaponName = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetString("weaponName")
-		local newAuthorName = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetString("creatorName")
-		local newHistoryTitle = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetString("weaponHistoryTitle")
-		local newHistoryDesc = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetString("weaponHistory")
+	RefreshText = function (self)		
+		local newWeaponName =_G.currentWeaponData.GetString("weaponName")
+		local newAuthorName = _G.currentWeaponData.GetString("creatorName")
+		local newHistoryTitle = _G.currentWeaponData.GetString("weaponHistoryTitle")
+		local newHistoryDesc = _G.currentWeaponData.GetString("weaponHistory")
+		local newProjectName = _G.currentWeaponData.GetString("projectName")
 		
 		self.UI_WeaponNameText.text = "<color=#808080ff><size=32>Editing</size></color>\n" .. newWeaponName .. "<size=32> </size><size=16><color=#808080ff><align=right>By: " .. newAuthorName .. "</align></color></size>"
 		self.UI_WeaponHistoryTitle.text = newHistoryTitle
 		self.UI_WeaponHistory.text = newHistoryDesc
+		self.UI_WeaponProjectName.text = "Weapon is a part of the " .. newProjectName
 	end,
 }
