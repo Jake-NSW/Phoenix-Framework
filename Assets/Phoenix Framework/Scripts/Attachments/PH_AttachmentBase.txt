@@ -22,7 +22,7 @@ end
 PhoenixAttachment = {
 	-- Stores all the components on start
 	StoreComponents = function (self)
-		_G.PhoenixDebug.SimplePrint("Storing Components")
+		_G.PhoenixDebug.SimplePrint("PH_AttachmentBase | Storing Components")
 
 		-- Base Canvas
 		self.UI_CanvasGroup = self.targets.UI_CanvasGroup.gameObject.GetComponent(Animator) -- Returns the Animator
@@ -43,7 +43,7 @@ PhoenixAttachment = {
 		self.UI_CanvasBack.planeDistance = 0.5
 	end,
 
--- Handles the rendering for the attachment menu
+	-- Handles the rendering for the attachment menu
 	ToggleAttachmentMenu = function (self, state)
 		RenderState = {
 			-- Does this if the state is == to true
@@ -75,12 +75,12 @@ PhoenixAttachment = {
 
 PhoenixAttachmentUI = {
 	-- Refreshes the attachment menu text
-	RefreshText = function (self)		
-		local newWeaponName =_G.currentWeaponData.GetString("weaponName")
-		local newAuthorName = _G.currentWeaponData.GetString("creatorName")
-		local newHistoryTitle = _G.currentWeaponData.GetString("weaponHistoryTitle")
-		local newHistoryDesc = _G.currentWeaponData.GetString("weaponHistory")
-		local newProjectName = _G.currentWeaponData.GetString("projectName")
+	RefreshText = function (self)
+		local newWeaponName = _G.PhoenixData.GetString(_G.currentWeaponData, "weaponName", false, "#Weapon-Name", true, "warning", "Missing <color=#ffff00ff>'weaponName'</color> String!", "Make sure to have your <color=#ffff00ff>'weaponName'</color> on the base weapon's Data Container!")
+		local newAuthorName = _G.PhoenixData.GetString(_G.currentWeaponData, "creatorName", false, "#Author-Name", true, "warning", "Missing <color=#ffff00ff>'creatorName'</color> String!", "Make sure to have your <color=#ffff00ff>'creatorName'</color> on the base weapon's Data Container!")
+		local newHistoryTitle = _G.PhoenixData.GetString(_G.currentWeaponData, "weaponHistoryTitle", false, "#History-Title", true, "warning", "Missing <color=#ffff00ff>'weaponHistoryTitle'</color> String!", "Make sure to have your <color=#ffff00ff>'weaponHistoryTitle'</color> on the base weapon's Data Container!")
+		local newHistoryDesc = _G.PhoenixData.GetString(_G.currentWeaponData, "weaponHistory", false, "#History-Description", true, "warning", "Missing <color=#ffff00ff>'weaponHistory'</color> String!", "Make sure to have your <color=#ffff00ff>'weaponHistory'</color> on the base weapon's Data Container!")
+		local newProjectName = _G.PhoenixData.GetString(_G.currentWeaponData, "projectName", false, "#Project-Name", true, "warning", "Missing <color=#ffff00ff>'projectName'</color> String!", "Make sure to have your <color=#ffff00ff>'projectName'</color> on the base weapon's Data Container!")
 		
 		self.UI_WeaponNameText.text = "<color=#808080ff><size=32>Editing</size></color>\n" .. newWeaponName .. "<size=32> </size><size=16><color=#808080ff><align=right>By: " .. newAuthorName .. "</align></color></size>"
 		self.UI_WeaponHistoryTitle.text = newHistoryTitle

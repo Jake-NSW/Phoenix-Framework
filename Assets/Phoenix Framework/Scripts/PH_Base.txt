@@ -2,13 +2,14 @@
 behaviour("PH_Base")
 
 function PH_Base:Start()
-	_G.PhoenixBase = self
+	_G.PhoenixBaseObject = self	-- Makes this object global
 
+	-- Setup stuff
+	PhoenixBase.SetupMutatorSettings(self)
+	PhoenixBase.LoadAllScripts(self)
 	PhoenixBase.StoreComponents(self)
 	PhoenixBase.SetupEvents(self)
-	PhoenixBase.SetupMutatorSettings(self)
 	PhoenixBase.SetupKeybinds(self)
-	PhoenixBase.LoadAllScripts(self)
 end
 
 -- Responsible for handling the print log, can be used on any script
@@ -35,165 +36,222 @@ _G.PhoenixDebug = {
 		if consoleLog then
 			iconType = {
 				["warning"] = function () 
-					return _G.PhoenixBase.DEBUG_WarnIcon
+					return _G.PhoenixBaseObject.DEBUG_WarnIcon
 				end,
 				["error"] = function ()
-					return _G.PhoenixBase.DEBUG_ErrorIcon
+					return _G.PhoenixBaseObject.DEBUG_ErrorIcon
 				end
 			}
 
+			-- Assigns console listing stuff
+			local go = GameObject.Instantiate(_G.PhoenixBaseObject.DEBUG_ConsoleListPrefab).gameObject
+			go.transform.SetParent(_G.PhoenixBaseObject.DEBUG_ConsoleListNest, false)
+			go.transform.SetAsFirstSibling()
+			
+			goData = go.GetComponent(DataContainer)
+			goData.GetGameObject("icon").gameObject.GetComponent(Image).sprite = iconType[type]()
+			goData.GetGameObject("title").gameObject.GetComponent(TextMeshProUGUI).text = headerText
+			goData.GetGameObject("desc").gameObject.GetComponent(TextMeshProUGUI).text = descText
+			goData.GetGameObject("errorNumber").gameObject.GetComponent(TextMeshProUGUI).text = tostring(_G.PhoenixBaseObject.DEBUG_ConsoleListNest.childCount)
 
+			-- Ups the console count
+			_G.PhoenixBaseObject.DEBUG_ConsoleCountText.text = tostring(_G.PhoenixBaseObject.DEBUG_ConsoleListNest.childCount)
+
+			_G.PhoenixDebug.SimplePrint("Created Console Listing")
 		end
 	end,
 }
 
--- Data Container Functions, made my own so I could add a nil check!
+-- Data Container Functions, made my own so I could add a nil check! 
+-- I swear to god if someone says this is yandre dev code ima die... IT ISNT!!
 _G.PhoenixData = {
-	GetBool = function (dataContainer, id, isArray, nilValue)
+	GetBool = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
-			["true"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetBoolArray(id) == nil then
+			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasBoolArray(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetBoolArray(id)
 				end
 			end,
 
-			["false"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetBool(id) == nil then
+			["false"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasBool(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetBool(id)
 				end
 			end,
 		}
-		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 	end,
 
-	GetString = function (dataContainer, id, isArray, nilValue)
+	GetString = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
-			["true"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetStringArray(id) == nil then
+			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasStringArray(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetStringArray(id)
 				end
 			end,
 
-			["false"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetString(id) == nil then
+			["false"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasString(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetString(id)
 				end
 			end,
 		}
-		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 	end,
 
-	GetFloat = function (dataContainer, id, isArray, nilValue)
+	GetFloat = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
-			["true"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetFloatArray(id) == nil then
+			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasFloatArray(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetFloatArray(id)
 				end
 			end,
 
-			["false"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetFloat(id) == nil then
+			["false"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasFloat(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetFloat(id)
 				end
 			end,
 		}
-		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 	end,
 
-	GetInt = function (dataContainer, id, isArray, nilValue)
+	GetInt = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
-			["true"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetIntArray(id) == nil then
+			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasIntArray(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetIntArray(id)
 				end
 			end,
 
-			["false"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetInt(id) == nil then
+			["false"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasInt(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetInt(id)
 				end
 			end,
 		}
-		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 	end,
 
-	GetGameObject = function (dataContainer, id, isArray, nilValue)
+	GetGameObject = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
-			["true"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetGameObjectArray(id) == nil then
+			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasGameObjectArray(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetGameObjectArray(id)
 				end
 			end,
 
-			["false"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetGameObject(id) == nil then
+			["false"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasGameObject(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetGameObject(id)
 				end
 			end,
 		}
-		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 	end,
 
-	GetSprite = function (dataContainer, id, isArray, nilValue)
+	GetSprite = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
-			["true"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetSpriteArray(id) == nil then
+			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasSpriteArray(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetSpriteArray(id)
 				end
 			end,
 
-			["false"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetSprite(id) == nil then
+			["false"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasSprite(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetSprite(id)
 				end
 			end,
 		}
-		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 	end,
 
-	GetAudioClip = function (dataContainer, id, isArray, nilValue)
+	GetAudioClip = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
-			["true"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetAudioClipArray(id) == nil then
+			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasAudioClipArray(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetAudioClipArray(id)
 				end
 			end,
 
-			["false"] = function (dataContainer, id, isArray, nilValue)
-				if dataContainer == nil or dataContainer.GetAudioClip(id) == nil then
+			["false"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+				if dataContainer == nil or dataContainer.HasAudioClip(id) == false then
+					if consoleWrite then
+						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
+					end
 					return nilValue
 				else
 					return dataContainer.GetAudioClip(id)
 				end
 			end,
 		}
-		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue)
+		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 	end,
 }
 
@@ -201,26 +259,39 @@ _G.PhoenixData = {
 PhoenixBase = {
 	StoreComponents = function (self)
 		-- Debug Stuff
-		self.DEBUG_ConsoleNest = self.targets.DEBUG_ConsoleNest.gameObject.transform -- Returns transform
-		self.DEBUG_ConsoleCount = self.targets.DEBUG_ConsoleCount.gameObject.GetComponent(TextMeshProUGUI)
-		self.DEBUG_ConsoleListingPrefab = self.targets.DEBUG_ConsoleListingPrefab.gameObject
-		self.DEBUG_ClearConsoleButton = self.targets.DEBUG_ClearConsoleButton.gameObject
-		self.DEBUG_WarnIcon = self.targets.DEBUG_WarnIcon.gameObject
-		self.DEBUG_ErrorIcon = self.targets.DEBUG_ErrorIcon.gameObject
+		if consoleLog then
+			local debugData = self.targets.SYS_Debug.gameObject.GetComponent(DataContainer) -- localised data container
+
+			self.DEBUG_Console = debugData.GetGameObject("console").gameObject
+			self.DEBUG_ClearConsoleButton = debugData.GetGameObject("clearConsoleButton").gameObject.GetComponent(Button) -- returns button
+			self.DEBUG_ConsoleListNest = debugData.GetGameObject("consoleListNest").gameObject.transform -- returns transform
+			self.DEBUG_ConsoleCountText = debugData.GetGameObject("consoleCount").gameObject.GetComponent(TextMeshProUGUI)
+			self.DEBUG_ConsoleListPrefab = debugData.GetGameObject("consoleListPrefab") -- i dunno what to return kek
+
+			self.DEBUG_WarnIcon = debugData.GetSprite("warnIcon")
+			self.DEBUG_ErrorIcon = debugData.GetSprite("errorIcon")
+		end
+
+		_G.PhoenixDebug.SimplePrint("PH_Base | Storing Components")
 	end,
 	-- Assigns GameEventspt
 	SetupEvents = function (self)
 		self.script.AddValueMonitor("ReturnActiveWeapon", "OnWeaponSwitch")
-		self.script.AddDebugValueMonitor("ReturnActiveWeaponName", "Current Weapon", Color.yellow)
 
 		GameEvents.onActorSpawn.AddListener(self, "OnActorSpawn")
 		GameEvents.onActorDied.AddListener(self, "OnActorDied")
+
+		self.DEBUG_ClearConsoleButton.onClick.AddListener(self, "ClearConsole")
+
+		_G.PhoenixDebug.SimplePrint("PH_Base | Setted up Events")
 	end,
 
 	-- Stores Mutator values
 	SetupMutatorSettings = function (self)
 		printLog = self.script.mutator.GetConfigurationBool("bool_printLog")
 		consoleLog = self.script.mutator.GetConfigurationBool("bool_modderConsole")
+
+		_G.PhoenixDebug.SimplePrint("PH_Base | Setted up Mutator Settings")
 	end,
 
 	SetupKeybinds = function (self)
@@ -242,8 +313,9 @@ PhoenixEvents = {
 		print("player died :/")
 	end,
 
-	OnWeaponSwitch = function (newWeapon)
+	OnWeaponSwitch = function (self, newWeapon)
 		-- global variable for active weapon stuff
+		print("penis")
 		_G.currentWeapon = newWeapon -- Returns weapon
 		_G.currentWeaponData = newWeapon.gameObject.GetComponent(DataContainer) -- Returns a Data Container
 	end,
@@ -267,7 +339,7 @@ end
 
 -- OnWeaponSwitch, calls when the weapon switchs you dingus
 function PH_Base:OnWeaponSwitch(newWeapon)
-	PhoenixEvents.OnWeaponSwitch(newWeapon)
+	PhoenixEvents.OnWeaponSwitch(self, newWeapon)
 end
 
 -- Returns the activeweapon, is for value monitor
@@ -275,13 +347,12 @@ function PH_Base:ReturnActiveWeapon()
 	return Player.actor.activeWeapon
 end
 
--- Returns the activeweapon's name, is for value monitor debug
-function PH_Base:ReturnActiveWeaponName()
-	if Player.actor.activeWeapon == nil then
-		return "None Equiped"
-	else
-		local phoenix = _G.PhoenixData.GetBool(_G.currentWeaponData, "usePhoenixFramework", false, "false")
-		local wep = Player.actor.activeWeapon
-		return "Name - ".. wep.weaponEntry.name .. " | Phoenix - " .. tostring(phoenix)
+function PH_Base:ClearConsole()
+	local consoleNest = self.DEBUG_ConsoleListNest
+	for i = 1, consoleNest.childCount do
+		local go = consoleNest.GetChild(i -1).gameObject
+		GameObject.Destroy(go)
 	end
+
+	self.DEBUG_ConsoleCountText.text = "0"
 end
