@@ -4,18 +4,29 @@ behaviour("PH_AttachmentBase")
 function PH_AttachmentBase:Start()
 	-- Run when behaviour is created
 	PhoenixAttachment.StoreComponents(self)
+	print("poop")
 	PhoenixAttachment.InitialSetup(self)
 	PhoenixAttachment.DisableOnStart(self)
 end
 
 function PH_AttachmentBase:Update()
 	if Input.GetKeyDown(KeyCode.T) then
-		PhoenixAttachment.ToggleAttachmentMenu(self, not self.UI_CanvasGroup.GetBool("activeSelf"))
+		print(tostring(not self.menuActivated))
+		PhoenixAttachment.ToggleAttachmentMenu(self, not self.menuActivated, 0.5)
 	end
+end
 
-	if Input.GetKeyDown(KeyCode.F1) then
+function PH_AttachmentBase:OnEnable()
+	if not Player.actor.isDead then
+		PhoenixAttachment.ToggleAttachmentMenu(self, false, -1)
 		PhoenixAttachmentUI.RefreshText(self)
 	end
+end
+
+function PH_AttachmentBase:OnDisable()
+
+
+
 end
 
 -- FUNCTIONS
@@ -44,27 +55,34 @@ PhoenixAttachment = {
 	end,
 
 	-- Handles the rendering for the attachment menu
-	ToggleAttachmentMenu = function (self, state)
+	ToggleAttachmentMenu = function (self, state, transTime)
 		RenderState = {
 			-- Does this if the state is == to true
-			["true"] = function (self)
-				self.UI_CanvasGroup.SetBool("activeSelf", true) -- Plays animation stuff
+			["true"] = function (self, transTime)
+				self.menuActivated = true
+				self.UI_CanvasGroup.SetFloat("activeSelf", 1, transTime, Time.deltaTime) -- Plays animation stuff
 				_G.currentWeapon.animator.SetBool("customization", true) -- Sets the customization bool to true
+				_G.currentWeapon.LockWeapon()
+
+				GameManager.hudGameModeEnabled = false
+				GameManager.hudPlayerEnabled = false
 
 				_G.PhoenixDebug.BoolPrint("Attachment Menu Status", true) -- Debug prints that it actually finished it
 			end,
 
 			-- Does this if the state is == to false
-			["false"] = function (self)
-				self.UI_CanvasGroup.SetBool("activeSelf", false) -- Plays animation stuff
+			["false"] = function (self, transTime)
+				self.menuActivated = false
+				self.UI_CanvasGroup.SetFloat("activeSelf", 0, transTime, Time.deltaTime) -- Plays animation stuff
 				_G.currentWeapon.animator.SetBool("customization", false) -- Sets the customization bool to false
+				_G.currentWeapon.UnlockWeapon()
 
 				_G.PhoenixDebug.BoolPrint("Attachment Menu Status", false) -- Debug prints that it actually finished it
 			end,
 		}
 
 		-- Executes the actual render state
-		RenderState[tostring(state)](self)
+		RenderState[tostring(state)](self, transTime)
 	end,
 
 	-- Disables Objects on start

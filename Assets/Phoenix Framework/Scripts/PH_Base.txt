@@ -6,10 +6,16 @@ function PH_Base:Start()
 
 	-- Setup stuff
 	PhoenixBase.SetupMutatorSettings(self)
-	PhoenixBase.LoadAllScripts(self)
 	PhoenixBase.StoreComponents(self)
+	PhoenixBase.LoadAllScripts(self)
 	PhoenixBase.SetupEvents(self)
 	PhoenixBase.SetupKeybinds(self)
+end
+
+function PH_Base:Update()
+	if Input.GetKeyDown(KeyCode.BackQuote) then
+		self.DEBUG_Console.SetActive(not self.DEBUG_Console.activeSelf)
+	end
 end
 
 -- Responsible for handling the print log, can be used on any script
@@ -40,6 +46,9 @@ _G.PhoenixDebug = {
 				end,
 				["error"] = function ()
 					return _G.PhoenixBaseObject.DEBUG_ErrorIcon
+				end,
+				["log"] = function ()
+					return _G.PhoenixBaseObject.DEBUG_LogIcon
 				end
 			}
 
@@ -56,8 +65,6 @@ _G.PhoenixDebug = {
 
 			-- Ups the console count
 			_G.PhoenixBaseObject.DEBUG_ConsoleCountText.text = tostring(_G.PhoenixBaseObject.DEBUG_ConsoleListNest.childCount)
-
-			_G.PhoenixDebug.SimplePrint("Created Console Listing")
 		end
 	end,
 }
@@ -265,12 +272,20 @@ PhoenixBase = {
 			self.DEBUG_Console = debugData.GetGameObject("console").gameObject
 			self.DEBUG_ClearConsoleButton = debugData.GetGameObject("clearConsoleButton").gameObject.GetComponent(Button) -- returns button
 			self.DEBUG_ConsoleListNest = debugData.GetGameObject("consoleListNest").gameObject.transform -- returns transform
-			self.DEBUG_ConsoleCountText = debugData.GetGameObject("consoleCount").gameObject.GetComponent(TextMeshProUGUI)
+			self.DEBUG_ConsoleCountText = debugData.GetGameObject("consoleCount").gameObject.GetComponent(TextMeshProUGUI) -- returns text
 			self.DEBUG_ConsoleListPrefab = debugData.GetGameObject("consoleListPrefab") -- i dunno what to return kek
 
 			self.DEBUG_WarnIcon = debugData.GetSprite("warnIcon")
 			self.DEBUG_ErrorIcon = debugData.GetSprite("errorIcon")
+			self.DEBUG_LogIcon = debugData.GetSprite("logIcon")
 		end
+
+		self.SYS_Attachment = self.targets.SYS_Attachment.gameObject
+		self.SYS_Inspect = self.targets.SYS_Inspect.gameObject
+		self.SYS_AimReload = self.targets.SYS_AimReload.gameObject
+		self.SYS_CameraAnim = self.targets.SYS_CameraAnim.gameObject
+		self.SYS_Debug = self.targets.SYS_Debug.gameObject
+		self.SYS_Storage = self.targets.SYS_Storage.gameObject
 
 		_G.PhoenixDebug.SimplePrint("PH_Base | Storing Components")
 	end,
@@ -300,24 +315,72 @@ PhoenixBase = {
 
 	-- Loads all scripts, to prevent later overhead
 	LoadAllScripts = function (self)
+		_G.PhoenixDebug.SimplePrint("PH_Base | Started Loading Scripts")
+		-- Enables gameObjects for loading scripts
+		self.SYS_Attachment.SetActive(true)
+		self.SYS_Inspect.SetActive(true)
+		self.SYS_AimReload.SetActive(true)
+		self.SYS_CameraAnim.SetActive(true)
+		self.SYS_Debug.SetActive(true)
+		self.SYS_Storage.SetActive(true)
 
-	end
+		_G.PhoenixDebug.SimplePrint("PH_Base | Finished Loading Scripts")
+		-- Disables them
+		self.SYS_Attachment.SetActive(false)
+		self.SYS_Inspect.SetActive(false)
+		self.SYS_AimReload.SetActive(false)
+		self.SYS_CameraAnim.SetActive(false)
+		self.DEBUG_Console.SetActive(false)
+
+		_G.PhoenixDebug.SimplePrint("PH_Base | Cleaning up GameObject's")
+
+		if consoleLog == false then
+			_G.PhoenixDebug.SimplePrint("PH_Base | Debug is Enabled!")
+			self.SYS_Debug.SetActive(false)
+		end
+	end,
+
+	ChangeSystem = function (self, newWeapon)
+		local usePhoenixFramework = _G.PhoenixData.GetBool(_G.currentWeaponData, "usePhoenixFramework", false, false)
+
+		self.SYS_Attachment.SetActive(false)
+		self.SYS_Inspect.SetActive(false)
+		self.SYS_AimReload.SetActive(false)
+		self.SYS_CameraAnim.SetActive(false)
+
+		if usePhoenixFramework then
+			local useAttachmentSystem = _G.PhoenixData.GetBool(_G.currentWeaponData, "useAttachmentSystem", false, false)
+			local useInspectAnimation = _G.PhoenixData.GetBool(_G.currentWeaponData, "useInspectAnimation", false, false)
+			local useAimReload = _G.PhoenixData.GetBool(_G.currentWeaponData, "useAimReload", false, false)
+			local useCameraAnimation = _G.PhoenixData.GetBool(_G.currentWeaponData, "useCameraAnimation", false, false)
+
+			self.SYS_Attachment.SetActive(useAttachmentSystem)
+			self.SYS_Inspect.SetActive(useInspectAnimation)
+			self.SYS_AimReload.SetActive(useAimReload)
+			self.SYS_CameraAnim.SetActive(useCameraAnimation)
+			_G.PhoenixDebug.ScreenPrint("log", "The Player Just Switched Weapons!", "New Weapon - " .. newWeapon.weaponEntry.name .. "\nAttachment's - " .. tostring(useAttachmentSystem) .. "\nInspect Anim's - " .. tostring(useInspectAnimation) .. "\nAim Reload - " .. tostring(useAimReload) .. "\nCamera Anim's - " .. tostring(useCameraAnimation))
+			return
+		end
+
+		_G.PhoenixDebug.ScreenPrint("log", "The Player Just Switched Weapons!", "New Weapon - " .. newWeapon.weaponEntry.name .. "\nPhoenix Compatible - " .. tostring(usePhoenixFramework))
+	end,
 }
 
 PhoenixEvents = {
 	OnPlayerSpawn = function (actor)
-		print("player spawned :P")
+		_G.PhoenixDebug.ScreenPrint("log", "The Player Just Spawned!", "Back in the game baaabbyyyy")
 	end,
 
 	OnPlayerDeath = function (actor)
-		print("player died :/")
+		_G.PhoenixDebug.ScreenPrint("log", "The Player Just Died!", "What a shame... what a rotten way to die...")
 	end,
 
 	OnWeaponSwitch = function (self, newWeapon)
 		-- global variable for active weapon stuff
-		print("penis")
 		_G.currentWeapon = newWeapon -- Returns weapon
 		_G.currentWeaponData = newWeapon.gameObject.GetComponent(DataContainer) -- Returns a Data Container
+
+		PhoenixBase.ChangeSystem(self, newWeapon)
 	end,
 }
 
