@@ -13,7 +13,7 @@ function PH_AttachmentBase:Update()
 		self.UI_CanvasGroup.SetFloat("activeSelf", self.menuState, self.transitionTime, Time.unscaledDeltaTime)
 	end
 
-	if Input.GetKeyDown(_G.PhoenixKeyBinds.AttachmentMenuKeybind()) then
+	if Input.GetKeyDown(_G.PhoenixKeyBinds.AttachmentMenuKeybind()) and Player.actor.activeWeapon.isReloading == false and Player.actor.activeWeapon.isUnholstered == true and Player.actor.isInWater == false and Player.actor.isOnLadder == false and GameManager.isPaused == false then
 		PhoenixAttachment.ToggleAttachmentMenu(self, not self.menuActivated, 0.5)
 	end
 end

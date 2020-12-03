@@ -12,7 +12,8 @@ function PH_Base:Start()
 end
 
 function PH_Base:Update()
-	if Input.GetKeyDown(KeyCode.BackQuote) then
+	-- Open and close the console
+	if Input.GetKeyDown(KeyCode.BackQuote) and consoleLog then
 		self.DEBUG_Console.SetActive(not self.DEBUG_Console.activeSelf)
 	end
 end
@@ -285,6 +286,7 @@ _G.PhoenixKeyBinds = {
 
 -- Base funcitons
 PhoenixBase = {
+	-- Stores components to variables on start
 	StoreComponents = function (self)
 		-- Debug Stuff
 		if consoleLog then
@@ -316,9 +318,11 @@ PhoenixBase = {
 
 		GameEvents.onActorSpawn.AddListener(self, "OnActorSpawn")
 		GameEvents.onActorDied.AddListener(self, "OnActorDied")
-
-		self.DEBUG_ClearConsoleButton.onClick.AddListener(self, "ClearConsole")
-
+		
+		if consoleLog then
+			self.DEBUG_ClearConsoleButton.onClick.AddListener(self, "ClearConsole")
+		end
+		
 		_G.PhoenixDebug.SimplePrint("PH_Base | Setted up Events")
 	end,
 
@@ -332,6 +336,7 @@ PhoenixBase = {
 
 		_G.PhoenixDebug.SimplePrint("PH_Base | Setted up Mutator Settings")
 	end,
+
 	-- Loads all scripts, to prevent later overhead
 	LoadAllScripts = function (self)
 		_G.PhoenixDebug.SimplePrint("PH_Base | Started Loading Scripts")
@@ -351,16 +356,18 @@ PhoenixBase = {
 		self.SYS_Inspect.SetActive(false)
 		self.SYS_AimReload.SetActive(false)
 		self.SYS_CameraAnim.SetActive(false)
-		self.DEBUG_Console.SetActive(false)
-
 		_G.PhoenixDebug.SimplePrint("PH_Base | Cleaning up GameObject's")
 
 		if consoleLog == false then
 			_G.PhoenixDebug.SimplePrint("PH_Base | Debug is Enabled!")
 			self.SYS_Debug.SetActive(false)
+			return 
 		end
+
+		self.DEBUG_Console.SetActive(false)
 	end,
 
+	-- Sets up systems on weapon change
 	ChangeSystem = function (self, newWeapon)
 		local usePhoenixFramework = _G.PhoenixData.GetBool(_G.currentWeaponData, "usePhoenixFramework", false, false)
 
@@ -433,6 +440,7 @@ function PH_Base:ReturnActiveWeapon()
 	return Player.actor.activeWeapon
 end
 
+-- Clears all listings in the console
 function PH_Base:ClearConsole()
 	local consoleNest = self.DEBUG_ConsoleListNest
 	for i = 1, consoleNest.childCount do
