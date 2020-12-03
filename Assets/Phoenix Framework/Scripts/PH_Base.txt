@@ -9,7 +9,6 @@ function PH_Base:Start()
 	PhoenixBase.StoreComponents(self)
 	PhoenixBase.LoadAllScripts(self)
 	PhoenixBase.SetupEvents(self)
-	PhoenixBase.SetupKeybinds(self)
 end
 
 function PH_Base:Update()
@@ -75,7 +74,7 @@ _G.PhoenixData = {
 	GetBool = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
 			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
-				if dataContainer == nil or dataContainer.HasBoolArray(id) == false then
+				if dataContainer == nil or dataContainer.HasBool(id) == false then
 					if consoleWrite then
 						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
 					end
@@ -102,7 +101,7 @@ _G.PhoenixData = {
 	GetString = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
 			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
-				if dataContainer == nil or dataContainer.HasStringArray(id) == false then
+				if dataContainer == nil or dataContainer.HasString(id) == false then
 					if consoleWrite then
 						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
 					end
@@ -129,7 +128,7 @@ _G.PhoenixData = {
 	GetFloat = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
 			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
-				if dataContainer == nil or dataContainer.HasFloatArray(id) == false then
+				if dataContainer == nil or dataContainer.HasFloat(id) == false then
 					if consoleWrite then
 						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
 					end
@@ -156,7 +155,7 @@ _G.PhoenixData = {
 	GetInt = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
 			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
-				if dataContainer == nil or dataContainer.HasIntArray(id) == false then
+				if dataContainer == nil or dataContainer.HasInt(id) == false then
 					if consoleWrite then
 						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
 					end
@@ -183,7 +182,7 @@ _G.PhoenixData = {
 	GetGameObject = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
 			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
-				if dataContainer == nil or dataContainer.HasGameObjectArray(id) == false then
+				if dataContainer == nil or dataContainer.HasObject(id) == false then
 					if consoleWrite then
 						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
 					end
@@ -194,7 +193,7 @@ _G.PhoenixData = {
 			end,
 
 			["false"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
-				if dataContainer == nil or dataContainer.HasGameObject(id) == false then
+				if dataContainer == nil or dataContainer.HasObject(id) == false then
 					if consoleWrite then
 						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
 					end
@@ -210,7 +209,7 @@ _G.PhoenixData = {
 	GetSprite = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
 			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
-				if dataContainer == nil or dataContainer.HasSpriteArray(id) == false then
+				if dataContainer == nil or dataContainer.HasSprite(id) == false then
 					if consoleWrite then
 						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
 					end
@@ -237,7 +236,7 @@ _G.PhoenixData = {
 	GetAudioClip = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
 		isArrayState = {
 			["true"] = function (dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
-				if dataContainer == nil or dataContainer.HasAudioClipArray(id) == false then
+				if dataContainer == nil or dataContainer.HasAudioClip(id) == false then
 					if consoleWrite then
 						_G.PhoenixDebug.ScreenPrint(consoleType, consoleHeader, consoleDescription)
 					end
@@ -259,6 +258,28 @@ _G.PhoenixData = {
 			end,
 		}
 		return isArrayState[tostring(isArray)](dataContainer, id, isArray, nilValue, consoleWrite, consoleType, consoleHeader, consoleDescription)
+	end,
+}
+
+-- Keybinds
+_G.PhoenixKeyBinds = {
+	AttachmentMenuKeybind = function ()
+		local KeybindList = {
+			[0] = KeyCode.T,
+			[1] = KeyCode.Y,
+			[2] = KeyCode.U,
+			[3] = KeyCode.H,
+			[4] = KeyCode.G,
+		}
+		return KeybindList[_G.PhoenixBaseObject.attachmentMenuBindIndex]
+	end,
+
+	FiremodeKeybind = function ()
+		local KeybindList = {
+			[0] = KeyCode.X,
+			[1] = KeyCode.Z,
+		}
+		return KeybindList[_G.PhoenixBaseObject.firemodeBindIndex]
 	end,
 }
 
@@ -306,18 +327,18 @@ PhoenixBase = {
 		printLog = self.script.mutator.GetConfigurationBool("bool_printLog")
 		consoleLog = self.script.mutator.GetConfigurationBool("bool_modderConsole")
 
+		self.attachmentMenuBindIndex = 0
+		self.firemodeBindIndex = 0
+
 		_G.PhoenixDebug.SimplePrint("PH_Base | Setted up Mutator Settings")
 	end,
-
-	SetupKeybinds = function (self)
-
-	end,
-
 	-- Loads all scripts, to prevent later overhead
 	LoadAllScripts = function (self)
 		_G.PhoenixDebug.SimplePrint("PH_Base | Started Loading Scripts")
 		-- Enables gameObjects for loading scripts
 		self.SYS_Attachment.SetActive(true)
+		self.SYS_Attachment.gameObject.GetComponent(PH_AttachmentBase):Start() -- I HAVE NO FUCKING CLUE WHY I NEED TO DO THIS???
+
 		self.SYS_Inspect.SetActive(true)
 		self.SYS_AimReload.SetActive(true)
 		self.SYS_CameraAnim.SetActive(true)
@@ -384,7 +405,6 @@ PhoenixEvents = {
 	end,
 }
 
-
 -- Functions to assign events
 -- OnActorSpawn, calls on actor spawn.. duhh
 function PH_Base:OnActorSpawn(actor)
@@ -402,6 +422,9 @@ end
 
 -- OnWeaponSwitch, calls when the weapon switchs you dingus
 function PH_Base:OnWeaponSwitch(newWeapon)
+	if newWeapon == nil then
+		return
+	end
 	PhoenixEvents.OnWeaponSwitch(self, newWeapon)
 end
 
