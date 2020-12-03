@@ -8,7 +8,7 @@ function PH_CameraAnim:Update()
 end
 
 function PH_CameraAnim:OnEnable()
-	if Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetGameObject("cameraAnimProxy") ~= nil and Player.actor ~= nil and not Player.actor.isDead then
+	if  Player.actor ~= nil and not Player.actor.isDead and Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetGameObject("cameraAnimProxy") ~= nil then
 		_G.PhoenixDebug.ScreenPrint("error", "Missing <color=#ffff00ff>cameraAnimProxy</color> GameObject", "Make sure you have the <color=#ffff00ff>'cameraAnimProxy'</color> GameObject on the base weapons data container!")
 	end
 

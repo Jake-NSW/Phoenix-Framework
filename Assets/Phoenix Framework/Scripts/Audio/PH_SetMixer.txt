@@ -1,0 +1,7 @@
+﻿-- Register the behaviour
+behaviour("PH_SetMixer")
+
+function PH_SetMixer:Start()
+	-- Run when behaviour is created
+	self.gameObject.GetComponent(AudioSource).SetOutputAudioMixer(AudioMixer.Music)
+end
