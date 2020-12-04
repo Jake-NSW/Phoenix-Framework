@@ -9,25 +9,45 @@ function PH_AttachmentBase:Start()
 end
 
 function PH_AttachmentBase:Update()
-	if not Player.actor.isDead then
-		self.UI_CanvasGroup.SetFloat("activeSelf", self.menuState, self.transitionTime, Time.unscaledDeltaTime)
+	-- Checks if the player went into slowmotion
+	if Input.GetKeyBindButtonDown(KeyBinds.Slowmotion) and self.UI_CanvasGroup.GetFloat("activeSelf") ~= 1 then
+		SlowmoState = {
+			["true"] = 0.2,
+			["false"] = 1
+		}
+		self.slowMotionMultiplier = SlowmoState[tostring(self.isSlowMode)]
+		self.isSlowMode = not self.isSlowMode
 	end
 
-	if Input.GetKeyDown(_G.PhoenixKeyBinds.AttachmentMenuKeybind()) and Player.actor.activeWeapon.isReloading == false and Player.actor.activeWeapon.isUnholstered == true and Player.actor.isInWater == false and Player.actor.isOnLadder == false and GameManager.isPaused == false then
-		PhoenixAttachment.ToggleAttachmentMenu(self, not self.menuActivated, 1)
+	-- Attachment Menu animator update update
+	if not Player.actor.isDead and not GameManager.isPaused then
+		self.UI_CanvasGroup.SetFloat("activeSelf", self.menuState, self.transitionTime / self.transitionMultiplier, Time.unscaledDeltaTime)
+		Time.timeScale = _G.PhoenixMath.Normalize(self.UI_CanvasGroup.GetFloat("activeSelf"), 1 , 0, 0.0325, 1 * self.slowMotionMultiplier)
 	end
+
+	-- Toggle the menu
+	if Input.GetKeyDown(_G.PhoenixKeyBinds.AttachmentMenuKeybind()) and Player.actor.activeWeapon.isReloading == false and Player.actor.activeWeapon.isUnholstered == true and Player.actor.isInWater == false and Player.actor.isOnLadder == false and GameManager.isPaused == false then
+		PhoenixAttachment.ToggleAttachmentMenu(self, not self.menuActivated, 5)
+	end
+
 end
 
 function PH_AttachmentBase:OnEnable()
 	if not Player.actor.isDead then
-		self.transitionTime = _G.PhoenixData.GetFloat(_G.currentWeaponData, "transitionTime", false, 0.035, true, "warning", "Couldn't Find <color=#ffff00ff>'transitionTime'</color>", "Its not needed but if you want to have slower or faster attachment menu fade in change <color=#ffff00ff>'transitionTime'</color> on the base weapon's Data Container! The default value is '0.035'")
+		self.transitionTime = _G.PhoenixData.GetFloat(_G.currentWeaponData, "transitionTime", false, 0.3, true, "warning", "Couldn't Find <color=#ffff00ff>'transitionTime'</color>", "Its not needed but if you want to have slower or faster attachment menu fade in change <color=#ffff00ff>'transitionTime'</color> on the base weapon's Data Container! The default value is '0.035'")
 		PhoenixAttachmentUI.RefreshText(self)
+	end
+
+	if Time.timeScale <= 0.3 then
+		self.isSlowMode = true
+	else
+		self.slowMotionMultiplier = 1
 	end
 end
 
 function PH_AttachmentBase:OnDisable()
 	if Player.actor ~= nil and not Player.actor.isDead and self.menuActivated then
-		PhoenixAttachment.ToggleAttachmentMenu(self, false, 0)
+		PhoenixAttachment.ToggleAttachmentMenu(self, false, 0) 
 	end
 end
 
@@ -56,18 +76,19 @@ PhoenixAttachment = {
 		self.UI_CanvasBack.planeDistance = 0.5
 
 		self.menuState = 0
-		self.transitionTime = 0.035
+		self.transitionTime = 0.3
+		self.transitionMultiplier = 1
 	end,
 
 	-- Handles the rendering for the attachment menu
-	ToggleAttachmentMenu = function (self, state, transTime)	
+	ToggleAttachmentMenu = function (self, state)	
 		RenderState = {
 			-- Does this if the state is == to true
-			["true"] = function (self, transTime)
+			["true"] = function (self)
 				-- Enables UI
 				self.menuActivated = true
 				self.menuState = 1
-				-- self.UI_CanvasGroup.SetFloat("activeSelf", 1 , 0.05, Time.deltaTime) -- Plays animation stuff
+				self.transitionMultiplier = 1
 
 				-- Current Weapon setup
 				_G.currentWeapon.animator.SetBool("customization", true) -- Sets the customization bool to true
@@ -76,6 +97,7 @@ PhoenixAttachment = {
 
 				-- Changes time
 				Time.timeScale = 0.03125
+				Screen.UnlockCursor()
 
 				-- Stupid gamehud stuff
 				GameManager.hudGameModeEnabled = false
@@ -85,10 +107,11 @@ PhoenixAttachment = {
 			end,
 
 			-- Does this if the state is == to false
-			["false"] = function (self, transTime)
+			["false"] = function (self)
 				-- Enables UI
 				self.menuActivated = false
 				self.menuState = 0
+				self.transitionMultiplier = 10
 				-- self.UI_CanvasGroup.SetFloat("activeSelf", 0, 0.05, Time.deltaTime) -- Plays animation stuff
 
 				-- Current Weapon setup
@@ -99,6 +122,7 @@ PhoenixAttachment = {
 
 				-- Changes time
 				Time.timeScale = 1
+				Screen.LockCursor()
 
 				-- Stupid gamehud stuff
 				GameManager.hudGameModeEnabled = true
@@ -127,7 +151,7 @@ PhoenixAttachmentUI = {
 		local newHistoryDesc = _G.PhoenixData.GetString(_G.currentWeaponData, "weaponHistory", false, "#History-Description", true, "warning", "Missing <color=#ffff00ff>'weaponHistory'</color> String!", "Make sure to have your <color=#ffff00ff>'weaponHistory'</color> on the base weapon's Data Container!")
 		local newProjectName = _G.PhoenixData.GetString(_G.currentWeaponData, "projectName", false, newAuthorName .. " Collection", true, "warning", "Missing <color=#ffff00ff>'projectName'</color> String!", "Make sure to have your <color=#ffff00ff>'projectName'</color> on the base weapon's Data Container!")
 		
-		self.UI_WeaponNameText.text = "<color=#808080ff><size=32>Editing</size></color>\n" .. newWeaponName .. "<size=32> </size><size=16><color=#808080ff><align=right>By: " .. newAuthorName .. "</align></color></size>"
+		self.UI_WeaponNameText.text = "<color=#808080ff><size=32>Editing</size></color>\n" .. newWeaponName .. "<size=32> </size><size=16><color=#808080ff>By: " .. newAuthorName .. "</color></size>"
 		self.UI_WeaponHistoryTitle.text = newHistoryTitle
 		self.UI_WeaponHistory.text = newHistoryDesc
 		self.UI_WeaponProjectName.text = "Weapon is a part of the " .. newProjectName

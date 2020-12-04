@@ -1,0 +1,12 @@
+﻿-- Register the behaviour
+behaviour("PH_AttachmentPoint")
+
+function PH_AttachmentPoint:Start()
+	-- Run when behaviour is created
+	print("Hello World")
+end
+
+function PH_AttachmentPoint:Update()
+	-- Run every frame
+	
+end

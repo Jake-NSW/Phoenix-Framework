@@ -262,6 +262,13 @@ _G.PhoenixData = {
 	end,
 }
 
+-- Math functions
+_G.PhoenixMath = {
+	Normalize = function(val, minVal, maxVal, newMin, newMax) 
+		return newMin + (val - minVal) * (newMax - newMin) / (maxVal - minVal);
+	end
+}
+
 -- Keybinds
 _G.PhoenixKeyBinds = {
 	AttachmentMenuKeybind = function ()
@@ -376,7 +383,7 @@ PhoenixBase = {
 		self.SYS_AimReload.SetActive(false)
 		self.SYS_CameraAnim.SetActive(false)
 
-		if usePhoenixFramework then
+		if usePhoenixFramework and newWeapon ~= nil then
 			local useAttachmentSystem = _G.PhoenixData.GetBool(_G.currentWeaponData, "useAttachmentSystem", false, false)
 			local useInspectAnimation = _G.PhoenixData.GetBool(_G.currentWeaponData, "useInspectAnimation", false, false)
 			local useAimReload = _G.PhoenixData.GetBool(_G.currentWeaponData, "useAimReload", false, false)
@@ -389,8 +396,9 @@ PhoenixBase = {
 			_G.PhoenixDebug.ScreenPrint("log", "The Player Just Switched Weapons!", "New Weapon - " .. newWeapon.weaponEntry.name .. "\nAttachment's - " .. tostring(useAttachmentSystem) .. "\nInspect Anim's - " .. tostring(useInspectAnimation) .. "\nAim Reload - " .. tostring(useAimReload) .. "\nCamera Anim's - " .. tostring(useCameraAnimation))
 			return
 		end
-
-		_G.PhoenixDebug.ScreenPrint("log", "The Player Just Switched Weapons!", "New Weapon - " .. newWeapon.weaponEntry.name .. "\nPhoenix Compatible - " .. tostring(usePhoenixFramework))
+		if newWeapon ~= nil then
+			_G.PhoenixDebug.ScreenPrint("log", "The Player Just Switched Weapons!", "New Weapon - " .. newWeapon.weaponEntry.name .. "\nPhoenix Compatible - " .. tostring(usePhoenixFramework))
+		end
 	end,
 }
 
@@ -399,8 +407,9 @@ PhoenixEvents = {
 		_G.PhoenixDebug.ScreenPrint("log", "The Player Just Spawned!", "Back in the game baaabbyyyy")
 	end,
 
-	OnPlayerDeath = function (actor)
+	OnPlayerDeath = function (self, actor)
 		_G.PhoenixDebug.ScreenPrint("log", "The Player Just Died!", "What a shame... what a rotten way to die...")
+		PhoenixBase.ChangeSystem(self, nil)
 	end,
 
 	OnWeaponSwitch = function (self, newWeapon)
@@ -423,7 +432,7 @@ end
 -- OnActorDied, calls when the actor dies of course
 function PH_Base:OnActorDied(actor)
 	if actor.isPlayer then
-		PhoenixEvents.OnPlayerDeath(actor)
+		PhoenixEvents.OnPlayerDeath(self, actor)
 	end
 end
 
