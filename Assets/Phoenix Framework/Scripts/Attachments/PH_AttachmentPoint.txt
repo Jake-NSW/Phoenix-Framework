@@ -3,10 +3,17 @@ behaviour("PH_AttachmentPoint")
 
 function PH_AttachmentPoint:Start()
 	-- Run when behaviour is created
-	print("Hello World")
+	self.gameObject.GetComponent(Button).onClick.AddListener(self, "DoShit")
 end
 
 function PH_AttachmentPoint:Update()
 	-- Run every frame
 	
+end
+
+function PH_AttachmentPoint:DoShit()
+
+	local animator = self.gameObject.GetComponent(Animator)
+	animator.SetBool("panelState", not animator.GetBool("panelState"))
+
 end
