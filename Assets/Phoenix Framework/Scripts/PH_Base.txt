@@ -349,8 +349,7 @@ PhoenixBase = {
 		_G.PhoenixDebug.SimplePrint("PH_Base | Started Loading Scripts")
 		-- Enables gameObjects for loading scripts
 		self.SYS_Attachment.SetActive(true)
-		self.SYS_Attachment.gameObject.GetComponent(PH_AttachmentBase):Start() -- I HAVE NO FUCKING CLUE WHY I NEED TO DO THIS???
-
+		self.SYS_Attachment.GetComponent(PH_AttachmentBase):Start()
 		self.SYS_Inspect.SetActive(true)
 		self.SYS_AimReload.SetActive(true)
 		self.SYS_CameraAnim.SetActive(true)
@@ -390,6 +389,7 @@ PhoenixBase = {
 			local useCameraAnimation = _G.PhoenixData.GetBool(_G.currentWeaponData, "useCameraAnimation", false, false)
 
 			self.SYS_Attachment.SetActive(useAttachmentSystem)
+			self.SYS_Attachment.GetComponent(PH_AttachmentBase):OnWeaponSwitch()
 			self.SYS_Inspect.SetActive(useInspectAnimation)
 			self.SYS_AimReload.SetActive(useAimReload)
 			self.SYS_CameraAnim.SetActive(useCameraAnimation)
