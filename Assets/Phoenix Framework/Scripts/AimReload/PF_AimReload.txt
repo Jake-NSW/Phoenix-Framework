@@ -1,0 +1,11 @@
+﻿-- Register the behaviour
+behaviour("PF_AimReload")
+
+function PF_AimReload:Initialise()
+	PhoenixDebug.Print("PF_AimReload | Initialise", "log")
+end
+
+function PF_AimReload:Update()
+	-- Run every frame
+	
+end

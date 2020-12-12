@@ -1,23 +1,116 @@
 ﻿-- Register the behaviour
 behaviour("PF_Base")
 
--- Tables
-PhoenixDebug  = {
+-- Global Tables
+PhoenixDebug = {
 	-- Simple Print Message
 	Print = function (string, type)
 		local TypeSwitch = {
-			["warning"] = "<color=yellow>WARNING - </color>",
-			["error"] = "<color=red>ERROR - </color>",
-			["log"] = "<color=silver>LOG - </color>",
+			["warning"] = "<color=yellow>WARNING</color>",
+			["error"] = "<color=red>ERROR</color>",
+			["log"] = "<color=silver>LOG</color>",
 		}
-		print("<size=18><color=orange>Phoenix Framework 2.1 - </color>".. TypeSwitch[tostring(type)] .. tostring(string) .. "</size>")
+		print("<size=14><color=orange>Phoenix Framework 2.1 - </color>".. TypeSwitch[tostring(type)] .. "</size>")
+		print("<size=18>" .. tostring(string) .. "</size>")
+	end,
+
+	BoolPrint = function (string, type, state)
+		if true then
+			-- Changes the color depending on the bool value
+			local PrintColorSwitch = {
+				["true"] = " - <color=aqua>true</color>",
+				["false"] = " - <color=yellow>false</color>"
+			}
+			print("<size=14><color=orange>Phoenix Framework 2.1 - </color>".. TypeSwitch[tostring(type)] .. "</size>")
+			print("<size=18>" .. tostring(string) .. PrintColorSwitch[tostring(state)] .. "</size>")
+		end
+	end,
+}
+
+PhoenixMath = {
+	Normalize = function(val, minVal, maxVal, newMin, newMax) 
+		return newMin + (val - minVal) * (newMax - newMin) / (maxVal - minVal);
+	end
+}
+
+PhoenixInput = {
+	AttachmentMenuKeybind = function ()
+		local KeybindList = {
+			[0] = KeyCode.T,
+			[1] = KeyCode.Y,
+			[2] = KeyCode.U,
+			[3] = KeyCode.H,
+			[4] = KeyCode.G,
+		}
+		return KeybindList[PF_Base.attachmentMenuBindIndex]
+	end,
+
+	FiremodeKeybind = function ()
+		local KeybindList = {
+			[0] = KeyCode.X,
+			[1] = KeyCode.Z,
+		}
+		return KeybindList[PF_Base.firemodeBindIndex]
+	end,
+}
+
+-- Local Tables
+local PhoenixBase = {
+	SetupEvents = function (self)
+		GameEvents.onActorSpawn.AddListener(self, "OnActorSpawn")
+		GameEvents.onActorDied.AddListener(self, "OnActorDied")
+
+		self.script.AddValueMonitor("ReturnActiveWeapon", "OnWeaponSwitch")
+	end,
+
+	StoreComponents = function (self)
+		-- Begin Loading
+		for i = 1, self.transform.childCount do
+			local go = self.transform.GetChild(i -1).gameObject
+			go.SetActive(true)
+			self.script.GetScript(self.transform.GetChild(i -1).gameObject):Initialise()
+		end
+
+		-- End Loading
+		for i = 1, self.transform.childCount do
+			self.transform.GetChild(i -1).gameObject.SetActive(false)
+		end
+	end,
+}
+
+local PhoenixEvents = {
+	OnActorSpawn = function (self, actor)
+		PhoenixDebug.Print("Actor Spawned", "log")
+	end,	
+
+	OnActorDied = function (self, actor)
+		PhoenixDebug.Print("Actor Died", "log")
+	end,
+
+	OnPlayerWeaponSwitch = function (self, newWeapon)
+		PhoenixDebug.Print("Player Switched Weapons to " .. newWeapon.weaponEntry.name , "log")
 	end,
 }
 
 function PF_Base:Start()
-	PhoenixDebug.Print("PF_Base | Start", "log")
+	PhoenixBase.StoreComponents(self)
+	PhoenixBase.SetupEvents(self)
+
+	PhoenixDebug.Print("PF_Base | Initialise", "log")
 end
 
 function PF_Base:Update()
 
+end
+
+-- Sets up Events
+function PF_Base:OnActorSpawn(actor) PhoenixEvents.OnActorSpawn(self, actor) end
+function PF_Base:OnActorDied(actor) PhoenixEvents.OnActorDied(self, actor) end
+function PF_Base:ReturnActiveWeapon() return Player.actor.activeWeapon end
+
+function PF_Base:OnWeaponSwitch(newWeapon)
+	if newWeapon == nil then
+		return
+	end
+	PhoenixEvents.OnPlayerWeaponSwitch(self, newWeapon)
 end

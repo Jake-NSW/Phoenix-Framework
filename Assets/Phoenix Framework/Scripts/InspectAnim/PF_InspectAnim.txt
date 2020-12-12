@@ -1,0 +1,11 @@
+﻿-- Register the behaviour
+behaviour("PF_InspectAnim")
+
+function PF_InspectAnim:Initialise()
+	PhoenixDebug.Print("PF_InspectAnim | Initialise", "log")
+end
+
+function PF_InspectAnim:Update()
+	-- Run every frame
+	
+end

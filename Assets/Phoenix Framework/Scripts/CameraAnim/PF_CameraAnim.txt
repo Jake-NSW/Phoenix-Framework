@@ -1,0 +1,11 @@
+﻿-- Register the behaviour
+behaviour("PF_CameraAnim")
+
+function PF_CameraAnim:Initialise()
+	PhoenixDebug.Print("PF_CameraAnim | Initialise", "log")
+end
+
+function PF_CameraAnim:Update()
+	-- Run every frame
+	
+end
