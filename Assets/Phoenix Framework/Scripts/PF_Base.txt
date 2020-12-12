@@ -5,6 +5,7 @@ behaviour("PF_Base")
 PhoenixDebug = {
 	-- Simple Print Message
 	Print = function (string, type)
+		if not m_PhoenixBase.printConsole then return end
 		local TypeSwitch = {
 			["warning"] = "<color=yellow>WARNING</color>",
 			["error"] = "<color=red>ERROR</color>",
@@ -14,16 +15,15 @@ PhoenixDebug = {
 		print("<size=18>" .. tostring(string) .. "</size>")
 	end,
 
+	-- Changes the color depending on the bool value
 	BoolPrint = function (string, type, state)
-		if true then
-			-- Changes the color depending on the bool value
-			local PrintColorSwitch = {
-				["true"] = " - <color=aqua>true</color>",
-				["false"] = " - <color=yellow>false</color>"
-			}
-			print("<size=14><color=orange>Phoenix Framework 2.1 - </color>".. TypeSwitch[tostring(type)] .. "</size>")
-			print("<size=18>" .. tostring(string) .. PrintColorSwitch[tostring(state)] .. "</size>")
-		end
+		if not m_PhoenixBase.printConsole then return end
+		local PrintColorSwitch = {
+			["true"] = " - <color=aqua>true</color>",
+			["false"] = " - <color=yellow>false</color>"
+		}
+		print("<size=14><color=orange>Phoenix Framework 2.1 - </color>".. TypeSwitch[tostring(type)] .. "</size>")
+		print("<size=18>" .. tostring(string) .. PrintColorSwitch[tostring(state)] .. "</size>")
 	end,
 }
 
@@ -54,6 +54,199 @@ PhoenixInput = {
 	end,
 }
 
+PhoenixData = {
+	GetBool = function (container, id, isArray, nilValue)
+		local isArraySwitch = {
+			["true"] = function (container, id, nilValue)
+				if container == nil or container.GetBoolArray(id) == nil then 
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "error")
+					return nilValue 
+				end
+				return container.GetBoolArray(id)
+			end,
+
+			["false"] = function (container, id, nilValue)
+				if container == nil or container.GetBool(id) == nil then 
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "error")
+					return nilValue 
+				end
+				return container.GetBool(id)
+			end,
+		}
+		return isArraySwitch[tostring(isArray)](container, id, nilValue)
+	end,
+
+	GetInt = function (container, id, isArray, nilValue)
+		local isArraySwitch = {
+			["true"] = function (container, id, nilValue)
+				if container == nil or container.GetIntArray(id) == nil then 
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue))
+					return nilValue 
+				end
+				return container.GetIntArray(id)
+			end,
+
+			["false"] = function (container, id, nilValue)
+				if container == nil or container.GetInt(id) == nil then 
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue))
+					return nilValue 
+				end
+				return container.GetInt(id)
+			end,
+		}
+		return isArraySwitch[tostring(isArray)](container, id, nilValue)
+	end,
+
+	GetFloat = function (container, id, isArray, nilValue)
+		local isArraySwitch = {
+			["true"] = function (container, id, nilValue)
+				if container == nil or container.GetFloatArray(id) == nil then 
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue))
+					return nilValue 
+				end
+				return container.GetFloatArray(id)
+			end,
+
+			["false"] = function (container, id, nilValue)
+				if container == nil or container.GetFloat(id) == nil then 
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue))
+					return nilValue 
+				end
+				return container.GetFloat(id)
+			end,
+		}
+		return isArraySwitch[tostring(isArray)](container, id, nilValue)
+	end,
+
+	GetString = function (container, id, isArray, nilValue)
+		local isArraySwitch = {
+			["true"] = function (container, id, nilValue)
+				if container == nil or container.GetStringArray(id) == nil then 
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue))
+					return nilValue 
+				end
+				return container.GetStringArray(id)
+			end,
+
+			["false"] = function (container, id, nilValue)
+				if container == nil or container.GetString(id) == nil then 
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue))
+					return nilValue 
+				end
+				return container.GetString(id)
+			end,
+		}
+		return isArraySwitch[tostring(isArray)](container, id, nilValue)
+	end,
+
+	GetVector = function (container, id, isArray, nilValue)
+		local isArraySwitch = {
+			["true"] = function ()
+
+			end,
+
+			["false"] = function ()
+
+			end,
+		}
+	end,
+
+	GetRotation = function (container, id, isArray, nilValue)
+		local isArraySwitch = {
+			["true"] = function ()
+
+			end,
+
+			["false"] = function ()
+
+			end,
+		}
+	end,
+
+	GetTexture = function (container, id, isArray, nilValue)
+		local isArraySwitch = {
+			["true"] = function ()
+
+			end,
+
+			["false"] = function ()
+
+			end,
+		}
+	end,
+
+	GetSprite = function (container, id, isArray, nilValue)
+		local isArraySwitch = {
+			["true"] = function ()
+
+			end,
+
+			["false"] = function ()
+
+			end,
+		}
+	end,
+
+	GetAudioClip = function (container, id, isArray, nilValue)
+		local isArraySwitch = {
+			["true"] = function ()
+
+			end,
+
+			["false"] = function ()
+
+			end,
+		}
+	end,
+
+	GetMaterial = function (container, id, isArray, nilValue)
+		local isArraySwitch = {
+			["true"] = function ()
+
+			end,
+
+			["false"] = function ()
+
+			end,
+		}
+	end,
+
+	GetGameObject = function (container, id, isArray, nilValue)
+		local isArraySwitch = {
+			["true"] = function ()
+
+			end,
+
+			["false"] = function ()
+
+			end,
+		}
+	end,
+
+	GetSkin = function (container, id, isArray, nilValue)
+		local isArraySwitch = {
+			["true"] = function ()
+
+			end,
+
+			["false"] = function ()
+
+			end,
+		}
+	end,
+
+	GetWeaponEntry = function (container, id, isArray, nilValue)
+		local isArraySwitch = {
+			["true"] = function ()
+
+			end,
+
+			["false"] = function ()
+
+			end,
+		}
+	end,
+}
 -- Local Tables
 local PhoenixBase = {
 	SetupEvents = function (self)
@@ -61,6 +254,17 @@ local PhoenixBase = {
 		GameEvents.onActorDied.AddListener(self, "OnActorDied")
 
 		self.script.AddValueMonitor("ReturnActiveWeapon", "OnWeaponSwitch")
+	end,
+
+	StoreMutatorSettings = function (self)
+		-- Console Printing Stuff
+		if Debug.isTestMode then
+			self.printConsole = true
+		else
+			self.printConsole = self.script.mutator.GetConfigurationBool("bool_print")
+		end
+
+
 	end,
 
 	StoreComponents = function (self)
@@ -76,31 +280,40 @@ local PhoenixBase = {
 			self.transform.GetChild(i -1).gameObject.SetActive(false)
 		end
 	end,
+
+	RefreshSystems = function (self, newWeapon)
+		local dataContainer = newWeapon.gameObject.GetComponent(DataContainer)
+		local usePhoenix = PhoenixData.GetBool(dataContainer, "usePhoenixFramework", false, false)
+	end,
 }
 
 local PhoenixEvents = {
 	OnActorSpawn = function (self, actor)
-		PhoenixDebug.Print("Actor Spawned", "log")
-	end,	
+		if not actor.isPlayer then return end
+		PhoenixDebug.Print("Player Spawned", "log")
+	end,
 
 	OnActorDied = function (self, actor)
-		PhoenixDebug.Print("Actor Died", "log")
+		if not actor.isPlayer then return end
+		PhoenixDebug.Print("Player Died", "log")
 	end,
 
 	OnPlayerWeaponSwitch = function (self, newWeapon)
+		if newWeapon == nil then return end
+
+		PhoenixBase.RefreshSystems(self, newWeapon)
 		PhoenixDebug.Print("Player Switched Weapons to " .. newWeapon.weaponEntry.name , "log")
 	end,
 }
 
 function PF_Base:Start()
+	m_PhoenixBase = self
+
+	PhoenixBase.StoreMutatorSettings(self)
 	PhoenixBase.StoreComponents(self)
 	PhoenixBase.SetupEvents(self)
 
 	PhoenixDebug.Print("PF_Base | Initialise", "log")
-end
-
-function PF_Base:Update()
-
 end
 
 -- Sets up Events
@@ -109,7 +322,8 @@ function PF_Base:OnActorDied(actor) PhoenixEvents.OnActorDied(self, actor) end
 function PF_Base:ReturnActiveWeapon() return Player.actor.activeWeapon end
 
 function PF_Base:OnWeaponSwitch(newWeapon)
-	if newWeapon == nil then
+	if newWeapon == nil or Player.actor.activeVehicle ~= nil then
+		PhoenixEvents.OnPlayerWeaponSwitch(self, nil)
 		return
 	end
 	PhoenixEvents.OnPlayerWeaponSwitch(self, newWeapon)
