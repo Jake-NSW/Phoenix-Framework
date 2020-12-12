@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 1757820606
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: bf9a8819a1740fe08763669baeaf45e4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b63e9335d92879895c1bfcfb771a29b0
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: ec3b8824308adc64fb1901cef109132a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7f8ca71ca01d2fb4098cb42abc5eceb7, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Phoenix Framework/Prefabs/Content Export/Z_GobalsTesting.prefab
+Dependencies: []

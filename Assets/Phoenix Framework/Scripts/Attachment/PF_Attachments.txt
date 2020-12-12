@@ -1,0 +1,6 @@
+-- Register the behaviour
+behaviour("PF_Attachments")
+
+function PF_Attachments:Start()
+	PhoenixDebug.Print("PF_Attachments | Start", "log")
+end

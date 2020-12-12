@@ -1,0 +1,23 @@
+﻿-- Register the behaviour
+behaviour("PF_Base")
+
+-- Tables
+PhoenixDebug  = {
+	-- Simple Print Message
+	Print = function (string, type)
+		local TypeSwitch = {
+			["warning"] = "<color=yellow>WARNING - </color>",
+			["error"] = "<color=red>ERROR - </color>",
+			["log"] = "<color=silver>LOG - </color>",
+		}
+		print("<size=18><color=orange>Phoenix Framework 2.1 - </color>".. TypeSwitch[tostring(type)] .. tostring(string) .. "</size>")
+	end,
+}
+
+function PF_Base:Start()
+	PhoenixDebug.Print("PF_Base | Start", "log")
+end
+
+function PF_Base:Update()
+
+end
