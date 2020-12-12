@@ -6,6 +6,19 @@ function PF_InspectAnim:Initialise()
 end
 
 function PF_InspectAnim:Update()
-	-- Run every frame
-	
+	if Input.GetKeyBindButtonDown(KeyBinds.Reload) and Player.actor.activeWeapon.isReloading == false and Player.actor.activeWeapon.isUnholstered == true and Player.actor.isInWater == false and Player.actor.isOnLadder == false and not Player.actor.isFallenOver and not Player.actor.activeWeapon.isLocked then
+		self:StartInspect()
+	end
+end
+
+function PF_InspectAnim:StartInspect()
+	Player.actor.activeWeapon.animator.SetTrigger("inspect")
+	Player.actor.activeWeapon.LockWeapon()
+	self.script.StartCoroutine("FinishInspect")
+end
+
+-- Finishes the inspect 
+function PF_InspectAnim:FinishInspect()
+	coroutine.yield(WaitForSeconds(Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetFloat("inspectTime")))
+	Player.actor.activeWeapon.UnlockWeapon()
 end

@@ -1,6 +1,147 @@
 -- Register the behaviour
 behaviour("PF_Attachments")
 
+-- Local Tables
+local AttachmentsBase = {
+	SetupKeybinds = function (self)
+		self.attachmentKeybind = PhoenixInput.AttachmentMenuKeybind()
+	end,
+
+	CloneAttachmentPanel = function (self)
+
+	end,
+
+	StoreComponents = function (self)
+		self.transitionMultiplier = 1
+		self.slowMotionMultiplier = 1
+
+		self.menuUI = self.targets.MenuUI.gameObject.GetComponent(Animator)
+		self.WeaponNameText = self.targets.WeaponNameText.gameObject.GetComponent(TextMeshProUGUI)
+	end,
+
+	PlayerStatusCheck = function (self)
+		return Player.actor.activeWeapon.isReloading == false 
+		and Player.actor.activeWeapon.isUnholstered == true 
+		and Player.actor.isInWater == false 
+		and Player.actor.isOnLadder == false 
+		and GameManager.isPaused == false
+	end,
+
+	ToggleMenu = function (self, state)
+		local MenuState = {
+			["true"] = function (self)
+				-- State
+				self.menuState = true
+				self.menuStateNumber = 1
+				self.transitionMultiplier = 1
+				
+				-- Weapon Animations
+				Player.actor.activeWeapon.animator.SetBool("customization", true)
+				Player.actor.activeWeapon.gameObject.GetComponent(Animator).updateMode = AnimatorUpdateMode.UnscaledTime
+				Player.actor.activeWeapon.LockWeapon()
+
+				-- Changes time
+				-- Time.timeScale = 0.03125
+				Screen.UnlockCursor()
+
+				-- Stupid gamehud stuff
+				GameManager.hudGameModeEnabled = false
+				GameManager.hudPlayerEnabled = false
+			end,
+
+			["false"] = function (self)
+				self.menuState = false
+				self.menuStateNumber = 0
+				self.transitionMultiplier = 10
+
+				-- Weapon Animations
+				Player.actor.activeWeapon.animator.SetBool("customization", false)
+				Player.actor.activeWeapon.gameObject.GetComponent(Animator).updateMode = AnimatorUpdateMode.Normal
+				Player.actor.activeWeapon.UnlockWeapon()
+
+				-- Changes time
+				-- Time.timeScale = 1
+				Screen.LockCursor()
+
+				-- Stupid gamehud stuff
+				if Player.actor == nil then return end
+				GameManager.hudGameModeEnabled = true
+				GameManager.hudPlayerEnabled = true
+			end,
+		}
+
+		MenuState[tostring(state)](self)
+	end,
+
+	RefreshPoints = function ()
+
+	end,
+}
+
+local AttachmentUI = {
+	RefreshMenuText = function (self)
+		local data = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer)
+
+		self.WeaponNameText.text = PhoenixData.GetString(data, "weaponName", false, "Cool Gun")
+	end,
+}
+
 function PF_Attachments:Initialise()
+	AttachmentsBase.SetupKeybinds(self)
+	AttachmentsBase.StoreComponents(self)
+
 	PhoenixDebug.Print("PF_Attachments | Initialise", "log")
+end
+
+function PF_Attachments:Update()
+	if Input.GetKeyBindButtonDown(KeyBinds.Slowmotion) and self.menuUI.GetFloat("State") ~= 1 then
+		local SlowmoState = {
+			["true"] = 0.2,
+			["false"] = 1
+		}
+
+		self.isSlowMode = not self.isSlowMode
+		self.slowMotionMultiplier = SlowmoState[tostring(self.isSlowMode)]
+	end
+
+	if not Player.actor.isDead and not GameManager.isPaused then
+		self.menuUI.SetFloat("State", self.menuStateNumber, 0.2 / self.transitionMultiplier, Time.unscaledDeltaTime)
+		Time.timeScale = PhoenixMath.Normalize(self.menuUI.GetFloat("State"), 1 , 0, 0.0325, 1 * self.slowMotionMultiplier)
+	end
+
+
+	if Input.GetKeyDown(self.attachmentKeybind) and AttachmentsBase.PlayerStatusCheck() then
+		AttachmentsBase.ToggleMenu(self, not self.menuState)
+	end
+end
+
+function PF_Attachments:OnDisable()
+	if Player.actor == nil or Player.actor.isDead then return end
+	AttachmentsBase.ToggleMenu(self, false)
+
+	-- Slowmode stuff
+	local SlowmoState = {
+		["true"] = 0.2,
+		["false"] = 1
+	}
+	Time.timeScale = SlowmoState[tostring(self.isSlowMode)]
+end
+
+function PF_Attachments:OnEnable()
+	if Player.actor == nil or Player.actor.isDead  then return end
+
+	Player.actor.activeWeapon.animator.SetBool("customization", false)
+	Player.actor.activeWeapon.gameObject.GetComponent(Animator).updateMode = AnimatorUpdateMode.Normal
+
+	AttachmentsBase.ToggleMenu(self, false)
+	AttachmentUI.RefreshMenuText(self)
+
+	-- Slowmode stuff
+	if Time.timeScale <= 0.3 then self.isSlowMode = true else self.isSlowMode = false end
+
+	local SlowmoState = {
+		["true"] = 0.2,
+		["false"] = 1
+	}
+	self.slowMotionMultiplier = SlowmoState[tostring(self.isSlowMode)]
 end

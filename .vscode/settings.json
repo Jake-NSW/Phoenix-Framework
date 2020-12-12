@@ -11,5 +11,6 @@
         "**/.DS_Store": true,
         "**/*.meta": true
     },
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "lua.targetVersion": "5.3"
 }

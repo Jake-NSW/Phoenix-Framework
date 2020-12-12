@@ -42,7 +42,7 @@ PhoenixInput = {
 			[3] = KeyCode.H,
 			[4] = KeyCode.G,
 		}
-		return KeybindList[PF_Base.attachmentMenuBindIndex]
+		return KeybindList[m_PhoenixBase.attachmentBindIndex]
 	end,
 
 	FiremodeKeybind = function ()
@@ -50,7 +50,7 @@ PhoenixInput = {
 			[0] = KeyCode.X,
 			[1] = KeyCode.Z,
 		}
-		return KeybindList[PF_Base.firemodeBindIndex]
+		return KeybindList[m_PhoenixBase.firemodeBindIndex]
 	end,
 }
 
@@ -264,6 +264,7 @@ local PhoenixBase = {
 			self.printConsole = self.script.mutator.GetConfigurationBool("bool_print")
 		end
 
+		self.attachmentBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_attachmentBind")
 
 	end,
 
@@ -279,11 +280,31 @@ local PhoenixBase = {
 		for i = 1, self.transform.childCount do
 			self.transform.GetChild(i -1).gameObject.SetActive(false)
 		end
+
+		self.AttachmentSystem = self.targets.AttachmentSystem.gameObject
+		self.CameraAnimation = self.targets.CameraAnimation.gameObject
+		self.InspectAnimation = self.targets.InspectAnimation.gameObject
+		self.AimReloading = self.targets.AimReloading.gameObject
 	end,
 
 	RefreshSystems = function (self, newWeapon)
+		self.AttachmentSystem.SetActive(false)
+		self.CameraAnimation.SetActive(false)
+		self.InspectAnimation.SetActive(false)
+		self.AimReloading.SetActive(false)
+		
+		if newWeapon == nil then return end
+
 		local dataContainer = newWeapon.gameObject.GetComponent(DataContainer)
 		local usePhoenix = PhoenixData.GetBool(dataContainer, "usePhoenixFramework", false, false)
+		
+		if not usePhoenix then return end
+
+		self.AttachmentSystem.SetActive(PhoenixData.GetBool(dataContainer, "useAttachmentSystem", false, false))
+		self.CameraAnimation.SetActive(PhoenixData.GetBool(dataContainer, "useCameraAnimation", false, false))
+		self.InspectAnimation.SetActive(PhoenixData.GetBool(dataContainer, "useInspectAnimation", false, false))
+		self.AimReloading.SetActive(PhoenixData.GetBool(dataContainer, "useAimReload", false, false))
+
 	end,
 }
 
@@ -296,13 +317,13 @@ local PhoenixEvents = {
 	OnActorDied = function (self, actor)
 		if not actor.isPlayer then return end
 		PhoenixDebug.Print("Player Died", "log")
+		PhoenixBase.RefreshSystems(self, nil)
 	end,
 
 	OnPlayerWeaponSwitch = function (self, newWeapon)
 		if newWeapon == nil then return end
-
-		PhoenixBase.RefreshSystems(self, newWeapon)
 		PhoenixDebug.Print("Player Switched Weapons to " .. newWeapon.weaponEntry.name , "log")
+		PhoenixBase.RefreshSystems(self, newWeapon)
 	end,
 }
 
