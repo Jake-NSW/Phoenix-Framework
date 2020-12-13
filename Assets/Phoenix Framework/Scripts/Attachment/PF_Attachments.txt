@@ -76,7 +76,11 @@ local AttachmentsBase = {
 	end,
 
 	RefreshPoints = function ()
+		local data = Player.actor.activeWeapon.gameObject.GetComponentsInChildren(DataContainer)
 
+		for k,v in ipairs(data) do
+			print(PhoenixData.GetString(v, "dataType", false, "nil"))
+		end
 	end,
 }
 
@@ -116,8 +120,7 @@ function PF_Attachments:Update()
 		self.menuUI.SetFloat("State", self.menuStateNumber, 0.2 / self.transitionMultiplier, Time.unscaledDeltaTime)
 		Time.timeScale = PhoenixMath.Normalize(self.menuUI.GetFloat("State"), 1 , 0, 0.0325, 1 * self.slowMotionMultiplier)
 	end
-
-
+	
 	if Input.GetKeyDown(self.attachmentKeybind) and AttachmentsBase.PlayerStatusCheck() then
 		AttachmentsBase.ToggleMenu(self, not self.menuState)
 	end
@@ -142,6 +145,7 @@ function PF_Attachments:OnEnable()
 	Player.actor.activeWeapon.gameObject.GetComponent(Animator).updateMode = AnimatorUpdateMode.Normal
 
 	AttachmentsBase.ToggleMenu(self, false)
+	AttachmentsBase.RefreshPoints(self)
 	AttachmentUI.RefreshMenuText(self)
 
 	-- Slowmode stuff

@@ -80,7 +80,7 @@ PhoenixData = {
 		local isArraySwitch = {
 			["true"] = function (container, id, nilValue)
 				if container == nil or container.GetIntArray(id) == nil then 
-					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue))
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
 					return nilValue 
 				end
 				return container.GetIntArray(id)
@@ -88,7 +88,7 @@ PhoenixData = {
 
 			["false"] = function (container, id, nilValue)
 				if container == nil or container.GetInt(id) == nil then 
-					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue))
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
 					return nilValue 
 				end
 				return container.GetInt(id)
@@ -101,7 +101,7 @@ PhoenixData = {
 		local isArraySwitch = {
 			["true"] = function (container, id, nilValue)
 				if container == nil or container.GetFloatArray(id) == nil then 
-					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue))
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
 					return nilValue 
 				end
 				return container.GetFloatArray(id)
@@ -109,7 +109,7 @@ PhoenixData = {
 
 			["false"] = function (container, id, nilValue)
 				if container == nil or container.GetFloat(id) == nil then 
-					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue))
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
 					return nilValue 
 				end
 				return container.GetFloat(id)
@@ -121,17 +121,17 @@ PhoenixData = {
 	GetString = function (container, id, isArray, nilValue)
 		local isArraySwitch = {
 			["true"] = function (container, id, nilValue)
-				if container == nil or container.GetStringArray(id) == nil then 
-					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue))
+				if container == nil or container.GetStringArray(id) == nil or not container.HasString(id) then 
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
 					return nilValue 
 				end
 				return container.GetStringArray(id)
 			end,
 
 			["false"] = function (container, id, nilValue)
-				if container == nil or container.GetString(id) == nil then 
-					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue))
-					return nilValue 
+				if container == nil or not container.HasString(id) or container.GetString(id) == nil then 
+					PhoenixDebug.Print("Could not find " .. tostring(id) .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
+					return tostring(nilValue) 
 				end
 				return container.GetString(id)
 			end,
