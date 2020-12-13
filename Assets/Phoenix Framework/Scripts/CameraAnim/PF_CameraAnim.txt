@@ -5,6 +5,7 @@ function PF_CameraAnim:Initialise()
 end
 
 function PF_CameraAnim:Update()
+	if Player.actor.isDead then return end
 	if not Player.actor.isSwimming and not Player.actor.isDead and not Player.actor.isFallenOver and Player.actor.isInWater == false and Player.actor.isOnLadder == false and Player.actor.activeVehicle == nil then
 		local rotationFromProxy = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetGameObject("cameraAnimProxy").gameObject.transform.localRotation.eulerAngles
 		PlayerCamera.fpCameraLocalRotation = Quaternion.Euler(Vector3(rotationFromProxy.x, rotationFromProxy.z, rotationFromProxy.y * -1))
@@ -12,5 +13,6 @@ function PF_CameraAnim:Update()
 end
 
 function PF_CameraAnim:OnDisable()
+	if Player.actor.isDead then return end
 	PlayerCamera.fpCameraLocalRotation = Quaternion.Euler(0, 0, 0)
 end

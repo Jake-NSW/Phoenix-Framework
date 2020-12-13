@@ -16,7 +16,9 @@ local AttachmentsBase = {
 		self.slowMotionMultiplier = 1
 
 		self.menuUI = self.targets.MenuUI.gameObject.GetComponent(Animator)
-		self.WeaponNameText = self.targets.WeaponNameText.gameObject.GetComponent(TextMeshProUGUI)
+		self.weaponNameText = self.targets.weaponNameText.gameObject.GetComponent(TextMeshProUGUI)
+		self.historyHeaderText = self.targets.historyHeaderText.gameObject.GetComponent(TextMeshProUGUI)
+		self.historyDescText = self.targets.historyDescText.gameObject.GetComponent(TextMeshProUGUI)
 	end,
 
 	PlayerStatusCheck = function (self)
@@ -81,8 +83,14 @@ local AttachmentsBase = {
 local AttachmentUI = {
 	RefreshMenuText = function (self)
 		local data = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer)
-
-		self.WeaponNameText.text = PhoenixData.GetString(data, "weaponName", false, "Cool Gun")
+		if string.len(PhoenixData.GetString(data, "weaponName", false, "Cool Gun")) >= 8 then
+			self.weaponNameText.text = "<smallcaps>" .. PhoenixData.GetString(data, "weaponName", false, "Cool Gun") .. "</smallcaps> <color=#808080ff><size=20>By: " .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
+		else
+			self.weaponNameText.text = '<align="left"><smallcaps>' .. PhoenixData.GetString(data, "weaponName", false, "Cool Gun") .. '</smallcaps>' .. '\n <align="right"><color=#808080ff><size=20>By: ' .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
+		end
+		-- self.weaponNameText.text = "<smallcaps>" .. PhoenixData.GetString(data, "weaponName", false, "Cool Gun") .. "</smallcaps> <color=#808080ff><size=20>By: " .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
+		self.historyHeaderText.text = PhoenixData.GetString(data, "weaponHistoryTitle", false, "Cool Gun's History")
+		self.historyDescText.text = PhoenixData.GetString(data, "weaponHistory", false, "This is a very cool gun")
 	end,
 }
 
