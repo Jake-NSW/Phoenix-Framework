@@ -2,13 +2,17 @@
 behaviour("PF_Attachments")
 
 -- Local Tables
-local AttachmentsBase = {
+local AttachmentBase = {
 	SetupKeybinds = function (self)
 		self.attachmentKeybind = PhoenixInput.AttachmentMenuKeybind()
 	end,
 
 	CloneAttachmentPanel = function (self)
 
+	end,
+
+	SetupEvents = function (self)
+		self.script.AddValueMonitor("ReturnIsPaused", "OnGamePaused")
 	end,
 
 	StoreComponents = function (self)
@@ -19,6 +23,14 @@ local AttachmentsBase = {
 		self.weaponNameText = self.targets.weaponNameText.gameObject.GetComponent(TextMeshProUGUI)
 		self.historyHeaderText = self.targets.historyHeaderText.gameObject.GetComponent(TextMeshProUGUI)
 		self.historyDescText = self.targets.historyDescText.gameObject.GetComponent(TextMeshProUGUI)
+
+		self.attachmentPointNest = self.targets.attachmentPointNest.gameObject.transform
+		self.attachmentPointInstance = self.targets.attachmentPointInstance
+
+		for i = 1, 10 do
+			go = GameObject.Instantiate(self.attachmentPointInstance)
+			go.transform.SetParent(self.attachmentPointNest, false)
+		end
 	end,
 
 	PlayerStatusCheck = function (self)
@@ -75,12 +87,39 @@ local AttachmentsBase = {
 		MenuState[tostring(state)](self)
 	end,
 
-	RefreshPoints = function ()
-		local data = Player.actor.activeWeapon.gameObject.GetComponentsInChildren(DataContainer)
+	RefreshPoints = function (self, type)
+		local typeSwitch = {
+			["OnEnable"] = function (self)
+				local data = Player.actor.activeWeapon.gameObject.GetComponentsInChildren(DataContainer)
+				local dataIndex = 0
+		
+				for k,v in ipairs(data) do
+					if PhoenixData.GetString(v, "dataType", false, "nahDontGotIt") == "attachmentPoint" then 
+						if dataIndex == self.attachmentPointNest.childCount then return end
+		
+						-- Gets the UI (Framework) element for the point 
+						local go = self.attachmentPointNest.GetChild(dataIndex).gameObject
+						go.SetActive(true)
+		
+						-- Does point stuff
+						local pointScript = self.script.GetScript(go.gameObject)
+						pointScript.weaponPoint = v.gameObject
+						pointScript:OnWeaponChange()
+		
+						-- pluses the index
+						dataIndex = 1 + dataIndex
+					end
+				end
+			end,
 
-		for k,v in ipairs(data) do
-			print(PhoenixData.GetString(v, "dataType", false, "nil"))
-		end
+			["OnDisable"] = function (self)
+				for i = 1, self.attachmentPointNest.childCount do
+					self.attachmentPointNest.GetChild(i - 1).gameObject.SetActive(false)
+				end
+			end,
+		}
+
+		typeSwitch[tostring(type)](self)
 	end,
 }
 
@@ -98,9 +137,23 @@ local AttachmentUI = {
 	end,
 }
 
+local AttachmentEvents = {
+	OnPause = function (self, bool)
+		local state = {
+		["true"] = function (self) 
+			AttachmentBase.ToggleMenu(self, false)
+			self.menuUI.gameObject.SetActive(false)
+			self.menuUI.gameObject.SetActive(true)
+		end, 
+		["false"] = function () end,
+		}
+	state[tostring(bool)](self)
+	end,
+}
 function PF_Attachments:Initialise()
-	AttachmentsBase.SetupKeybinds(self)
-	AttachmentsBase.StoreComponents(self)
+	AttachmentBase.SetupKeybinds(self)
+	AttachmentBase.StoreComponents(self)
+	AttachmentBase.SetupEvents(self)
 
 	PhoenixDebug.Print("PF_Attachments | Initialise", "log")
 end
@@ -121,15 +174,15 @@ function PF_Attachments:Update()
 		Time.timeScale = PhoenixMath.Normalize(self.menuUI.GetFloat("State"), 1 , 0, 0.0325, 1 * self.slowMotionMultiplier)
 	end
 	
-	if Input.GetKeyDown(self.attachmentKeybind) and AttachmentsBase.PlayerStatusCheck() then
-		AttachmentsBase.ToggleMenu(self, not self.menuState)
+	if Input.GetKeyDown(self.attachmentKeybind) and AttachmentBase.PlayerStatusCheck() then
+		AttachmentBase.ToggleMenu(self, not self.menuState)
 	end
 end
 
 function PF_Attachments:OnDisable()
 	if Player.actor == nil or Player.actor.isDead then return end
-	AttachmentsBase.ToggleMenu(self, false)
-
+	AttachmentBase.ToggleMenu(self, false)
+	AttachmentBase.RefreshPoints(self, "OnDisable")
 	-- Slowmode stuff
 	local SlowmoState = {
 		["true"] = 0.2,
@@ -144,8 +197,8 @@ function PF_Attachments:OnEnable()
 	Player.actor.activeWeapon.animator.SetBool("customization", false)
 	Player.actor.activeWeapon.gameObject.GetComponent(Animator).updateMode = AnimatorUpdateMode.Normal
 
-	AttachmentsBase.ToggleMenu(self, false)
-	AttachmentsBase.RefreshPoints(self)
+	AttachmentBase.ToggleMenu(self, false)
+	AttachmentBase.RefreshPoints(self, "OnEnable")
 	AttachmentUI.RefreshMenuText(self)
 
 	-- Slowmode stuff
@@ -157,3 +210,7 @@ function PF_Attachments:OnEnable()
 	}
 	self.slowMotionMultiplier = SlowmoState[tostring(self.isSlowMode)]
 end
+
+function PF_Attachments:ReturnIsPaused() return GameManager.isPaused end
+
+function PF_Attachments:OnGamePaused(bool) AttachmentEvents.OnPause(self, bool) end

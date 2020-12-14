@@ -1,0 +1,19 @@
+﻿-- Register the behaviour
+behaviour("PF_AttachmentPoint")
+
+local AttachmentPointBase = {
+	EquipAttachment = function (self, attachmentIndex)
+
+	end,
+
+	OnWeaponChange = function (self)
+		self.targets.text.gameObject.GetComponent(TextMeshProUGUI).text = PhoenixData.GetString(self.weaponPoint.gameObject.GetComponent(DataContainer), "pointName", false, "Yooo Setup ya gun")
+	end,
+}
+
+function PF_AttachmentPoint:OnWeaponChange() AttachmentPointBase.OnWeaponChange(self) end
+
+function PF_AttachmentPoint:Update()
+	if self.weaponPoint == nil then return end
+	self.gameObject.transform.position = PlayerCamera.activeCamera.WorldToScreenPoint(self.weaponPoint.gameObject.transform.position)
+end
