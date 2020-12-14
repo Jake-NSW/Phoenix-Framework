@@ -3,11 +3,50 @@ behaviour("PF_AttachmentPoint")
 
 local AttachmentPointBase = {
 	EquipAttachment = function (self, attachmentIndex)
+		local attachmentType = {
+			["sights"] = function (selfVar, attachment) -- Sights shiets
+			end,
+		
+			["muzzles"] = function (selfVar, attachment) -- isLoud and muzzle flash visibilty
+			end,
+		
+			["toggleableRail"] = function(selfVar, attachment) -- Toggleable Rail, when pressing x it either enables or disables the rail power
+			end,
+		
+			["stock"] = function (selfVar, attachment) -- Changes recoil and aimin speed
+			end,
+		
+			["underbarrel"] = function (selfVar, attachment) -- Controls followup spread
+			end,
+		
+			["mag"] = function (selfVar, attachment) -- Changes player movement speed and ammo count
+			end,
+		
+			["skin"] = function (selfVar, attachment) -- Changes weapon material... Will finish later
+			end,
+		
+			["receiver"] = function (selfVar, attachment) -- Does nothing?
+			end,
+		
+			["nil"] = function (selfVar, attachment) -- Does nothing lol, stupid ass modder cant even set up an attachment correctly
+			end
+		}
+
 
 	end,
 
 	OnWeaponChange = function (self)
-		self.targets.text.gameObject.GetComponent(TextMeshProUGUI).text = PhoenixData.GetString(self.weaponPoint.gameObject.GetComponent(DataContainer), "pointName", false, "Yooo Setup ya gun")
+		local flipped = PhoenixData.GetBool(self.weaponPoint.gameObject.GetComponent(DataContainer), "flipped", false, false)
+
+		if flipped then 
+			PhoenixData.GetGameObject(self.targets.right.gameObject.GetComponent(DataContainer), "pointName", false, nil).gameObject.GetComponent(TextMeshProUGUI).text = "[1] " .. PhoenixData.GetString(self.weaponPoint.gameObject.GetComponent(DataContainer), "pointName", false, "Yooo Setup ya gun")
+			self.targets.left.gameObject.SetActive(false)
+			self.targets.right.gameObject.SetActive(true)
+		else
+			PhoenixData.GetGameObject(self.targets.left.gameObject.GetComponent(DataContainer), "pointName", false, nil).gameObject.GetComponent(TextMeshProUGUI).text = PhoenixData.GetString(self.weaponPoint.gameObject.GetComponent(DataContainer), "pointName", false, "Yooo Setup ya gun") .. " [1]"
+			self.targets.left.gameObject.SetActive(true)
+			self.targets.right.gameObject.SetActive(false)
+		end
 	end,
 }
 
@@ -16,4 +55,9 @@ function PF_AttachmentPoint:OnWeaponChange() AttachmentPointBase.OnWeaponChange(
 function PF_AttachmentPoint:Update()
 	if self.weaponPoint == nil then return end
 	self.gameObject.transform.position = PlayerCamera.activeCamera.WorldToScreenPoint(self.weaponPoint.gameObject.transform.position)
+
+	local storedRotation = GameObject.Find("Weapon_Root").transform.localRotation
+	storedRotation = Quaternion.Euler(storedRotation.x, storedRotation.y, storedRotation.z)
+	self.gameObject.transform.rotation = storedRotation
+	-- print("rotation ".. tostring(self.weaponPoint.gameObject.transform.localEulerAngles))
 end

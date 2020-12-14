@@ -213,14 +213,23 @@ PhoenixData = {
 
 	GetGameObject = function (container, id, isArray, nilValue)
 		local isArraySwitch = {
-			["true"] = function ()
-
+			["true"] = function (container, id, nilValue)
+				if container == nil or container.GetGameObjectArray(id) == nil or not container.HasObject(id) then 
+					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
+					return nilValue 
+				end
+				return container.GetGameObjectArray(id)
 			end,
 
-			["false"] = function ()
-
+			["false"] = function (container, id, nilValue)
+				if container == nil or not container.GetGameObject(id) or container.HasObject(id) == nil then 
+					PhoenixDebug.Print("Could not find " .. tostring(id) .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
+					return nilValue 
+				end
+				return container.GetGameObject(id)
 			end,
 		}
+		return isArraySwitch[tostring(isArray)](container, id, nilValue)
 	end,
 
 	GetSkin = function (container, id, isArray, nilValue)

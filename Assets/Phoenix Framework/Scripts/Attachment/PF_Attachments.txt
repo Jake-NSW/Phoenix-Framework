@@ -51,7 +51,7 @@ local AttachmentBase = {
 				
 				-- Weapon Animations
 				Player.actor.activeWeapon.animator.SetBool("customization", true)
-				Player.actor.activeWeapon.gameObject.GetComponent(Animator).updateMode = AnimatorUpdateMode.UnscaledTime
+				-- Player.actor.activeWeapon.gameObject.GetComponent(Animator).updateMode = AnimatorUpdateMode.UnscaledTime
 				Player.actor.activeWeapon.LockWeapon()
 
 				-- Changes time
@@ -154,6 +154,7 @@ function PF_Attachments:Initialise()
 	AttachmentBase.SetupKeybinds(self)
 	AttachmentBase.StoreComponents(self)
 	AttachmentBase.SetupEvents(self)
+	AttachmentBase.RefreshPoints(self, "OnDisable")
 
 	PhoenixDebug.Print("PF_Attachments | Initialise", "log")
 end
