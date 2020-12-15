@@ -56,13 +56,7 @@ namespace Lua
 		[FoldoutGroup("$name")]
 		[LabelWidth(150)] [LabelText("Target Name")]
 		public string name = "Name";
-
-		#if UNITY_EDITOR
-		[FoldoutGroup("$name")]
-		[LabelWidth(150)] [LabelText("Target Description")] [TextArea]
-		[SerializeField] private string desc = "";
-		#endif
-
+		
 		[FoldoutGroup("$name")] [LabelText("Object")]
 		[InlineEditor(InlineEditorModes.LargePreview)] [LabelWidth(150)]
 		public Object value;

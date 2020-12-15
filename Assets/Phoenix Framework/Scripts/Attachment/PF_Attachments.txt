@@ -23,6 +23,7 @@ local AttachmentBase = {
 		self.weaponNameText = self.targets.weaponNameText.gameObject.GetComponent(TextMeshProUGUI)
 		self.historyHeaderText = self.targets.historyHeaderText.gameObject.GetComponent(TextMeshProUGUI)
 		self.historyDescText = self.targets.historyDescText.gameObject.GetComponent(TextMeshProUGUI)
+		self.statsHeaderText = self.targets.statsHeaderText.gameObject.GetComponent(TextMeshProUGUI)
 
 		self.attachmentPointNest = self.targets.attachmentPointNest.gameObject.transform
 		self.attachmentPointInstance = self.targets.attachmentPointInstance
@@ -66,7 +67,7 @@ local AttachmentBase = {
 			["false"] = function (self)
 				self.menuState = false
 				self.menuStateNumber = 0
-				self.transitionMultiplier = 10
+				self.transitionMultiplier = 9.5
 
 				-- Weapon Animations
 				Player.actor.activeWeapon.animator.SetBool("customization", false)
@@ -103,6 +104,7 @@ local AttachmentBase = {
 		
 						-- Does point stuff
 						local pointScript = self.script.GetScript(go.gameObject)
+						pointScript.attachmentBase = self
 						pointScript.weaponPoint = v.gameObject
 						pointScript:OnWeaponChange()
 		
@@ -126,14 +128,18 @@ local AttachmentBase = {
 local AttachmentUI = {
 	RefreshMenuText = function (self)
 		local data = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer)
-		if string.len(PhoenixData.GetString(data, "weaponName", false, "Cool Gun")) >= 8 then
-			self.weaponNameText.text = "<smallcaps>" .. PhoenixData.GetString(data, "weaponName", false, "Cool Gun") .. "</smallcaps> <color=#808080ff><size=20>By: " .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
+		local weaponName = PhoenixData.GetString(data, "weaponName", false, "Cool Gun")
+
+
+		if string.len(weaponName) >= 8 then
+			self.weaponNameText.text = "<smallcaps>" .. weaponName .. "</smallcaps> <color=#808080ff><size=20>By: " .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
 		else
-			self.weaponNameText.text = '<align="left"><smallcaps>' .. PhoenixData.GetString(data, "weaponName", false, "Cool Gun") .. '</smallcaps>' .. '\n <align="right"><color=#808080ff><size=20>By: ' .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
+			self.weaponNameText.text = '<align="left"><smallcaps>' .. weaponName .. '</smallcaps>' .. '\n <align="right"><color=#808080ff><size=20>By: ' .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
 		end
 		-- self.weaponNameText.text = "<smallcaps>" .. PhoenixData.GetString(data, "weaponName", false, "Cool Gun") .. "</smallcaps> <color=#808080ff><size=20>By: " .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
 		self.historyHeaderText.text = PhoenixData.GetString(data, "weaponHistoryTitle", false, "Cool Gun's History")
 		self.historyDescText.text = PhoenixData.GetString(data, "weaponHistory", false, "This is a very cool gun")
+		self.statsHeaderText.text = weaponName .. " Stats"
 	end,
 }
 
@@ -177,6 +183,10 @@ function PF_Attachments:Update()
 	
 	if Input.GetKeyDown(self.attachmentKeybind) and AttachmentBase.PlayerStatusCheck() then
 		AttachmentBase.ToggleMenu(self, not self.menuState)
+	end
+
+	if Input.GetKeyDown(KeyCode.Return) then 
+		AttachmentBase.ToggleMenu(self, false)
 	end
 end
 

@@ -55,9 +55,4 @@ function PF_AttachmentPoint:OnWeaponChange() AttachmentPointBase.OnWeaponChange(
 function PF_AttachmentPoint:Update()
 	if self.weaponPoint == nil then return end
 	self.gameObject.transform.position = PlayerCamera.activeCamera.WorldToScreenPoint(self.weaponPoint.gameObject.transform.position)
-
-	local storedRotation = GameObject.Find("Weapon_Root").transform.localRotation
-	storedRotation = Quaternion.Euler(storedRotation.x, storedRotation.y, storedRotation.z)
-	self.gameObject.transform.rotation = storedRotation
-	-- print("rotation ".. tostring(self.weaponPoint.gameObject.transform.localEulerAngles))
 end
