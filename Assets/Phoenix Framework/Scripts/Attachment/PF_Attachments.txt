@@ -2,6 +2,66 @@
 behaviour("PF_Attachments")
 
 -- Local Tables
+local AttachmentUI = {
+	RefreshMenuText = function (self)
+		if self.weaponChanged == false then return end
+
+		local data = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer)
+		local weaponName = PhoenixData.GetString(data, "weaponName", false, "Cool Gun")
+
+		if string.len(weaponName) >= 8 then
+			self.weaponNameText.text = "<smallcaps>" .. weaponName .. "</smallcaps> <color=#808080ff><size=20>By: " .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
+		else
+			self.weaponNameText.text = '<align="left"><smallcaps>' .. weaponName .. '</smallcaps>' .. '\n <align="right"><color=#808080ff><size=20>By: ' .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
+		end
+
+		-- self.weaponNameText.text = "<smallcaps>" .. PhoenixData.GetString(data, "weaponName", false, "Cool Gun") .. "</smallcaps> <color=#808080ff><size=20>By: " .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
+		self.historyHeaderText.text = PhoenixData.GetString(data, "weaponHistoryTitle", false, "Cool Gun's History")
+		self.historyDescText.text = PhoenixData.GetString(data, "weaponHistory", false, "This is a very cool gun")
+		self.statsHeaderText.text = weaponName .. " Stats"
+
+		-- Menu UI stuffs... this is so painful....
+		-- Recoil Stats
+		local recoilRange = PhoenixData.GetVector(data, "recoilRange", false, Vector3(0,1,0))
+		self.statsRecoilSlider.minValue = recoilRange.x 
+		self.statsRecoilSlider.maxValue = recoilRange.y
+		self.statsRecoilLeft.text = tostring(Mathf.Floor(recoilRange.x * 10) / 10)
+		self.statsRecoilRight.text = tostring(Mathf.Floor(recoilRange.y * 10) / 10)
+
+		-- Spread
+		local spreadRange = PhoenixData.GetVector(data, "spreadRange", false, Vector3(0,1,0))
+		self.statsSpreadSlider.minValue = spreadRange.x
+		self.statsSpreadSlider.maxValue = spreadRange.y
+		self.statsSpreadLeft.text = tostring(Mathf.Floor(spreadRange.x * 10) / 10)
+		self.statsSpreadRight.text = tostring(Mathf.Floor(spreadRange.y * 10) / 10)
+
+		-- Move Speed
+		local moveSpeedRange = PhoenixData.GetVector(data, "moveSpeedRange", false, Vector3(0,1,0))
+		self.statsMoveSpeedSlider.minValue = moveSpeedRange.x
+		self.statsMoveSpeedSlider.maxValue = moveSpeedRange.y
+		self.statsMoveSpeedLeft.text = tostring(Mathf.Floor(moveSpeedRange.x * 10) / 10)
+		self.statsMoveSpeedRight.text = tostring(Mathf.Floor(moveSpeedRange.y * 10) / 10)
+
+		-- Fire Rate
+		local fireRateRange = PhoenixData.GetVector(data, "fireRateRange", false, Vector3(0,1,0))
+		self.statsFireRateSlider.minValue = fireRateRange.x
+		self.statsFireRateSlider.maxValue = fireRateRange.y
+		self.statsFireRateLeft.text = tostring(Mathf.Floor(fireRateRange.x * 10) / 10)
+		self.statsFireRateRight.text = tostring(Mathf.Floor(fireRateRange.y * 10) / 10)
+
+		local damageRange = PhoenixData.GetVector(data, "damageRange", false, Vector3(0,1,0))
+		self.statsDamgeSlider.minValue = damageRange.x
+		self.statsDamgeSlider.maxValue = damageRange.y
+		self.statsDamgeLeft.text = tostring(Mathf.Floor(damageRange.x * 10) / 10)
+		self.statsDamgeRight.text = tostring(Mathf.Floor(damageRange.y * 10) / 10)
+
+		-- SFX source
+		self.sfxSource = self.targets.sfxSource.gameObject.GetComponent(AudioSource)
+
+		self.weaponChanged = false
+	end,
+}
+
 local AttachmentBase = {
 	SetupKeybinds = function (self)
 		self.attachmentKeybind = PhoenixInput.AttachmentMenuKeybind()
@@ -16,21 +76,59 @@ local AttachmentBase = {
 	end,
 
 	StoreComponents = function (self)
+		-- variables I have to declare
 		self.transitionMultiplier = 1
 		self.slowMotionMultiplier = 1
 
+		-- Base header and canvas animator
 		self.menuUI = self.targets.MenuUI.gameObject.GetComponent(Animator)
 		self.weaponNameText = self.targets.weaponNameText.gameObject.GetComponent(TextMeshProUGUI)
 		self.historyHeaderText = self.targets.historyHeaderText.gameObject.GetComponent(TextMeshProUGUI)
 		self.historyDescText = self.targets.historyDescText.gameObject.GetComponent(TextMeshProUGUI)
 		self.statsHeaderText = self.targets.statsHeaderText.gameObject.GetComponent(TextMeshProUGUI)
 
+		-- Stats Panel
+		self.statsRecoil = self.targets.statsRecoil.gameObject.GetComponent(DataContainer)
+		self.statsSpread = self.targets.statsSpread.gameObject.GetComponent(DataContainer)
+		self.statsMoveSpeed = self.targets.statsMoveSpeed.gameObject.GetComponent(DataContainer)
+		self.statsFireRate = self.targets.statsFireRate.gameObject.GetComponent(DataContainer)
+		self.statsDamge = self.targets.statsDamge.gameObject.GetComponent(DataContainer)
+
+		-- FUCK I HATE THIS, its for the stats panel
+		-- Recoil
+		self.statsRecoilSlider = self.statsRecoil.GetGameObject("slider").GetComponent(Slider)
+		self.statsRecoilLeft = self.statsRecoil.GetGameObject("left").GetComponent(TextMeshProUGUI)
+		self.statsRecoilRight = self.statsRecoil.GetGameObject("right").GetComponent(TextMeshProUGUI)
+
+		-- Spread
+		self.statsSpreadSlider = self.statsSpread.GetGameObject("slider").GetComponent(Slider)
+		self.statsSpreadLeft = self.statsSpread.GetGameObject("left").GetComponent(TextMeshProUGUI)
+		self.statsSpreadRight = self.statsSpread.GetGameObject("right").GetComponent(TextMeshProUGUI)
+
+		-- Movement Speed
+		self.statsMoveSpeedSlider = self.statsMoveSpeed.GetGameObject("slider").GetComponent(Slider)
+		self.statsMoveSpeedLeft = self.statsMoveSpeed.GetGameObject("left").GetComponent(TextMeshProUGUI)
+		self.statsMoveSpeedRight = self.statsMoveSpeed.GetGameObject("right").GetComponent(TextMeshProUGUI)
+
+		-- Fire Rate
+		self.statsFireRateSlider = self.statsFireRate.GetGameObject("slider").GetComponent(Slider)
+		self.statsFireRateLeft = self.statsFireRate.GetGameObject("left").GetComponent(TextMeshProUGUI)
+		self.statsFireRateRight = self.statsFireRate.GetGameObject("right").GetComponent(TextMeshProUGUI)
+
+		-- Damge
+		self.statsDamgeSlider = self.statsDamge.GetGameObject("slider").GetComponent(Slider)
+		self.statsDamgeLeft = self.statsDamge.GetGameObject("left").GetComponent(TextMeshProUGUI)
+		self.statsDamgeRight = self.statsDamge.GetGameObject("right").GetComponent(TextMeshProUGUI)
+
+		-- Attachment point stuff
 		self.attachmentPointNest = self.targets.attachmentPointNest.gameObject.transform
 		self.attachmentPointInstance = self.targets.attachmentPointInstance
 
+		-- Spawns the attachment points, and willspawn more if gun has more then currently spawned.. not here doe
 		for i = 1, 10 do
 			go = GameObject.Instantiate(self.attachmentPointInstance)
 			go.transform.SetParent(self.attachmentPointNest, false)
+			self.script.GetScript(go):Initialise()
 		end
 	end,
 
@@ -45,6 +143,7 @@ local AttachmentBase = {
 	ToggleMenu = function (self, state)
 		local MenuState = {
 			["true"] = function (self)
+				AttachmentUI.RefreshMenuText(self)
 				-- State
 				self.menuState = true
 				self.menuStateNumber = 1
@@ -106,6 +205,7 @@ local AttachmentBase = {
 						local pointScript = self.script.GetScript(go.gameObject)
 						pointScript.attachmentBase = self
 						pointScript.weaponPoint = v.gameObject
+						pointScript.pointIndex = dataIndex + 1
 						pointScript:OnWeaponChange()
 		
 						-- pluses the index
@@ -125,24 +225,6 @@ local AttachmentBase = {
 	end,
 }
 
-local AttachmentUI = {
-	RefreshMenuText = function (self)
-		local data = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer)
-		local weaponName = PhoenixData.GetString(data, "weaponName", false, "Cool Gun")
-
-
-		if string.len(weaponName) >= 8 then
-			self.weaponNameText.text = "<smallcaps>" .. weaponName .. "</smallcaps> <color=#808080ff><size=20>By: " .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
-		else
-			self.weaponNameText.text = '<align="left"><smallcaps>' .. weaponName .. '</smallcaps>' .. '\n <align="right"><color=#808080ff><size=20>By: ' .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
-		end
-		-- self.weaponNameText.text = "<smallcaps>" .. PhoenixData.GetString(data, "weaponName", false, "Cool Gun") .. "</smallcaps> <color=#808080ff><size=20>By: " .. PhoenixData.GetString(data, "creatorName", false, "Swag dude's gun")
-		self.historyHeaderText.text = PhoenixData.GetString(data, "weaponHistoryTitle", false, "Cool Gun's History")
-		self.historyDescText.text = PhoenixData.GetString(data, "weaponHistory", false, "This is a very cool gun")
-		self.statsHeaderText.text = weaponName .. " Stats"
-	end,
-}
-
 local AttachmentEvents = {
 	OnPause = function (self, bool)
 		local state = {
@@ -157,6 +239,8 @@ local AttachmentEvents = {
 	end,
 }
 function PF_Attachments:Initialise()
+	m_PhoenixAttachment= self
+
 	AttachmentBase.SetupKeybinds(self)
 	AttachmentBase.StoreComponents(self)
 	AttachmentBase.SetupEvents(self)
@@ -208,9 +292,11 @@ function PF_Attachments:OnEnable()
 	Player.actor.activeWeapon.animator.SetBool("customization", false)
 	Player.actor.activeWeapon.gameObject.GetComponent(Animator).updateMode = AnimatorUpdateMode.Normal
 
+	self.weaponChanged = true
+
 	AttachmentBase.ToggleMenu(self, false)
 	AttachmentBase.RefreshPoints(self, "OnEnable")
-	AttachmentUI.RefreshMenuText(self)
+
 
 	-- Slowmode stuff
 	if Time.timeScale <= 0.3 then self.isSlowMode = true else self.isSlowMode = false end

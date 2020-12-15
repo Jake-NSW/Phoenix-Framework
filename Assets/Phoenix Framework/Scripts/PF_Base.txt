@@ -54,6 +54,7 @@ PhoenixInput = {
 	end,
 }
 
+-- fuck you if you think this is yandre dev code, you just a brainnutt
 PhoenixData = {
 	GetBool = function (container, id, isArray, nilValue)
 		local isArraySwitch = {
@@ -79,7 +80,7 @@ PhoenixData = {
 	GetInt = function (container, id, isArray, nilValue)
 		local isArraySwitch = {
 			["true"] = function (container, id, nilValue)
-				if container == nil or container.GetIntArray(id) == nil then 
+				if container == nil or not container.HasInt(id)  or container.GetIntArray(id) == nil then 
 					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
 					return nilValue 
 				end
@@ -87,7 +88,7 @@ PhoenixData = {
 			end,
 
 			["false"] = function (container, id, nilValue)
-				if container == nil or container.GetInt(id) == nil then 
+				if container == nil or not container.HasInt(id) or container.GetInt(id) == nil then 
 					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
 					return nilValue 
 				end
@@ -121,7 +122,7 @@ PhoenixData = {
 	GetString = function (container, id, isArray, nilValue)
 		local isArraySwitch = {
 			["true"] = function (container, id, nilValue)
-				if container == nil or container.GetStringArray(id) == nil or not container.HasString(id) then 
+				if container == nil or  not container.HasString(id) or container.GetStringArray(id) == nil then 
 					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
 					return nilValue 
 				end
@@ -141,14 +142,23 @@ PhoenixData = {
 
 	GetVector = function (container, id, isArray, nilValue)
 		local isArraySwitch = {
-			["true"] = function ()
-
+			["true"] = function (container, id, nilValue)
+				if container == nil or not container.HasVector(id) or container.GetVectorArray(id) == Vector3(nil) then 
+					PhoenixDebug.Print("Could not find " .. tostring(id) .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
+					return nilValue 
+				end
+				return container.GetVectorArray(id)
 			end,
 
-			["false"] = function ()
-
+			["false"] = function (container, id, nilValue)
+				if container == nil or not container.HasVector(id) or container.GetVector(id) == Vector3(nil) then 
+					PhoenixDebug.Print("Could not find " .. tostring(id) .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
+					return nilValue
+				end
+				return container.GetVector(id)
 			end,
 		}
+		return isArraySwitch[tostring(isArray)](container, id, nilValue)
 	end,
 
 	GetRotation = function (container, id, isArray, nilValue)

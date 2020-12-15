@@ -36,23 +36,49 @@ local AttachmentPointBase = {
 	end,
 
 	OnWeaponChange = function (self)
+		local bindTable = {
+			["1"] = KeyCode.Alpha1,
+			["2"] = KeyCode.Alpha2,
+			["3"] = KeyCode.Alpha3,
+			["4"] = KeyCode.Alpha4,
+			["5"] = KeyCode.Alpha5,
+			["6"] = KeyCode.Alpha6,
+			["7"] = KeyCode.Alpha7,
+			["8"] = KeyCode.Alpha8,
+			["9"] = KeyCode.Alpha9,
+			["0"] = KeyCode.Alpha0,
+		}
+
 		local flipped = PhoenixData.GetBool(self.weaponPoint.gameObject.GetComponent(DataContainer), "flipped", false, false)
+		local pointData = self.weaponPoint.gameObject.GetComponent(DataContainer)
 
 		if flipped then 
-			PhoenixData.GetGameObject(self.targets.right.gameObject.GetComponent(DataContainer), "pointName", false, nil).gameObject.GetComponent(TextMeshProUGUI).text = "[1] " .. PhoenixData.GetString(self.weaponPoint.gameObject.GetComponent(DataContainer), "pointName", false, "Yooo Setup ya gun")
+			PhoenixData.GetGameObject(self.targets.right.gameObject.GetComponent(DataContainer), "pointName", false, nil).gameObject.GetComponent(TextMeshProUGUI).text = "[".. tostring(PhoenixData.GetInt(pointData, "bind", false, 1)) .."] " .. PhoenixData.GetString(pointData, "pointName", false, "Yooo Setup ya gun")
 			self.targets.left.gameObject.SetActive(false)
 			self.targets.right.gameObject.SetActive(true)
 		else
-			PhoenixData.GetGameObject(self.targets.left.gameObject.GetComponent(DataContainer), "pointName", false, nil).gameObject.GetComponent(TextMeshProUGUI).text = PhoenixData.GetString(self.weaponPoint.gameObject.GetComponent(DataContainer), "pointName", false, "Yooo Setup ya gun") .. " [1]"
+			PhoenixData.GetGameObject(self.targets.left.gameObject.GetComponent(DataContainer), "pointName", false, nil).gameObject.GetComponent(TextMeshProUGUI).text = PhoenixData.GetString(pointData, "pointName", false, "Yooo Setup ya gun") .. " [".. tostring(PhoenixData.GetInt(pointData, "bind", false, 1)) .."]"
 			self.targets.left.gameObject.SetActive(true)
 			self.targets.right.gameObject.SetActive(false)
 		end
+
+		self.bind = bindTable[tostring(PhoenixData.GetInt(pointData, "bind", false, 1))]
+	end,
+
+	OnClick = function (self)
+		m_PhoenixAttachment.sfxSource.PlayOneShot(self.targets.sfx, 7)
 	end,
 }
 
 function PF_AttachmentPoint:OnWeaponChange() AttachmentPointBase.OnWeaponChange(self) end
+function PF_AttachmentPoint:OnClick() AttachmentPointBase.OnClick(self) end
+
+function PF_AttachmentPoint:Initialise()
+	self.targets.left.gameObject.GetComponent(Button).onClick.AddListener(self, "OnClick")
+	self.targets.right.gameObject.GetComponent(Button).onClick.AddListener(self, "OnClick")
+end
 
 function PF_AttachmentPoint:Update()
-	if self.weaponPoint == nil then return end
+	if self.weaponPoint == nil or not m_PhoenixAttachment.menuState then return end
 	self.gameObject.transform.position = PlayerCamera.activeCamera.WorldToScreenPoint(self.weaponPoint.gameObject.transform.position)
 end

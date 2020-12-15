@@ -11,8 +11,8 @@ function PF_AimReload:OnEnable()
 end
 
 function PF_AimReload:Update()
-	if Player.actor.isDead then return end
-	if Input.GetKeyBindButton(KeyBinds.Aim) and not Player.actor.isSwimming and not Player.actor.isDead and Player.actor.isInWater == false and Player.actor.isOnLadder == false then
+	if Player.actor.isDead or not Player.actor.activeVehicle == nil and not Player.actor.isSwimming and not Player.actor.isDead and Player.actor.isInWater == false and Player.actor.isOnLadder == false then return end
+	if Input.GetKeyBindButton(KeyBinds.Aim) then
 		Player.actor.activeWeapon.animator.SetFloat("reloadaim", 1, self.transitionDamping, Time.deltaTime)
 	else
 		Player.actor.activeWeapon.animator.SetFloat("reloadaim", 0, self.transitionDamping, Time.deltaTime)
