@@ -63,6 +63,10 @@ local AttachmentPointBase = {
 		end
 
 		self.bind = bindTable[tostring(PhoenixData.GetInt(pointData, "bind", false, 1))]
+
+		-- Storage Stuff
+		
+		print(tostring(PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][self.pointIndex])) 
 	end,
 
 	OnClick = function (self)

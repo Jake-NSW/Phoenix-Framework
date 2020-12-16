@@ -200,14 +200,20 @@ local AttachmentBase = {
 						-- Gets the UI (Framework) element for the point 
 						local go = self.attachmentPointNest.GetChild(dataIndex).gameObject
 						go.SetActive(true)
-		
+
+						-- Storage Stuff
+						if PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] == nil then
+							PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] = {}
+							print("Creating Table")
+						end
+
 						-- Does point stuff
 						local pointScript = self.script.GetScript(go.gameObject)
 						pointScript.attachmentBase = self
 						pointScript.weaponPoint = v.gameObject
 						pointScript.pointIndex = dataIndex + 1
 						pointScript:OnWeaponChange()
-		
+
 						-- pluses the index
 						dataIndex = 1 + dataIndex
 					end
@@ -288,6 +294,11 @@ end
 
 function PF_Attachments:OnEnable()
 	if Player.actor == nil or Player.actor.isDead  then return end
+
+	-- Sets up storage stuff on weapon switch
+	if PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)] == nil then
+		PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)] = {}
+	end
 
 	Player.actor.activeWeapon.animator.SetBool("customization", false)
 	Player.actor.activeWeapon.gameObject.GetComponent(Animator).updateMode = AnimatorUpdateMode.Normal

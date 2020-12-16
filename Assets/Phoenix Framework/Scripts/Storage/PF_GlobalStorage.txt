@@ -1,0 +1,7 @@
+﻿behaviour("PF_GlobalStorage")
+function PF_GlobalStorage:Start() 
+	PhoenixGlobalStorage = {
+		["SavedAttachments"] = {}
+	}
+
+end
