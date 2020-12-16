@@ -2,6 +2,8 @@
 behaviour("PF_Attachments")
 
 -- Local Tables
+local attachmentPointsTable = {}
+
 local AttachmentUI = {
 	RefreshMenuText = function (self)
 		if self.weaponChanged == false then return end
@@ -128,6 +130,7 @@ local AttachmentBase = {
 		for i = 1, 10 do
 			go = GameObject.Instantiate(self.attachmentPointInstance)
 			go.transform.SetParent(self.attachmentPointNest, false)
+			attachmentPointsTable[i] = go
 			self.script.GetScript(go):Initialise()
 		end
 	end,
@@ -202,8 +205,8 @@ local AttachmentBase = {
 						go.SetActive(true)
 
 						-- Storage Stuff
-						if PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] == nil then
-							PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] = {}
+						if _G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] == nil then
+							_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] = {}
 							print("Creating Table")
 						end
 
@@ -296,8 +299,8 @@ function PF_Attachments:OnEnable()
 	if Player.actor == nil or Player.actor.isDead  then return end
 
 	-- Sets up storage stuff on weapon switch
-	if PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)] == nil then
-		PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)] = {}
+	if _G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)] == nil then
+		_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)] = {}
 	end
 
 	Player.actor.activeWeapon.animator.SetBool("customization", false)

@@ -65,8 +65,7 @@ local AttachmentPointBase = {
 		self.bind = bindTable[tostring(PhoenixData.GetInt(pointData, "bind", false, 1))]
 
 		-- Storage Stuff
-		
-		print(tostring(PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][self.pointIndex])) 
+		print(tostring(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][self.pointIndex])) 
 	end,
 
 	OnClick = function (self)
@@ -76,6 +75,7 @@ local AttachmentPointBase = {
 
 function PF_AttachmentPoint:OnWeaponChange() AttachmentPointBase.OnWeaponChange(self) end
 function PF_AttachmentPoint:OnClick() AttachmentPointBase.OnClick(self) end
+function PF_AttachmentPoint:EquipAttachment(index) AttachmentPointBase.EquipAttachment(self, index) end
 
 function PF_AttachmentPoint:Initialise()
 	self.targets.left.gameObject.GetComponent(Button).onClick.AddListener(self, "OnClick")
