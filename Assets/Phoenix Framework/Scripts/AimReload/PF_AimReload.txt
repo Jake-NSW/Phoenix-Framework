@@ -8,13 +8,16 @@ end
 function PF_AimReload:OnEnable()
 	if Player.actor.isDead then return end
 	self.transitionDamping = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetFloat("transitionDamping")
+	self.weaponAnimator = Player.actor.activeWeapon.animator
 end
 
 function PF_AimReload:Update()
-	if Player.actor.isDead or not Player.actor.activeVehicle == nil and not Player.actor.isSwimming and not Player.actor.isDead and Player.actor.isInWater == false and Player.actor.isOnLadder == false then return end
+	local player = Player.actor
+	if player.isDead or player.isSwimming or player.isFallenOver or player.isInWater or player.isOnLadder or not player.activeVehicle == nil then return end
+	
 	if Input.GetKeyBindButton(KeyBinds.Aim) then
-		Player.actor.activeWeapon.animator.SetFloat("reloadaim", 1, self.transitionDamping, Time.deltaTime)
+		self.weaponAnimator.SetFloat("reloadaim", 1, self.transitionDamping, Time.deltaTime)
 	else
-		Player.actor.activeWeapon.animator.SetFloat("reloadaim", 0, self.transitionDamping, Time.deltaTime)
+		self.weaponAnimator.SetFloat("reloadaim", 0, self.transitionDamping, Time.deltaTime)
 	end
 end

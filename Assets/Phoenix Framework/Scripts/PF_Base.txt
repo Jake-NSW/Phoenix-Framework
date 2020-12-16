@@ -224,15 +224,15 @@ PhoenixData = {
 	GetGameObject = function (container, id, isArray, nilValue)
 		local isArraySwitch = {
 			["true"] = function (container, id, nilValue)
-				if container == nil or container.GetGameObjectArray(id) == nil or not container.HasObject(id) then 
-					PhoenixDebug.Print("Could not find " .. id .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
+				if container == nil or container.GetGameObjectArray(id) == nil then 
+					PhoenixDebug.Print("Could not find " .. id .. " array on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
 					return nilValue 
 				end
 				return container.GetGameObjectArray(id)
 			end,
 
 			["false"] = function (container, id, nilValue)
-				if container == nil or not container.GetGameObject(id) or container.HasObject(id) == nil then 
+				if container == nil or container.HasObject(id) == nil or not container.GetGameObject(id) then 
 					PhoenixDebug.Print("Could not find " .. tostring(id) .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
 					return nilValue 
 				end

@@ -4,35 +4,85 @@ behaviour("PF_AttachmentPoint")
 local AttachmentPointBase = {
 	EquipAttachment = function (self, attachmentIndex)
 		local attachmentType = {
-			["sights"] = function (selfVar, attachment) -- Sights shiets
+			["sights"] = function (self, attachment, animatorOnly) -- Sights shiets
+				local weapon = Player.actor.activeWeapon
+				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
+
+				weapon.aimFov = attachmentData.GetFloat("aimFov")
 			end,
 		
-			["muzzles"] = function (selfVar, attachment) -- isLoud and muzzle flash visibilty
+			["muzzles"] = function (self, attachment, animatorOnly) -- isLoud and muzzle flash visibilty
 			end,
 		
-			["toggleableRail"] = function(selfVar, attachment) -- Toggleable Rail, when pressing x it either enables or disables the rail power
+			["toggleableRail"] = function(self, attachment, animatorOnly) -- Toggleable Rail, when pressing x it either enables or disables the rail power
 			end,
 		
-			["stock"] = function (selfVar, attachment) -- Changes recoil and aimin speed
+			["stock"] = function (self, attachment, animatorOnly) -- Changes recoil and aimin speed
+				local weapon = Player.actor.activeWeapon
+				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
+
+				weapon.recoilBaseKickback = attachmentData.GetFloat("kickback")
+				weapon.recoilKickbackProneMultiplier = attachmentData.GetFloat("kickbackProneMultiplier")
+				weapon.recoilRandomKickback = attachmentData.GetFloat("randomKick")
+				weapon.recoilSnapDuration = attachmentData.GetFloat("snapDuration")
+				weapon.recoilSnapFrequency = attachmentData.GetFloat("snapFrequency")
+				weapon.recoilSnapMagnitude = attachmentData.GetFloat("snapMagnitude")
+				weapon.recoilSnapProneMultiplier = attachmentData.GetFloat("snapProneMultiplier")
+		
 			end,
 		
-			["underbarrel"] = function (selfVar, attachment) -- Controls followup spread
+			["underbarrel"] = function (self, attachment, animatorOnly) -- Controls followup spread
 			end,
 		
-			["mag"] = function (selfVar, attachment) -- Changes player movement speed and ammo count
+			["mag"] = function (self, attachment, animatorOnly) -- Changes player movement speed and ammo count
 			end,
 		
-			["skin"] = function (selfVar, attachment) -- Changes weapon material... Will finish later
+			["skin"] = function (self, attachment, animatorOnly) -- Changes weapon material... Will finish later
+				local attachmentPoint = self.weaponPoint.gameObject.GetComponent(DataContainer)
+				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
+		
+				local rendererArray = attachmentPoint.GetGameObjectArray("mesh")
+				local materialIndexArray = attachmentPoint.GetIntArray("meshMaterialIndex")
+		
+				local matArray = {}
+
+				for i = 1, #rendererArray do
+					local matIndex = materialIndexArray[i]
+					local rendererComp = rendererArray[i].gameObject.GetComponent(Renderer)
+		
+					for i = 1, #rendererComp.materials + 1 do
+						matArray[i] = attachmentPoint.GetMaterial("defaultMat")
+					end
+					matArray[matIndex] = attachmentData.GetMaterial("skin")
+				end
 			end,
 		
-			["receiver"] = function (selfVar, attachment) -- Does nothing?
+			["receiver"] = function (self, attachment, animatorOnly) -- Does nothing?
 			end,
 		
-			["nil"] = function (selfVar, attachment) -- Does nothing lol, stupid ass modder cant even set up an attachment correctly
+			["nil"] = function (self, attachment, animatorOnly) -- Does nothing lol, stupid ass modder cant even set up an attachment correctly
 			end
 		}
+		
+		-- Start Equip Attachment
+		local data = self.weaponPoint.gameObject.GetComponent(DataContainer)
+		local attachments = PhoenixData.GetGameObject(data, "attachment", true, nil)
+		
+		-- Checks if the attachmentIndex is higher then the currnet ammount of attachments and if so sets attachmentIndex to 1
+		if attachmentIndex > #attachments then
+			attachmentIndex = 1
+		end
 
+		-- Visual stuff
+		-- Disables old attachment
+		attachments[_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][self.pointIndex]].gameObject.SetActive(false)
+		
+		-- Enables new attachment
+		attachments[attachmentIndex].gameObject.SetActive(true)
 
+		-- Applys stats and stuff
+		attachmentType[PhoenixData.GetString(data, "attachmentType", false, "nil")](self, attachments[attachmentIndex])
+		_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][self.pointIndex] = attachmentIndex
 	end,
 
 	OnWeaponChange = function (self)
@@ -84,5 +134,10 @@ end
 
 function PF_AttachmentPoint:Update()
 	if self.weaponPoint == nil or not m_PhoenixAttachment.menuState then return end
+
 	self.gameObject.transform.position = PlayerCamera.activeCamera.WorldToScreenPoint(self.weaponPoint.gameObject.transform.position)
+
+	if Input.GetKeyDown(self.bind) then
+		self:EquipAttachment(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][self.pointIndex] + 1)
+	end
 end

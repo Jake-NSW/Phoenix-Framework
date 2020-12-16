@@ -160,6 +160,7 @@ local AttachmentBase = {
 				-- Changes time
 				-- Time.timeScale = 0.03125
 				Screen.UnlockCursor()
+				Input.DisableNumberRowInputs()
 
 				-- Stupid gamehud stuff
 				GameManager.hudGameModeEnabled = false
@@ -173,12 +174,13 @@ local AttachmentBase = {
 
 				-- Weapon Animations
 				Player.actor.activeWeapon.animator.SetBool("customization", false)
-				Player.actor.activeWeapon.gameObject.GetComponent(Animator).updateMode = AnimatorUpdateMode.Normal
+				-- Player.actor.activeWeapon.gameObject.GetComponent(Animator).updateMode = AnimatorUpdateMode.Normal
 				Player.actor.activeWeapon.UnlockWeapon()
 
 				-- Changes time
 				-- Time.timeScale = 1
 				Screen.LockCursor()
+				Input.EnableNumberRowInputs()
 
 				-- Stupid gamehud stuff
 				if Player.actor == nil or Player.actor.isDead then return end
@@ -204,17 +206,21 @@ local AttachmentBase = {
 						local go = self.attachmentPointNest.GetChild(dataIndex).gameObject
 						go.SetActive(true)
 
-						-- Storage Stuff
-						if _G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] == nil then
-							_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] = {}
-							print("Creating Table")
-						end
+						local pointScript = self.script.GetScript(go.gameObject)
 
 						-- Does point stuff
-						local pointScript = self.script.GetScript(go.gameObject)
 						pointScript.attachmentBase = self
 						pointScript.weaponPoint = v.gameObject
 						pointScript.pointIndex = dataIndex + 1
+
+						-- Storage Stuff
+						if _G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] == nil then
+							_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] = 1
+							pointScript:EquipAttachment(1)
+							print("Creating Table")
+						end
+						
+						pointScript:EquipAttachment(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1])
 						pointScript:OnWeaponChange()
 
 						-- pluses the index
