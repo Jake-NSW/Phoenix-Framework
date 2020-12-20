@@ -12,6 +12,20 @@ local AttachmentPointBase = {
 			end,
 		
 			["muzzles"] = function (self, attachment) -- isLoud and muzzle flash visibilty
+				local weapon = Player.actor.activeWeapon
+				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
+
+				weapon.isLoud = not attachment.gameObject.GetComponent(DataContainer).GetBool("isSilent")
+				weapon.gameObject.GetComponent(DataContainer).GetGameObject("muzzleFlash").SetActive(not attachmentData.GetBool("hideFlash"))
+
+				-- Not needed cause of receiver system
+				if weapon.gameObject.GetComponent(DataContainer).GetBool("useReceiverSystem") == true then
+					m_PhoenixAttachment:RefreshReceiver(false, nil)
+					return
+				end
+
+				weapon.gameObject.GetComponent(AudioSource).clip = attachmentData.GetAudioClip("FiringSound")
+	
 			end,
 		
 			["toggleableRail"] = function(self, attachment) -- Toggleable Rail, when pressing x it either enables or disables the rail power
@@ -28,16 +42,52 @@ local AttachmentPointBase = {
 				weapon.recoilSnapFrequency = attachmentData.GetFloat("snapFrequency")
 				weapon.recoilSnapMagnitude = attachmentData.GetFloat("snapMagnitude")
 				weapon.recoilSnapProneMultiplier = attachmentData.GetFloat("snapProneMultiplier")
+
+				m_PhoenixAttachment.statsRecoilSlider.value = attachmentData.GetInt("recoilStat")
 		
 			end,
 		
 			["underbarrel"] = function (self, attachment) -- Controls followup spread
+				local weapon = Player.actor.activeWeapon
+				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
+		
+				--if self.script.mutator.GetConfigurationBool("bool_ChangeStats") then
+					weapon.followupSpread.maxSpreadAim = attachmentData.GetFloat("maxSpreadAim")-- * selfVar.statsMulti
+					weapon.followupSpread.maxSpreadHip = attachmentData.GetFloat("maxSpreadHip")-- * selfVar.statsMulti
+					weapon.followupSpread.proneMultiplier = attachmentData.GetFloat("proneMultiplier")-- * selfVar.statsMulti
+					weapon.followupSpread.spreadDissipateTime = attachmentData.GetFloat("spreadDissipateTime")-- * selfVar.statsMulti
+					weapon.followupSpread.spreadGain = attachmentData.GetFloat("spreadGain")-- * selfVar.statsMulti
+					weapon.followupSpread.spreadStayTime = attachmentData.GetFloat("spreadStayTime")-- * selfVar.statsMulti
+
+					m_PhoenixAttachment.statsSpreadSlider.value = attachmentData.GetInt("spreadStat")
+				--end
 			end,
 		
-			["mag"] = function (self, attachment) -- Changes player movement speed and ammo count
+			["mag"] = function (self, attachment) -- Changes player movement speed and ammo count		
+				local weapon = Player.actor.activeWeapon
+				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
+		
+				if keepAmmo then
+					weapon.maxAmmo = attachmentData.GetFloat("magCapacity") --* self.statsMulti
+					Player.actor.speedMultiplier = attachmentData.GetFloat("playerSpeedMultiplier") --* self.statsMulti
+		
+					if weapon.gameObject.GetComponent(DataContainer).GetBool("useReceiverSystem") == true then
+						m_PhoenixAttachment:RefreshReceiver(true, attachmentData.GetGameObject("receiver").gameObject, self)
+					end
+					return
+				end
+
+				weapon.maxAmmo = attachmentData.GetFloat("magCapacity") --* self.statsMulti
+				Player.actor.speedMultiplier = attachmentData.GetFloat("playerSpeedMultiplier") --* self.statsMulti
+		
+				-- MODUlAR ANIMATOR
+				if weapon.gameObject.GetComponent(DataContainer).GetBool("useReceiverSystem") == true then
+					m_PhoenixAttachment:RefreshReceiver(true, attachmentData.GetGameObject("receiver").gameObject, self)
+					return
+				end
 			end,
 		
-			["skin"] = function (self, attachment) -- Changes weapon material... Will finish later
+			["skin"] = function (self, attachment) -- Changes weapon material... Will finish later, ITS NOT WORKING NOW??? GOTTA FIX IT
 				local attachmentPoint = self.weaponPoint.gameObject.GetComponent(DataContainer)
 				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
 		
@@ -54,6 +104,8 @@ local AttachmentPointBase = {
 						matArray[i] = attachmentPoint.GetMaterial("defaultMat")
 					end
 					matArray[matIndex] = attachmentData.GetMaterial("skin")
+
+					rendererComp.materials = matArray
 				end
 			end,
 		

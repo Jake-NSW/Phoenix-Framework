@@ -82,6 +82,9 @@ local AttachmentBase = {
 		self.transitionMultiplier = 1
 		self.slowMotionMultiplier = 1
 
+		self.defaultFOV = PlayerCamera.fpCamera.fieldOfView
+		print(self.defaultFOV)
+
 		-- Base header and canvas animator
 		self.menuUI = self.targets.MenuUI.gameObject.GetComponent(Animator)
 		self.weaponNameText = self.targets.weaponNameText.gameObject.GetComponent(TextMeshProUGUI)
@@ -217,14 +220,15 @@ local AttachmentBase = {
 						if _G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] == nil then
 							_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] = 1
 							pointScript:EquipAttachment(1)
-							print("Creating Table")
+							pointScript:OnWeaponChange()
+							dataIndex = 1 + dataIndex
+						else
+							pointScript:EquipAttachment(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1], false)
+							pointScript:OnWeaponChange()
+	
+							-- pluses the index
+							dataIndex = 1 + dataIndex
 						end
-						
-						pointScript:EquipAttachment(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1], false)
-						pointScript:OnWeaponChange()
-
-						-- pluses the index
-						dataIndex = 1 + dataIndex
 					end
 				end
 			end,
@@ -254,7 +258,7 @@ local AttachmentEvents = {
 	end,
 }
 function PF_Attachments:Initialise()
-	m_PhoenixAttachment= self
+	m_PhoenixAttachment = self
 
 	AttachmentBase.SetupKeybinds(self)
 	AttachmentBase.StoreComponents(self)
@@ -278,6 +282,7 @@ function PF_Attachments:Update()
 	if not Player.actor.isDead and not GameManager.isPaused then
 		self.menuUI.SetFloat("State", self.menuStateNumber, 0.2 / self.transitionMultiplier, Time.unscaledDeltaTime)
 		Time.timeScale = PhoenixMath.Normalize(self.menuUI.GetFloat("State"), 1 , 0, 0.0325, 1 * self.slowMotionMultiplier)
+		-- PlayerCamera.fpCamera.fieldOfView = PhoenixMath.Normalize(self.menuUI.GetFloat("State"), 1 , 0, 60, 120)
 	end
 	
 	if Input.GetKeyDown(self.attachmentKeybind) and AttachmentBase.PlayerStatusCheck() then
@@ -326,6 +331,65 @@ function PF_Attachments:OnEnable()
 		["false"] = 1
 	}
 	self.slowMotionMultiplier = SlowmoState[tostring(self.isSlowMode)]
+end
+
+function PF_Attachments:RefreshReceiver(mag, receiverAttachment, attachmentPoint)
+	local assignSound = {
+		["truetrue"] = function (self) -- Loud Auto
+			print("Loud Auto")
+			Player.actor.activeWeapon.gameObject.GetComponent(AudioSource).clip = self.currentReceiver.GetComponent(DataContainer).GetAudioClip("loudAuto")
+		end,
+		["truefalse"] = function (self) -- Loud Single
+			print("Loud Single")
+			Player.actor.activeWeapon.gameObject.GetComponent(AudioSource).clip = self.currentReceiver.GetComponent(DataContainer).GetAudioClip("loudSingle")
+		end,
+		["falsetrue"] = function (self) -- Suppressed Auto
+			print("Suppressed Auto")
+			Player.actor.activeWeapon.gameObject.GetComponent(AudioSource).clip = self.currentReceiver.GetComponent(DataContainer).GetAudioClip("suppressedAuto")
+		end,
+		["falsefalse"] = function (self) -- Suppressed Single
+			print("Suppressed Single")
+			Player.actor.activeWeapon.gameObject.GetComponent(AudioSource).clip = self.currentReceiver.GetComponent(DataContainer).GetAudioClip("suppressedSingle")
+		end,
+	}
+
+	if (mag) then -- If called from mag
+		print("Changed receiver through mag")
+		-- stores receiver point to variable
+		local receiverPoint = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetGameObject("receiverPoint").gameObject
+		local casingPoint = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetGameObject("casingPoint").gameObject
+
+		local paramName = receiverAttachment.gameObject.GetComponent(DataContainer).GetStringArray("animatorName")
+		local paramValue = receiverAttachment.gameObject.GetComponent(DataContainer).GetFloatArray("animatorValue")
+
+		-- Disable all receivers
+		for i = 1 , receiverPoint.transform.childCount do
+			receiverPoint.transform.GetChild(i - 1).gameObject.SetActive(false)
+			
+		end
+
+		-- Disable all casing particles
+		for i = 1, casingPoint.transform.childCount do
+			casingPoint.transform.GetChild(i - 1).gameObject.SetActive(false)
+		end
+
+		-- Get new receiver
+		self.currentReceiver = receiverAttachment.gameObject
+		self.currentReceiver.SetActive(true)
+		self.currentReceiver.GetComponent(DataContainer).GetGameObject("casingParticle").gameObject.SetActive(true)
+		Player.actor.activeWeapon.cooldown = self.currentReceiver.GetComponent(DataContainer).GetFloat("fireRate")
+		Player.actor.activeWeapon.isAuto = self.currentReceiver.GetComponent(DataContainer).GetBool("allowAutoShot")
+
+		-- attachmentPoint:ModularAnimator(paramName, paramValue)
+
+		-- PROJECTILES STUFF
+		Player.actor.activeWeapon.SetProjectilePrefab(receiverAttachment.gameObject.GetComponent(DataContainer).GetGameObject("projectile"))
+		assignSound[tostring(Player.actor.activeWeapon.isLoud) .. tostring(Player.actor.activeWeapon.isAuto)](self)
+
+	else -- If called from muzzle or firemode change
+		--print("Changed receiver through muzzle")
+		assignSound[tostring(Player.actor.activeWeapon.isLoud) .. tostring(Player.actor.activeWeapon.isAuto)](self)
+	end
 end
 
 function PF_Attachments:ReturnIsPaused() return GameManager.isPaused end
