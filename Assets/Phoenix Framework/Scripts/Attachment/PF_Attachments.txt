@@ -82,8 +82,7 @@ local AttachmentBase = {
 		self.transitionMultiplier = 1
 		self.slowMotionMultiplier = 1
 
-		self.defaultFOV = PlayerCamera.fpCamera.fieldOfView
-		print(self.defaultFOV)
+		self.isNight = self:isPlayingAtNight()
 
 		-- Base header and canvas animator
 		self.menuUI = self.targets.MenuUI.gameObject.GetComponent(Animator)
@@ -128,6 +127,9 @@ local AttachmentBase = {
 		-- Attachment point stuff
 		self.attachmentPointNest = self.targets.attachmentPointNest.gameObject.transform
 		self.attachmentPointInstance = self.targets.attachmentPointInstance
+
+		-- Night time stuff
+		-- self.nightLight = self.targets.nightLight.gameObject
 
 		-- Spawns the attachment points, and willspawn more if gun has more then currently spawned.. not here doe
 		for i = 1, 10 do
@@ -336,25 +338,25 @@ end
 function PF_Attachments:RefreshReceiver(mag, receiverAttachment, attachmentPoint)
 	local assignSound = {
 		["truetrue"] = function (self) -- Loud Auto
-			print("Loud Auto")
+			--print("Loud Auto")
 			Player.actor.activeWeapon.gameObject.GetComponent(AudioSource).clip = self.currentReceiver.GetComponent(DataContainer).GetAudioClip("loudAuto")
 		end,
 		["truefalse"] = function (self) -- Loud Single
-			print("Loud Single")
+			--print("Loud Single")
 			Player.actor.activeWeapon.gameObject.GetComponent(AudioSource).clip = self.currentReceiver.GetComponent(DataContainer).GetAudioClip("loudSingle")
 		end,
 		["falsetrue"] = function (self) -- Suppressed Auto
-			print("Suppressed Auto")
+			--print("Suppressed Auto")
 			Player.actor.activeWeapon.gameObject.GetComponent(AudioSource).clip = self.currentReceiver.GetComponent(DataContainer).GetAudioClip("suppressedAuto")
 		end,
 		["falsefalse"] = function (self) -- Suppressed Single
-			print("Suppressed Single")
+			--print("Suppressed Single")
 			Player.actor.activeWeapon.gameObject.GetComponent(AudioSource).clip = self.currentReceiver.GetComponent(DataContainer).GetAudioClip("suppressedSingle")
 		end,
 	}
 
 	if (mag) then -- If called from mag
-		print("Changed receiver through mag")
+		--print("Changed receiver through mag")
 		-- stores receiver point to variable
 		local receiverPoint = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetGameObject("receiverPoint").gameObject
 		local casingPoint = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetGameObject("casingPoint").gameObject
@@ -389,6 +391,16 @@ function PF_Attachments:RefreshReceiver(mag, receiverAttachment, attachmentPoint
 	else -- If called from muzzle or firemode change
 		--print("Changed receiver through muzzle")
 		assignSound[tostring(Player.actor.activeWeapon.isLoud) .. tostring(Player.actor.activeWeapon.isAuto)](self)
+	end
+end
+
+-- Made by Chai
+function PF_Attachments:isPlayingAtNight()
+	local nightGameObject = GameObject.Find("Night")
+	if(nightGameObject ~= nil) then
+		return true
+	else
+		return false
 	end
 end
 
