@@ -1,0 +1,12 @@
+﻿-- Register the behaviour
+behaviour("PF_AttachmentPanel")
+
+function PF_AttachmentPanel:Start()
+	-- Run when behaviour is created
+	print("Hello World")
+end
+
+function PF_AttachmentPanel:Update()
+	-- Run every frame
+	
+end
