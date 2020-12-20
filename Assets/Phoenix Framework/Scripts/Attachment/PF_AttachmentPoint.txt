@@ -2,7 +2,7 @@
 behaviour("PF_AttachmentPoint")
 
 local AttachmentPointBase = {
-	EquipAttachment = function (self, attachmentIndex, animatorOnly)
+	EquipAttachment = function (self, attachmentIndex, animatorOnly, emptyMag)
 		attachmentType = {
 			["sights"] = function (self, attachment) -- Sights shiets
 				local weapon = Player.actor.activeWeapon
@@ -63,7 +63,7 @@ local AttachmentPointBase = {
 				--end
 			end,
 		
-			["mag"] = function (self, attachment) -- Changes player movement speed and ammo count		
+			["mag"] = function (self, attachment, emptyMag) -- Changes player movement speed and ammo count		
 				local weapon = Player.actor.activeWeapon
 				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
 		
@@ -77,11 +77,13 @@ local AttachmentPointBase = {
 					return
 				end
 
-				weapon.ammo = 0
+				if emptyMag then 
+					weapon.ammo = 0
+				end
+
 				weapon.maxAmmo = attachmentData.GetFloat("magCapacity") --* self.statsMulti
 				Player.actor.speedMultiplier = attachmentData.GetFloat("playerSpeedMultiplier") --* self.statsMulti
 		
-				-- MODUlAR ANIMATOR
 				if weapon.gameObject.GetComponent(DataContainer).GetBool("useReceiverSystem") == true then
 					m_PhoenixAttachment:RefreshReceiver(true, attachmentData.GetGameObject("receiver").gameObject, self)
 					return
@@ -131,26 +133,38 @@ local AttachmentPointBase = {
 
 		-- Visual stuff
 		-- Disables old attachment
-		attachments[_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][self.pointIndex]].gameObject.SetActive(false)
+		attachments[_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(self.weaponPoint.gameObject)]].gameObject.SetActive(false)
 		
 		-- Adds new attachment to storage
-		_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][self.pointIndex] = attachmentIndex
+		_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(self.weaponPoint.gameObject)] = attachmentIndex
 		
 		-- Enables new attachment
 		attachments[attachmentIndex].gameObject.SetActive(true)
 
 		local attachmentData = attachments[attachmentIndex].gameObject.GetComponent(DataContainer)
-		local paramName = attachmentData.GetStringArray("animatorName")
-		local paramValue = attachmentData.GetFloatArray("animatorValue")
+		local doAnimator = data.GetBool("useModularAnimator")
+
+		if attachmentData.GetBool("hasNestedAttachmentPoint") then
+			-- m_PhoenixAttachment:RefreshAttachmentPoints()
+		end
 
 		-- Applys stats and stuff
 		if animatorOnly then
-			self:ModularAnimator(paramName, paramValue)
+			if doAnimator then 
+				local paramName = attachmentData.GetStringArray("animatorName")
+				local paramValue = attachmentData.GetFloatArray("animatorValue")
 
+				self:ModularAnimator(paramName, paramValue) 
+			end
 			return
 		else
-			attachmentType[tostring(PhoenixData.GetString(data, "attachmentType", false, "poop"))](self, attachments[attachmentIndex].gameObject)
-			self:ModularAnimator(paramName, paramValue)
+			attachmentType[tostring(PhoenixData.GetString(data, "attachmentType", false, "poop"))](self, attachments[attachmentIndex].gameObject, emptyMag)
+			if doAnimator then 
+				local paramName = attachmentData.GetStringArray("animatorName")
+				local paramValue = attachmentData.GetFloatArray("animatorValue")
+
+				self:ModularAnimator(paramName, paramValue) 
+			end
 		end
 	end,
 
@@ -191,7 +205,7 @@ local AttachmentPointBase = {
 
 function PF_AttachmentPoint:OnWeaponChange() AttachmentPointBase.OnWeaponChange(self) end
 function PF_AttachmentPoint:OnClick() AttachmentPointBase.OnClick(self) end
-function PF_AttachmentPoint:EquipAttachment(index, animatorOnly) AttachmentPointBase.EquipAttachment(self, index, animatorOnly) end
+function PF_AttachmentPoint:EquipAttachment(index, animatorOnly, emptyMag) AttachmentPointBase.EquipAttachment(self, index, animatorOnly, emptyMag) end
 
 function PF_AttachmentPoint:ModularAnimator(paramName, paramValue)
 	if paramName ~= nil and paramValue ~= nil then
@@ -215,6 +229,6 @@ function PF_AttachmentPoint:Update()
 	self.gameObject.transform.position = PlayerCamera.activeCamera.WorldToScreenPoint(self.weaponPoint.gameObject.transform.position)
 
 	if Input.GetKeyDown(self.bind) then
-		self:EquipAttachment(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][self.pointIndex] + 1, false)
+		self:EquipAttachment(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(self.weaponPoint.gameObject)] + 1, false, true)
 	end
 end

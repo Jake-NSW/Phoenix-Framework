@@ -30,7 +30,13 @@ PhoenixDebug = {
 PhoenixMath = {
 	Normalize = function(val, minVal, maxVal, newMin, newMax) 
 		return newMin + (val - minVal) * (newMax - newMin) / (maxVal - minVal);
-	end
+	end,
+
+	SetupHorizontalFOV = function (hFov)
+		local num = Screen.width / Screen.height
+		local verticalFov = 114.59156 * Mathf.Atan(Mathf.Tan(hFov / 2.0 * 0.0174532924) / num)
+		return verticalFov
+	end,
 }
 
 PhoenixInput = {

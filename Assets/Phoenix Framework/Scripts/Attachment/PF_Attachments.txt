@@ -84,6 +84,10 @@ local AttachmentBase = {
 
 		self.isNight = self:isPlayingAtNight()
 
+		self.FPCamera = PlayerCamera.fpCamera
+		self.baseFov = PhoenixMath.SetupHorizontalFOV(GameObject.Find("Field Of View").GetComponentInChildren(Slider).value)
+		self.currentFov = self.baseFov
+
 		self.attachmentPanel = self.targets.attachmentPanel.gameObject
 		self.script.GetScript(self.attachmentPanel):Initialise()
 
@@ -200,53 +204,47 @@ local AttachmentBase = {
 		MenuState[tostring(state)](self)
 	end,
 
-	RefreshPoints = function (self, type)
-		local typeSwitch = {
-			["OnEnable"] = function (self)
-				local data = Player.actor.activeWeapon.gameObject.GetComponentsInChildren(DataContainer)
-				local dataIndex = 0
-		
-				for k,v in ipairs(data) do
-					if PhoenixData.GetString(v, "dataType", false, "nahDontGotIt") == "attachmentPoint" then 
-						if dataIndex == self.attachmentPointNest.childCount then return end
-		
-						-- Gets the UI (Framework) element for the point 
-						local go = self.attachmentPointNest.GetChild(dataIndex).gameObject
-						go.SetActive(true)
+	RefreshPoints = {
+		OnEnable = function (self)
+			local data = Player.actor.activeWeapon.gameObject.GetComponentsInChildren(DataContainer)
+			local dataIndex = 0
 
-						local pointScript = self.script.GetScript(go.gameObject)
+			for k,v in ipairs(data) do
+			if PhoenixData.GetString(v, "dataType", false, "nahDontGotIt") == "attachmentPoint" then 
+				if dataIndex == self.attachmentPointNest.childCount then return end
+					-- Gets the UI (Framework) element for the point 
+					local go = self.attachmentPointNest.GetChild(dataIndex).gameObject
+					go.SetActive(true)
 
-						-- Does point stuff
-						pointScript.attachmentBase = self
-						pointScript.weaponPoint = v.gameObject
-						pointScript.pointIndex = dataIndex + 1
+					local pointScript = self.script.GetScript(go.gameObject)
+					-- Does point stuff
+					pointScript.attachmentBase = self
+					pointScript.weaponPoint = v.gameObject
+					pointScript.pointIndex = dataIndex + 1
 
-						-- Storage Stuff
-						if _G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] == nil then
-							_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1] = 1
-							pointScript:EquipAttachment(1)
-							pointScript:OnWeaponChange()
-							dataIndex = 1 + dataIndex
-						else
-							pointScript:EquipAttachment(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1], false)
-							pointScript:OnWeaponChange()
+					-- Storage Stuff
+					if _G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(v.gameObject)] == nil then
+						_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(v.gameObject)] = 1
+						pointScript:EquipAttachment(1, false, false)
+						pointScript:OnWeaponChange()
+						dataIndex = 1 + dataIndex
+					else
+						pointScript:EquipAttachment(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(v.gameObject)], true, false)
+						pointScript:OnWeaponChange()
 	
-							-- pluses the index
-							dataIndex = 1 + dataIndex
-						end
+						-- pluses the index
+						dataIndex = 1 + dataIndex
 					end
 				end
-			end,
+			end
+		end,
 
-			["OnDisable"] = function (self)
-				for i = 1, self.attachmentPointNest.childCount do
-					self.attachmentPointNest.GetChild(i - 1).gameObject.SetActive(false)
-				end
-			end,
-		}
-
-		typeSwitch[tostring(type)](self)
-	end,
+		OnDisable = function (self)
+			for i = 1, self.attachmentPointNest.childCount do
+				self.attachmentPointNest.GetChild(i - 1).gameObject.SetActive(false)
+			end
+		end,
+	}
 }
 
 local AttachmentEvents = {
@@ -268,7 +266,7 @@ function PF_Attachments:Initialise()
 	AttachmentBase.SetupKeybinds(self)
 	AttachmentBase.StoreComponents(self)
 	AttachmentBase.SetupEvents(self)
-	AttachmentBase.RefreshPoints(self, "OnDisable")
+	AttachmentBase.RefreshPoints.OnDisable(self)
 
 	PhoenixDebug.Print("PF_Attachments | Initialise", "log")
 end
@@ -286,8 +284,11 @@ function PF_Attachments:Update()
 
 	if not Player.actor.isDead and not GameManager.isPaused then
 		self.menuUI.SetFloat("State", self.menuStateNumber, 0.2 / self.transitionMultiplier, Time.unscaledDeltaTime)
+
 		Time.timeScale = PhoenixMath.Normalize(self.menuUI.GetFloat("State"), 1 , 0, 0.0325, 1 * self.slowMotionMultiplier)
-		-- PlayerCamera.fpCamera.fieldOfView = PhoenixMath.Normalize(self.menuUI.GetFloat("State"), 1 , 0, 60, 120)
+
+		-- FOV changing stuff... decided to cut it since it would be weird to work with
+		--self.FPCamera.fieldOfView = PhoenixMath.Normalize(self.menuUI.GetFloat("State"), 1 , 0, 60, self.currentFov)
 	end
 	
 	if Input.GetKeyDown(self.attachmentKeybind) and AttachmentBase.PlayerStatusCheck() then
@@ -302,7 +303,7 @@ end
 function PF_Attachments:OnDisable()
 	if Player.actor == nil or Player.actor.isDead then return end
 	AttachmentBase.ToggleMenu(self, false)
-	AttachmentBase.RefreshPoints(self, "OnDisable")
+	AttachmentBase.RefreshPoints.OnDisable(self)
 	-- Slowmode stuff
 	local SlowmoState = {
 		["true"] = 0.2,
@@ -325,7 +326,7 @@ function PF_Attachments:OnEnable()
 	self.weaponChanged = true
 
 	AttachmentBase.ToggleMenu(self, false)
-	AttachmentBase.RefreshPoints(self, "OnEnable")
+	AttachmentBase.RefreshPoints.OnEnable(self)
 
 
 	-- Slowmode stuff
@@ -410,3 +411,5 @@ end
 function PF_Attachments:ReturnIsPaused() return GameManager.isPaused end
 
 function PF_Attachments:OnGamePaused(bool) AttachmentEvents.OnPause(self, bool) end
+
+function PF_Attachments:RefreshAttachmentPoints() AttachmentBase.RefreshPoints.OnEnable(self) end
