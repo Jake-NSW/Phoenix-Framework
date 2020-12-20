@@ -9,7 +9,7 @@ function PF_InspectAnim:Update()
 	local player = Player.actor
 	if player.isDead or player.isSwimming or player.isFallenOver or player.isInWater or player.isOnLadder or not player.activeVehicle == nil or player.activeWeapon.isLocked then return end
 
-	if Input.GetKeyBindButtonDown(KeyBinds.Reload) then
+	if Input.GetKeyBindButtonDown(KeyBinds.Reload) and not player.activeWeapon.isReloading then
 		self:StartInspect()
 	end
 end

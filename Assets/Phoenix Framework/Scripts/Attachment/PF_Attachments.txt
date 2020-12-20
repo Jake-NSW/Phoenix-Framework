@@ -220,7 +220,7 @@ local AttachmentBase = {
 							print("Creating Table")
 						end
 						
-						pointScript:EquipAttachment(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1])
+						pointScript:EquipAttachment(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][dataIndex + 1], false)
 						pointScript:OnWeaponChange()
 
 						-- pluses the index
