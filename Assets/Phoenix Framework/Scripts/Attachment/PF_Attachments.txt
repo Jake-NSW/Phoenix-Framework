@@ -84,6 +84,9 @@ local AttachmentBase = {
 
 		self.isNight = self:isPlayingAtNight()
 
+		self.attachmentPanel = self.targets.attachmentPanel.gameObject
+		self.script.GetScript(self.attachmentPanel):Initialise()
+
 		-- Base header and canvas animator
 		self.menuUI = self.targets.MenuUI.gameObject.GetComponent(Animator)
 		self.weaponNameText = self.targets.weaponNameText.gameObject.GetComponent(TextMeshProUGUI)
