@@ -201,11 +201,29 @@ local AttachmentPointBase = {
 	OnClick = function (self)
 		m_PhoenixAttachment.sfxSource.PlayOneShot(self.targets.sfx, 7)
 	end,
+
+	RandomAttachment = function (self)
+		local data = self.weaponPoint.gameObject.GetComponent(DataContainer)
+
+		if tostring(PhoenixData.GetString(data, "attachmentType", false, "poop")) == "skin" then return end
+
+		local attachment = PhoenixData.GetGameObject(data, "attachment", true, nil)
+		local storage = _G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(self.weaponPoint.gameObject)]
+		local randomIndex = Mathf.FloorToInt(Random.Range(1, #attachment))
+
+		if randomIndex == storage then 
+			self:EquipRandomAttachment()
+			return
+		else
+			self:EquipAttachment(randomIndex, false, true)
+		end
+	end,
 }
 
 function PF_AttachmentPoint:OnWeaponChange() AttachmentPointBase.OnWeaponChange(self) end
 function PF_AttachmentPoint:OnClick() AttachmentPointBase.OnClick(self) end
 function PF_AttachmentPoint:EquipAttachment(index, animatorOnly, emptyMag) AttachmentPointBase.EquipAttachment(self, index, animatorOnly, emptyMag) end
+function PF_AttachmentPoint:EquipRandomAttachment() AttachmentPointBase.RandomAttachment(self) end
 
 function PF_AttachmentPoint:ModularAnimator(paramName, paramValue)
 	if paramName ~= nil and paramValue ~= nil then
@@ -230,5 +248,9 @@ function PF_AttachmentPoint:Update()
 
 	if Input.GetKeyDown(self.bind) then
 		self:EquipAttachment(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(self.weaponPoint.gameObject)] + 1, false, true)
+	end
+
+	if Input.GetKeyDown(KeyCode.F1) then
+		self:EquipRandomAttachment()
 	end
 end
