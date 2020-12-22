@@ -343,6 +343,7 @@ local PhoenixEvents = {
 		if not actor.isPlayer then return end
 		PhoenixDebug.Print("Player Died", "log")
 		PhoenixBase.RefreshSystems(self, nil)
+		m_PhoenixAttachment.wasDead = true
 	end,
 
 	OnPlayerWeaponSwitch = function (self, newWeapon)

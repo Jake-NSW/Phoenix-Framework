@@ -82,6 +82,8 @@ local AttachmentBase = {
 		self.transitionMultiplier = 1
 		self.slowMotionMultiplier = 1
 
+		self.changedMag = false
+
 		self.isNight = self:isPlayingAtNight()
 
 		self.FPCamera = PlayerCamera.fpCamera
@@ -163,7 +165,7 @@ local AttachmentBase = {
 				self.menuState = true
 				self.menuStateNumber = 1
 				self.transitionMultiplier = 1
-				
+
 				-- Weapon Animations
 				Player.actor.activeWeapon.animator.SetBool("customization", true)
 				-- Player.actor.activeWeapon.gameObject.GetComponent(Animator).updateMode = AnimatorUpdateMode.UnscaledTime
@@ -193,6 +195,11 @@ local AttachmentBase = {
 				-- Time.timeScale = 1
 				Screen.LockCursor()
 				Input.EnableNumberRowInputs()
+
+				--if self.magChanged == true then
+				--	Player.actor.activeWeapon.ammo = 0
+				--	self.magChanged = false
+				--end
 
 				-- Stupid gamehud stuff
 				if Player.actor == nil or Player.actor.isDead then return end
@@ -229,7 +236,17 @@ local AttachmentBase = {
 						pointScript:OnWeaponChange()
 						dataIndex = 1 + dataIndex
 					else
-						pointScript:EquipAttachment(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(v.gameObject)], true, false)
+						local saved = _G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(v.gameObject)]
+						-- print("Current Attachment: " .. tostring(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(v.gameObject)]) .. " " .. v.gameObject.name)
+						if self.wasDead then
+							pointScript:EquipAttachment(1, true, false)
+							pointScript:EquipAttachment(saved, false, false)
+							
+						--	print("FUCK")
+						else
+							pointScript:EquipAttachment(saved, true, false)
+						--	print("FUCK 2")
+						end
 						pointScript:OnWeaponChange()
 	
 						-- pluses the index
@@ -237,6 +254,8 @@ local AttachmentBase = {
 					end
 				end
 			end
+
+			self.wasDead = false
 		end,
 
 		OnDisable = function (self)

@@ -25,7 +25,6 @@ local AttachmentPointBase = {
 				end
 
 				weapon.gameObject.GetComponent(AudioSource).clip = attachmentData.GetAudioClip("FiringSound")
-	
 			end,
 		
 			["toggleableRail"] = function(self, attachment) -- Toggleable Rail, when pressing x it either enables or disables the rail power
@@ -67,18 +66,15 @@ local AttachmentPointBase = {
 				local weapon = Player.actor.activeWeapon
 				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
 		
-				if keepAmmo then
-					weapon.maxAmmo = attachmentData.GetFloat("magCapacity") --* self.statsMulti
-					Player.actor.speedMultiplier = attachmentData.GetFloat("playerSpeedMultiplier") --* self.statsMulti
-		
-					if weapon.gameObject.GetComponent(DataContainer).GetBool("useReceiverSystem") == true then
-						m_PhoenixAttachment:RefreshReceiver(true, attachmentData.GetGameObject("receiver").gameObject, self)
-					end
-					return
+				weapon.maxAmmo = attachmentData.GetFloat("magCapacity") --* self.statsMulti
+				Player.actor.speedMultiplier = attachmentData.GetFloat("playerSpeedMultiplier") --* self.statsMulti
+
+				if weapon.gameObject.GetComponent(DataContainer).GetBool("useReceiverSystem") == true then
+					m_PhoenixAttachment:RefreshReceiver(true, attachmentData.GetGameObject("receiver").gameObject, self)
 				end
 
 				if emptyMag then 
-					weapon.ammo = 0
+					m_PhoenixAttachment.magChanged = true
 				end
 
 				weapon.maxAmmo = attachmentData.GetFloat("magCapacity") --* self.statsMulti
@@ -144,9 +140,9 @@ local AttachmentPointBase = {
 		local attachmentData = attachments[attachmentIndex].gameObject.GetComponent(DataContainer)
 		local doAnimator = data.GetBool("useModularAnimator")
 
-		if attachmentData.GetBool("hasNestedAttachmentPoint") then
-			-- m_PhoenixAttachment:RefreshAttachmentPoints()
-		end
+		--if attachmentData.HasBool("hasNestedAttachmentPoint") and attachmentData.GetBool("hasNestedAttachmentPoint") then
+		--	-- m_PhoenixAttachment:RefreshAttachmentPoints()
+		--end
 
 		-- Applys stats and stuff
 		if animatorOnly then
@@ -209,7 +205,7 @@ local AttachmentPointBase = {
 
 		local attachment = PhoenixData.GetGameObject(data, "attachment", true, nil)
 		local storage = _G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(self.weaponPoint.gameObject)]
-		local randomIndex = Mathf.FloorToInt(Random.Range(1, #attachment))
+		local randomIndex = Mathf.FloorToInt(Random.Range(1, #attachment + 1))
 
 		if randomIndex == storage then 
 			self:EquipRandomAttachment()
