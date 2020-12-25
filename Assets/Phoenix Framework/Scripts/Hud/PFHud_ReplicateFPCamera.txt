@@ -1,0 +1,6 @@
+﻿-- Register the behaviour
+behaviour("PFHud_ReplicateFPCamera")
+function PFHud_ReplicateFPCamera:Update()
+	local cam = PlayerCamera.fpCameraLocalRotation.eulerAngles
+	self.transform.localRotation = Quaternion.Euler(Vector3(Mathf.Clamp(cam.x * 1, 0, 360), Mathf.Clamp(cam.y * 1, 0, 360), Mathf.Clamp(cam.z * 1, 0, 360)))
+end

@@ -310,6 +310,8 @@ local PhoenixBase = {
 		self.CameraAnimation = self.targets.CameraAnimation.gameObject
 		self.InspectAnimation = self.targets.InspectAnimation.gameObject
 		self.AimReloading = self.targets.AimReloading.gameObject
+
+		self.FPSHud = self.targets.FPSHud.gameObject
 	end,
 
 	RefreshSystems = function (self, newWeapon)
