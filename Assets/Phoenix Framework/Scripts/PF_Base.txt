@@ -69,6 +69,14 @@ PhoenixInput = {
 		}
 		return KeybindList[m_PhoenixBase.randomAttachmentBindIndex]
 	end,
+
+	InspectKeybind = function ()
+		local KeybindList = {
+			[0] = KeyBinds.Reload,
+			[1] = KeyCode.F,
+		}
+		return KeybindList[m_PhoenixBase.inspectBindIndex]
+	end,
 }
 
 -- fuck you if you think this is yandre dev code, you just a brainnutt
@@ -303,6 +311,7 @@ local PhoenixBase = {
 		self.attachmentBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_attachmentBind")
 		self.firemodeBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_firemodeBind")
 		self.randomAttachmentBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_randomAttachmentBind")
+		self.inspectBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_InspectKeybind")
 
 	end,
 

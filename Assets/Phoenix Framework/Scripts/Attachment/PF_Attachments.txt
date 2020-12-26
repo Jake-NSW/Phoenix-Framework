@@ -92,6 +92,7 @@ local AttachmentBase = {
 		self.currentFov = self.baseFov
 
 		self.randomAttachments = self.script.mutator.GetConfigurationBool("bool_randomAttachments")
+		self.autoReload = self.script.mutator.GetConfigurationBool("bool_AutoReload") 
 
 		self.attachmentPanel = self.targets.attachmentPanel.gameObject
 		self.script.GetScript(self.attachmentPanel):Initialise()
@@ -205,6 +206,9 @@ local AttachmentBase = {
 
 				if self.magChanged == true then
 					Player.actor.activeWeapon.ammo = 0
+					if self.autoReload then
+						Player.actor.activeWeapon.Reload()
+					end
 					self.magChanged = false
 				end
 
@@ -239,7 +243,7 @@ local AttachmentBase = {
 					-- Storage Stuff
 					if _G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(v.gameObject)] == nil then
 						_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(v.gameObject)] = 1
-						pointScript:EquipAttachment(1, false, false)
+						pointScript:EquipAttachment(1, false, true)
 						if self.randomAttachments then
 							pointScript:EquipRandomAttachment()
 						end
