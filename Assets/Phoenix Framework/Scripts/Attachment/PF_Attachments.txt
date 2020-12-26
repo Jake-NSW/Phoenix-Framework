@@ -204,12 +204,8 @@ local AttachmentBase = {
 				Screen.LockCursor()
 				Input.EnableNumberRowInputs()
 
-				if self.magChanged == true then
-					Player.actor.activeWeapon.ammo = 0
-					if self.autoReload then
-						Player.actor.activeWeapon.Reload()
-					end
-					self.magChanged = false
+				if self.autoReload and Player.actor.activeWeapon.ammo == 0 then
+					Player.actor.activeWeapon.Reload()
 				end
 
 				-- Stupid gamehud stuff
@@ -247,6 +243,7 @@ local AttachmentBase = {
 						if self.randomAttachments then
 							pointScript:EquipRandomAttachment()
 						end
+						Player.actor.activeWeapon.ammo = Player.actor.activeWeapon.maxAmmo
 						pointScript:OnWeaponChange()
 						dataIndex = 1 + dataIndex
 					else
@@ -255,7 +252,7 @@ local AttachmentBase = {
 						if self.wasDead then
 							pointScript:EquipAttachment(1, true, false)
 							pointScript:EquipAttachment(saved, false, false)
-							
+							Player.actor.activeWeapon.ammo = Player.actor.activeWeapon.maxAmmo
 						--	print("FUCK")
 						else
 							pointScript:EquipAttachment(saved, true, false)

@@ -74,7 +74,7 @@ local AttachmentPointBase = {
 				end
 
 				if emptyMag then 
-					m_PhoenixAttachment.magChanged = true
+					Player.actor.activeWeapon.ammo = 0
 				end
 
 				weapon.maxAmmo = attachmentData.GetFloat("magCapacity") --* self.statsMulti
