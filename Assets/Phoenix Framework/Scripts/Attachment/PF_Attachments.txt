@@ -201,10 +201,10 @@ local AttachmentBase = {
 				Screen.LockCursor()
 				Input.EnableNumberRowInputs()
 
-				--if self.magChanged == true then
-				--	Player.actor.activeWeapon.ammo = 0
-				--	self.magChanged = false
-				--end
+				if self.magChanged == true then
+					Player.actor.activeWeapon.ammo = 0
+					self.magChanged = false
+				end
 
 				-- Stupid gamehud stuff
 				if Player.actor == nil or Player.actor.isDead then return end
@@ -393,13 +393,9 @@ function PF_Attachments:RefreshReceiver(mag, receiverAttachment, attachmentPoint
 		local receiverPoint = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetGameObject("receiverPoint").gameObject
 		local casingPoint = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetGameObject("casingPoint").gameObject
 
-		local paramName = receiverAttachment.gameObject.GetComponent(DataContainer).GetStringArray("animatorName")
-		local paramValue = receiverAttachment.gameObject.GetComponent(DataContainer).GetFloatArray("animatorValue")
-
 		-- Disable all receivers
 		for i = 1 , receiverPoint.transform.childCount do
-			receiverPoint.transform.GetChild(i - 1).gameObject.SetActive(false)
-			
+			receiverPoint.transform.GetChild(i - 1).gameObject.SetActive(false)	
 		end
 
 		-- Disable all casing particles
@@ -412,7 +408,8 @@ function PF_Attachments:RefreshReceiver(mag, receiverAttachment, attachmentPoint
 		self.currentReceiver.SetActive(true)
 		self.currentReceiver.GetComponent(DataContainer).GetGameObject("casingParticle").gameObject.SetActive(true)
 		Player.actor.activeWeapon.cooldown = self.currentReceiver.GetComponent(DataContainer).GetFloat("fireRate")
-		-- Player.actor.activeWeapon.isAuto = self.currentReceiver.GetComponent(DataContainer).GetBool("allowAutoShot")
+		Player.actor.activeWeapon.isAuto = self.currentReceiver.GetComponent(DataContainer).GetBool("allowAutoShot")
+		m_HudBase:FiremodeText()
 
 		-- attachmentPoint:ModularAnimator(paramName, paramValue)
 

@@ -79,7 +79,6 @@ local AttachmentPointBase = {
 
 				weapon.maxAmmo = attachmentData.GetFloat("magCapacity") --* self.statsMulti
 				Player.actor.speedMultiplier = attachmentData.GetFloat("playerSpeedMultiplier") --* self.statsMulti
-		
 				if weapon.gameObject.GetComponent(DataContainer).GetBool("useReceiverSystem") == true then
 					m_PhoenixAttachment:RefreshReceiver(true, attachmentData.GetGameObject("receiver").gameObject, self)
 					return
