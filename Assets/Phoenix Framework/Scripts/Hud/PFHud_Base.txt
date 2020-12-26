@@ -8,10 +8,21 @@ function PFHud_Base:Start()
 	self.currentAmmoText = self.targets.currentAmmoText.gameObject.GetComponent(TextMeshProUGUI)
 	self.firemodeText = self.targets.firemodeText.gameObject.GetComponent(TextMeshProUGUI)
 	self.healthText = self.targets.healthText.gameObject.GetComponent(TextMeshProUGUI)
+	self.vehicleHealthText = self.targets.vehicleHealthText.gameObject.GetComponent(TextMeshProUGUI)
 
+	self.bloodVignette = self.targets.bloodVignette.gameObject.GetComponent(Image)
+	self.vehicleHealth = self.targets.vehicleHealth.gameObject
+	
 	self.animator = self.gameObject.GetComponent(Animator)
-	self.stateValue = 1
-	self.currentState = true
+	self.stateValue = 0
+	self.currentState = false
+	
+	self.rfHitmarker = GameObject.Find("Hitmarker").gameObject.GetComponent(RawImage)
+	self.hitmarker = self.targets.hitmarker.gameObject
+
+	self.ammo = self.targets.ammo.gameObject
+
+	self.hitmarker.GetComponent(RawImage).texture = self.rfHitmarker.texture
 
 	self.canvasGroup = self.gameObject.GetComponent(CanvasGroup)
 
@@ -20,32 +31,65 @@ function PFHud_Base:Start()
 	self.script.AddValueMonitor("MonitorSpareAmmo", "OnSpareAmmoChange")
 	self.script.AddValueMonitor("MonitorHUD", "OnHudChange")
 	self.script.AddValueMonitor("MonitorHealth", "OnHealthChange")
+	self.script.AddValueMonitor("MonitorVehicleHealth", "OnVehicleHealthChange")
+	self.script.AddValueMonitor("MonitorHitmarker", "OnHitmarkerChange")
 
 	GameManager.hudPlayerEnabled = false
 end
 
+-- Event functions
 function PFHud_Base:Update()
-	self.animator.SetFloat("Blend", self.stateValue, 0.25, Time.unscaledDeltaTime)
+	self.animator.SetFloat("Blend", self.stateValue, 0.18, Time.unscaledDeltaTime)
 end
 
 -- Event Functions
-function PFHud_Base:OnAmmoChange(ammo) self.currentAmmoText.text = tostring(ammo) end
-function PFHud_Base:OnSpareAmmoChange(spareAmmo) self.spareAmmoText.text = tostring(spareAmmo) end
+function PFHud_Base:OnAmmoChange(ammo) 
+	if ammo == -1 or ammo == -2 then self.currentAmmoText.text = "∞" return end
+	if ammo == -5 then self.ammo.SetActive(false) return end
+
+	self.ammo.SetActive(true)
+	self.currentAmmoText.text = tostring(ammo) 
+end
+
+function PFHud_Base:OnSpareAmmoChange(spareAmmo)
+	if spareAmmo == -1 or spareAmmo == -2 then self.spareAmmoText.text = "∞" return end
+	self.spareAmmoText.text = tostring(spareAmmo) 
+end
+
 function PFHud_Base:OnHudChange(bool) GameManager.hudPlayerEnabled = false end
-function PFHud_Base:OnHealthChange(health) self.healthText.text = tostring(health) end
+
+function PFHud_Base:OnHealthChange(health)
+	self.healthText.text = tostring(health) 
+	self.bloodVignette.color = Color(1, 1, 1, PhoenixMath.Normalize(health, 0, 40, 0.5, 0)) 
+end
+
+function PFHud_Base:OnVehicleHealthChange(vehicleHealth)
+	if vehicleHealth == nil then
+		self.vehicleHealth.SetActive(false)
+		return
+	end
+	self.vehicleHealth.SetActive(true)
+	self.vehicleHealthText.text = tostring(Mathf.FloorToInt(vehicleHealth))
+end
+
+function PFHud_Base:OnHitmarkerChange(bool)
+	self.hitmarker.SetActive(bool)
+end
 
 -- Monitor Functions
 function PFHud_Base:MonitorCurrentAmmo()
 	local player = Player.actor
 	if player.isDead or player.isSwimming or player.isFallenOver or player.isInWater or player.isOnLadder or not player.activeVehicle == nil then return 0 end
 
-	return Player.actor.activeWeapon.ammo 
+	if Player.actor.activeWeapon == nil then return -5 end
+	return Player.actor.activeWeapon.ammo
 end
 
 function PFHud_Base:MonitorSpareAmmo()
 	local player = Player.actor
 	if player.isDead or player.isSwimming or player.isFallenOver or player.isInWater or player.isOnLadder or not player.activeVehicle == nil then return 0 end
 
+	if Player.actor.activeWeapon == nil then return -5 end
 	return Player.actor.activeWeapon.spareAmmo 
 end
 
@@ -55,6 +99,16 @@ function PFHud_Base:MonitorHealth()
 	return Mathf.Clamp(Mathf.FloorToInt(Player.actor.health), 0, 999)
 end
 
+function PFHud_Base:MonitorVehicleHealth()
+	if Player.actor.activeVehicle == nil then return nil end
+	return Player.actor.activeVehicle.health
+end
+
+function PFHud_Base:MonitorHitmarker()
+	return self.rfHitmarker.IsActive()
+end
+
+-- Other
 function PFHud_Base:OnWeaponChange()
 	local player = Player.actor
 	if player.isDead or player.isSwimming or player.isFallenOver or player.isInWater or player.isOnLadder or not player.activeVehicle == nil then return end

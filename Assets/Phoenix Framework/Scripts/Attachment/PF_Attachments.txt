@@ -91,6 +91,8 @@ local AttachmentBase = {
 		-- self.baseFov = PhoenixMath.SetupHorizontalFOV(GameObject.Find("Field Of View").GetComponentInChildren(Slider).value)
 		self.currentFov = self.baseFov
 
+		self.randomAttachments = self.script.mutator.GetConfigurationBool("bool_randomAttachments")
+
 		self.attachmentPanel = self.targets.attachmentPanel.gameObject
 		self.script.GetScript(self.attachmentPanel):Initialise()
 
@@ -238,6 +240,9 @@ local AttachmentBase = {
 					if _G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(v.gameObject)] == nil then
 						_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(v.gameObject)] = 1
 						pointScript:EquipAttachment(1, false, false)
+						if self.randomAttachments then
+							pointScript:EquipRandomAttachment()
+						end
 						pointScript:OnWeaponChange()
 						dataIndex = 1 + dataIndex
 					else
@@ -319,7 +324,7 @@ function PF_Attachments:Update()
 		AttachmentBase.ToggleMenu(self, not self.menuState)
 	end
 
-	if Input.GetKeyDown(KeyCode.X) and AttachmentBase.PlayerStatusCheck() then
+	if Input.GetKeyDown(self.firemodeKeybind) and AttachmentBase.PlayerStatusCheck() and self.currentReceiver ~= nil then
 		self:ChangeFiremode()
 	end
 
@@ -330,6 +335,9 @@ end
 
 function PF_Attachments:OnDisable()
 	if Player.actor == nil or Player.actor.isDead then return end
+
+	self.currentReceiver = nil
+
 	AttachmentBase.ToggleMenu(self, false)
 	AttachmentBase.RefreshPoints.OnDisable(self)
 	-- Slowmode stuff

@@ -58,6 +58,17 @@ PhoenixInput = {
 		}
 		return KeybindList[m_PhoenixBase.firemodeBindIndex]
 	end,
+
+	RandomAttachmentKeybind = function ()
+		local KeybindList = {
+			[0] = KeyCode.F1,
+			[1] = KeyCode.F2,
+			[2] = KeyCode.F3,
+			[3] = KeyCode.F4,
+			[4] = KeyCode.F5,
+		}
+		return KeybindList[m_PhoenixBase.randomAttachmentBindIndex]
+	end,
 }
 
 -- fuck you if you think this is yandre dev code, you just a brainnutt
@@ -290,6 +301,8 @@ local PhoenixBase = {
 		end
 
 		self.attachmentBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_attachmentBind")
+		self.firemodeBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_firemodeBind")
+		self.randomAttachmentBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_randomAttachmentBind")
 
 	end,
 
@@ -339,13 +352,17 @@ local PhoenixEvents = {
 	OnActorSpawn = function (self, actor)
 		if not actor.isPlayer then return end
 		PhoenixDebug.Print("Player Spawned", "log")
+
+		m_HudBase:FadeUI(true)
 	end,
 
 	OnActorDied = function (self, actor)
 		if not actor.isPlayer then return end
 		PhoenixDebug.Print("Player Died", "log")
 		PhoenixBase.RefreshSystems(self, nil)
+
 		m_PhoenixAttachment.wasDead = true
+		m_HudBase:FadeUI(false)
 	end,
 
 	OnPlayerWeaponSwitch = function (self, newWeapon)

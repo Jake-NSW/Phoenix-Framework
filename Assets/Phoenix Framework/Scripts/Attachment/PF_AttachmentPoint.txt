@@ -234,6 +234,8 @@ end
 function PF_AttachmentPoint:Initialise()
 	self.targets.left.gameObject.GetComponent(Button).onClick.AddListener(self, "OnClick")
 	self.targets.right.gameObject.GetComponent(Button).onClick.AddListener(self, "OnClick")
+
+	self.randomBind = PhoenixInput.RandomAttachmentKeybind()
 end
 
 function PF_AttachmentPoint:Update()
@@ -245,7 +247,7 @@ function PF_AttachmentPoint:Update()
 		self:EquipAttachment(_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(self.weaponPoint.gameObject)] + 1, false, true)
 	end
 
-	if Input.GetKeyDown(KeyCode.F1) then
+	if Input.GetKeyDown(self.randomBind) then
 		self:EquipRandomAttachment()
 	end
 end
