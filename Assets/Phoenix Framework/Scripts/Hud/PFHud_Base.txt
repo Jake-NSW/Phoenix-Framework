@@ -1,11 +1,13 @@
 ﻿-- Register the behaviour
 behaviour("PFHud_Base")
-
-
 function PFHud_Base:Start()
+	m_HudBase = self
+
 	-- Stash objects
 	self.spareAmmoText = self.targets.spareAmmoText.gameObject.GetComponent(TextMeshProUGUI)
 	self.currentAmmoText = self.targets.currentAmmoText.gameObject.GetComponent(TextMeshProUGUI)
+	self.firemodeText = self.targets.firemodeText.gameObject.GetComponent(TextMeshProUGUI)
+	self.healthText = self.targets.healthText.gameObject.GetComponent(TextMeshProUGUI)
 
 	self.animator = self.gameObject.GetComponent(Animator)
 	self.stateValue = 1
@@ -17,6 +19,7 @@ function PFHud_Base:Start()
 	self.script.AddValueMonitor("MonitorCurrentAmmo", "OnAmmoChange")
 	self.script.AddValueMonitor("MonitorSpareAmmo", "OnSpareAmmoChange")
 	self.script.AddValueMonitor("MonitorHUD", "OnHudChange")
+	self.script.AddValueMonitor("MonitorHealth", "OnHealthChange")
 
 	GameManager.hudPlayerEnabled = false
 end
@@ -26,35 +29,52 @@ function PFHud_Base:Update()
 end
 
 -- Event Functions
-function PFHud_Base:OnAmmoChange(ammo)
-	self.currentAmmoText.text = tostring(ammo)
-end
-
-function PFHud_Base:OnSpareAmmoChange(spareAmmo)
-	self.spareAmmoText.text = tostring(spareAmmo)
-end
-
--- For RF Hud
-function PFHud_Base:OnHudChange(bool)
-	GameManager.hudPlayerEnabled = false
-end
+function PFHud_Base:OnAmmoChange(ammo) self.currentAmmoText.text = tostring(ammo) end
+function PFHud_Base:OnSpareAmmoChange(spareAmmo) self.spareAmmoText.text = tostring(spareAmmo) end
+function PFHud_Base:OnHudChange(bool) GameManager.hudPlayerEnabled = false end
+function PFHud_Base:OnHealthChange(health) self.healthText.text = tostring(health) end
 
 -- Monitor Functions
 function PFHud_Base:MonitorCurrentAmmo()
 	local player = Player.actor
-	if player.isDead or player.isSwimming or player.isFallenOver or player.isInWater or player.isOnLadder or not player.activeVehicle == nil then return end
+	if player.isDead or player.isSwimming or player.isFallenOver or player.isInWater or player.isOnLadder or not player.activeVehicle == nil then return 0 end
 
 	return Player.actor.activeWeapon.ammo 
 end
+
 function PFHud_Base:MonitorSpareAmmo()
 	local player = Player.actor
-	if player.isDead or player.isSwimming or player.isFallenOver or player.isInWater or player.isOnLadder or not player.activeVehicle == nil then return end
+	if player.isDead or player.isSwimming or player.isFallenOver or player.isInWater or player.isOnLadder or not player.activeVehicle == nil then return 0 end
 
 	return Player.actor.activeWeapon.spareAmmo 
 end
 
-function PFHud_Base:MonitorHUD()
-	return GameManager.hudPlayerEnabled
+function PFHud_Base:MonitorHealth()
+	local player = Player.actor
+	if player == nil or player.isDead then return 0 end
+	return Mathf.Clamp(Mathf.FloorToInt(Player.actor.health), 0, 999)
+end
+
+function PFHud_Base:OnWeaponChange()
+	local player = Player.actor
+	if player.isDead or player.isSwimming or player.isFallenOver or player.isInWater or player.isOnLadder or not player.activeVehicle == nil then return end
+	self:FiremodeText()
+end
+
+function PFHud_Base:MonitorHUD() return GameManager.hudPlayerEnabled end
+
+function PFHud_Base:FiremodeText()
+	local state = {
+		-- Is Auto
+		["true"] = function (self)
+			self.firemodeText.text = "[AUTO]" 
+		end,
+		-- Is Single
+		["false"] = function (self)
+			self.firemodeText.text = "[SINGLE]" 
+		end
+	}
+	state[tostring(Player.actor.activeWeapon.isAuto)](self)
 end
 
 function PFHud_Base:FadeUI(stateBool)

@@ -352,6 +352,9 @@ local PhoenixEvents = {
 		if newWeapon == nil then return end
 		PhoenixDebug.Print("Player Switched Weapons to " .. newWeapon.weaponEntry.name , "log")
 		PhoenixBase.RefreshSystems(self, newWeapon)
+
+		-- Hud base stuff
+		m_HudBase:OnWeaponChange()
 	end,
 }
 

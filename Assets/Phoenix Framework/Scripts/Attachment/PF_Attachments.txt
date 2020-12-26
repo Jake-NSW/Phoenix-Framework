@@ -67,6 +67,7 @@ local AttachmentUI = {
 local AttachmentBase = {
 	SetupKeybinds = function (self)
 		self.attachmentKeybind = PhoenixInput.AttachmentMenuKeybind()
+		self.firemodeKeybind = PhoenixInput.FiremodeKeybind()
 	end,
 
 	CloneAttachmentPanel = function (self)
@@ -87,7 +88,7 @@ local AttachmentBase = {
 		self.isNight = self:isPlayingAtNight()
 
 		self.FPCamera = PlayerCamera.fpCamera
-		self.baseFov = PhoenixMath.SetupHorizontalFOV(GameObject.Find("Field Of View").GetComponentInChildren(Slider).value)
+		-- self.baseFov = PhoenixMath.SetupHorizontalFOV(GameObject.Find("Field Of View").GetComponentInChildren(Slider).value)
 		self.currentFov = self.baseFov
 
 		self.attachmentPanel = self.targets.attachmentPanel.gameObject
@@ -318,6 +319,10 @@ function PF_Attachments:Update()
 		AttachmentBase.ToggleMenu(self, not self.menuState)
 	end
 
+	if Input.GetKeyDown(KeyCode.X) and AttachmentBase.PlayerStatusCheck() then
+		self:ChangeFiremode()
+	end
+
 	if Input.GetKeyDown(KeyCode.Return) then 
 		AttachmentBase.ToggleMenu(self, false)
 	end
@@ -407,7 +412,7 @@ function PF_Attachments:RefreshReceiver(mag, receiverAttachment, attachmentPoint
 		self.currentReceiver.SetActive(true)
 		self.currentReceiver.GetComponent(DataContainer).GetGameObject("casingParticle").gameObject.SetActive(true)
 		Player.actor.activeWeapon.cooldown = self.currentReceiver.GetComponent(DataContainer).GetFloat("fireRate")
-		Player.actor.activeWeapon.isAuto = self.currentReceiver.GetComponent(DataContainer).GetBool("allowAutoShot")
+		-- Player.actor.activeWeapon.isAuto = self.currentReceiver.GetComponent(DataContainer).GetBool("allowAutoShot")
 
 		-- attachmentPoint:ModularAnimator(paramName, paramValue)
 
@@ -428,6 +433,34 @@ function PF_Attachments:isPlayingAtNight()
 		return true
 	else
 		return false
+	end
+end
+
+function PF_Attachments:ChangeFiremode()
+	local assignSound = {
+		["truetrue"] = function (self) -- Loud Auto
+			--print("Loud Auto")
+			Player.actor.activeWeapon.gameObject.GetComponent(AudioSource).clip = self.currentReceiver.GetComponent(DataContainer).GetAudioClip("loudAuto")
+		end,
+		["truefalse"] = function (self) -- Loud Single
+			--print("Loud Single")
+			Player.actor.activeWeapon.gameObject.GetComponent(AudioSource).clip = self.currentReceiver.GetComponent(DataContainer).GetAudioClip("loudSingle")
+		end,
+		["falsetrue"] = function (self) -- Suppressed Auto
+			--print("Suppressed Auto")
+			Player.actor.activeWeapon.gameObject.GetComponent(AudioSource).clip = self.currentReceiver.GetComponent(DataContainer).GetAudioClip("suppressedAuto")
+		end,
+		["falsefalse"] = function (self) -- Suppressed Single
+			--print("Suppressed Single")
+			Player.actor.activeWeapon.gameObject.GetComponent(AudioSource).clip = self.currentReceiver.GetComponent(DataContainer).GetAudioClip("suppressedSingle")
+		end,
+	}
+
+	if self.currentReceiver.GetComponent(DataContainer).GetBool("allowSingleShot") and self.currentReceiver.GetComponent(DataContainer).GetBool("allowAutoShot") then
+		Player.actor.activeWeapon.isAuto = not Player.actor.activeWeapon.isAuto
+		Player.actor.activeWeapon.animator.SetTrigger("swapfiremode")
+		m_HudBase:FiremodeText()
+		assignSound[tostring(Player.actor.activeWeapon.isLoud) .. tostring(Player.actor.activeWeapon.isAuto)](self)
 	end
 end
 
