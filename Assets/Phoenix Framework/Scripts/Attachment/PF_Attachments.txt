@@ -93,6 +93,7 @@ local AttachmentBase = {
 
 		self.randomAttachments = self.script.mutator.GetConfigurationBool("bool_randomAttachments")
 		self.autoReload = self.script.mutator.GetConfigurationBool("bool_AutoReload") 
+		self.realtimeMenu = self.script.mutator.GetConfigurationBool("bool_RealtimeMenu")
 
 		self.attachmentPanel = self.targets.attachmentPanel.gameObject
 		self.script.GetScript(self.attachmentPanel):Initialise()
@@ -302,7 +303,7 @@ function PF_Attachments:Initialise()
 end
 
 function PF_Attachments:Update()
-	if Input.GetKeyBindButtonDown(KeyBinds.Slowmotion) and self.menuUI.GetFloat("State") ~= 1 then
+	if Input.GetKeyBindButtonDown(KeyBinds.Slowmotion) and self.menuUI.GetFloat("State") ~= 1 and not self.realtimeMenu then
 		local SlowmoState = {
 			["true"] = 0.2,
 			["false"] = 1
@@ -315,8 +316,9 @@ function PF_Attachments:Update()
 	if not Player.actor.isDead and not GameManager.isPaused then
 		self.menuUI.SetFloat("State", self.menuStateNumber, 0.2 / self.transitionMultiplier, Time.unscaledDeltaTime)
 
-		Time.timeScale = PhoenixMath.Normalize(self.menuUI.GetFloat("State"), 1 , 0, 0.0325, 1 * self.slowMotionMultiplier)
-
+		if not self.realtimeMenu then
+			Time.timeScale = PhoenixMath.Normalize(self.menuUI.GetFloat("State"), 1 , 0, 0.0325, 1 * self.slowMotionMultiplier)
+		end
 		-- FOV changing stuff... decided to cut it since it would be weird to work with
 		--self.FPCamera.fieldOfView = PhoenixMath.Normalize(self.menuUI.GetFloat("State"), 1 , 0, 60, self.currentFov)
 	end
@@ -341,6 +343,8 @@ function PF_Attachments:OnDisable()
 
 	AttachmentBase.ToggleMenu(self, false)
 	AttachmentBase.RefreshPoints.OnDisable(self)
+
+	if self.realtimeMenu then return end
 	-- Slowmode stuff
 	local SlowmoState = {
 		["true"] = 0.2,
@@ -361,14 +365,14 @@ function PF_Attachments:OnEnable()
 	Player.actor.activeWeapon.gameObject.GetComponent(Animator).updateMode = AnimatorUpdateMode.Normal
 
 	self.weaponChanged = true
+	m_AttachmentPanel:OnWeaponChange()
 
 	AttachmentBase.ToggleMenu(self, false)
 	AttachmentBase.RefreshPoints.OnEnable(self)
 
-
+	if self.realtimeMenu then return end
 	-- Slowmode stuff
 	if Time.timeScale <= 0.3 then self.isSlowMode = true else self.isSlowMode = false end
-
 	local SlowmoState = {
 		["true"] = 0.2,
 		["false"] = 1
@@ -423,7 +427,7 @@ function PF_Attachments:RefreshReceiver(mag, receiverAttachment, attachmentPoint
 		-- attachmentPoint:ModularAnimator(paramName, paramValue)
 
 		-- PROJECTILES STUFF
-		Player.actor.activeWeapon.SetProjectilePrefab(receiverAttachment.gameObject.GetComponent(DataContainer).GetGameObject("projectile"))
+		-- Player.actor.activeWeapon.SetProjectilePrefab(receiverAttachment.gameObject.GetComponent(DataContainer).GetGameObject("projectile"))
 		assignSound[tostring(Player.actor.activeWeapon.isLoud) .. tostring(Player.actor.activeWeapon.isAuto)](self)
 
 	else -- If called from muzzle or firemode change

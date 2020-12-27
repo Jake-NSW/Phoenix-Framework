@@ -68,6 +68,7 @@ local AttachmentPointBase = {
 		
 				weapon.maxAmmo = attachmentData.GetFloat("magCapacity") --* self.statsMulti
 				Player.actor.speedMultiplier = attachmentData.GetFloat("playerSpeedMultiplier") --* self.statsMulti
+				weapon.SetProjectilePrefab(attachmentData.GetGameObject("projectile"))
 
 				if weapon.gameObject.GetComponent(DataContainer).GetBool("useReceiverSystem") == true then
 					m_PhoenixAttachment:RefreshReceiver(true, attachmentData.GetGameObject("receiver").gameObject, self)
@@ -130,21 +131,38 @@ local AttachmentPointBase = {
 		-- Disables old attachment
 		attachments[_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(self.weaponPoint.gameObject)]].gameObject.SetActive(false)
 		
+		local attachmentData = attachments[attachmentIndex].gameObject.GetComponent(DataContainer)
+		local doAnimator = data.GetBool("useModularAnimator")
+
+		-- Attachment panel stuff if panel is open on current attachment point
+		if m_AttachmentPanel.weaponPoint == self.weaponPoint then
+			local storage = _G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(self.weaponPoint.gameObject)]
+			m_AttachmentPanel.buttonsNest.transform.GetChild(storage -1).gameObject.GetComponent(Button).interactable = true
+			m_AttachmentPanel.buttonsNest.transform.GetChild(attachmentIndex -1).gameObject.GetComponent(Button).interactable = false
+
+			m_AttachmentPanel.statsHeaderText.text = attachmentData.GetString("attachmentName") .. " Stats"
+			m_AttachmentPanel.statsDescText.text = attachmentData.GetString("attachmentDesc")
+		end
+		
 		-- Adds new attachment to storage
 		_G.PhoenixGlobalStorage["SavedAttachments"][tostring(Player.actor.activeWeapon)][tostring(self.weaponPoint.gameObject)] = attachmentIndex
 		
 		-- Enables new attachment
 		attachments[attachmentIndex].gameObject.SetActive(true)
 
-		local attachmentData = attachments[attachmentIndex].gameObject.GetComponent(DataContainer)
-		local doAnimator = data.GetBool("useModularAnimator")
-
 		--if attachmentData.HasBool("hasNestedAttachmentPoint") and attachmentData.GetBool("hasNestedAttachmentPoint") then
 		--	-- m_PhoenixAttachment:RefreshAttachmentPoints()
 		--end
 
+		--self.currentAttachText.text = attachmentData.GetString("attachmentName")
+		--self.currentAttachIcon.sprite = attachmentData.GetString("attachmentIcon")
+
 		-- Applys stats and stuff
 		if animatorOnly then
+			if tostring(PhoenixData.GetString(data, "attachmentType", false, "poop")) == "mag" then
+				attachmentType["mag"](self, attachments[attachmentIndex].gameObject, emptyMag)
+			end
+
 			if doAnimator then 
 				local paramName = attachmentData.GetStringArray("animatorName")
 				local paramValue = attachmentData.GetFloatArray("animatorValue")
@@ -184,10 +202,14 @@ local AttachmentPointBase = {
 			PhoenixData.GetGameObject(self.targets.right.gameObject.GetComponent(DataContainer), "pointName", false, nil).gameObject.GetComponent(TextMeshProUGUI).text = "[".. tostring(PhoenixData.GetInt(pointData, "bind", false, 1)) .."] " .. PhoenixData.GetString(pointData, "pointName", false, "Yooo Setup ya gun")
 			self.targets.left.gameObject.SetActive(false)
 			self.targets.right.gameObject.SetActive(true)
+			self.currentAttachText = self.targets.right.gameObject.GetComponent(DataContainer).GetGameObject("currentAttachName").gameObject.GetComponent(TextMeshProUGUI)
+			self.currentAttachIcon = self.targets.right.gameObject.GetComponent(DataContainer).GetGameObject("currentAttachIcon").gameObject.GetComponent(Image)
 		else
 			PhoenixData.GetGameObject(self.targets.left.gameObject.GetComponent(DataContainer), "pointName", false, nil).gameObject.GetComponent(TextMeshProUGUI).text = PhoenixData.GetString(pointData, "pointName", false, "Yooo Setup ya gun") .. " [".. tostring(PhoenixData.GetInt(pointData, "bind", false, 1)) .."]"
 			self.targets.left.gameObject.SetActive(true)
 			self.targets.right.gameObject.SetActive(false)
+			self.currentAttachText = self.targets.left.gameObject.GetComponent(DataContainer).GetGameObject("currentAttachName").gameObject.GetComponent(TextMeshProUGUI)
+			self.currentAttachIcon = self.targets.left.gameObject.GetComponent(DataContainer).GetGameObject("currentAttachIcon").gameObject.GetComponent(Image)
 		end
 
 		self.bind = bindTable[tostring(PhoenixData.GetInt(pointData, "bind", false, 1))]
@@ -195,6 +217,7 @@ local AttachmentPointBase = {
 
 	OnClick = function (self)
 		m_PhoenixAttachment.sfxSource.PlayOneShot(self.targets.sfx, 7)
+		m_AttachmentPanel:RefreshAttachmentPanel(self.weaponPoint, self)
 	end,
 
 	RandomAttachment = function (self)

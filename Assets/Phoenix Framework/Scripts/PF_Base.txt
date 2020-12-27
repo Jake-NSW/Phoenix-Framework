@@ -313,6 +313,8 @@ local PhoenixBase = {
 		self.randomAttachmentBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_randomAttachmentBind")
 		self.inspectBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_InspectKeybind")
 
+		self.targets.realtimeCull.gameObject.SetActive(not self.script.mutator.GetConfigurationBool("bool_RealtimeMenu"))
+
 	end,
 
 	StoreComponents = function (self)
