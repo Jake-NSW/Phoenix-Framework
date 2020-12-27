@@ -39,6 +39,12 @@ PhoenixMath = {
 	end,
 }
 
+PhoenixUI = {
+	PrintOutString = function (textObj, string)
+		m_PhoenixBase.script.StartCoroutine(m_PhoenixBase:PrintOutText(textObj, tostring(string)))
+	end
+}
+
 PhoenixInput = {
 	AttachmentMenuKeybind = function ()
 		local KeybindList = {
@@ -407,4 +413,18 @@ function PF_Base:OnWeaponSwitch(newWeapon)
 		return
 	end
 	PhoenixEvents.OnPlayerWeaponSwitch(self, newWeapon)
+end
+
+function PF_Base:PrintOutText(textComp, msg)
+	return function()
+		local messageTable = {}
+		for i = 1, #msg do
+			messageTable[i] = msg:sub(i, i)
+		end
+		textComp.text = ""
+		for i, char in ipairs (messageTable) do
+			textComp.text = textComp.text .. char
+			coroutine.yield(WaitForSeconds(0.03))
+		end
+	end
 end

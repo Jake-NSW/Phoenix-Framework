@@ -3,6 +3,8 @@ behaviour("PFHud_Base")
 function PFHud_Base:Start()
 	m_HudBase = self
 
+	self.enabled = self.script.mutator.GetConfigurationBool("bool_CustomHudEnabled")
+	if not self.enabled then return end
 	-- Stash objects
 	self.spareAmmoText = self.targets.spareAmmoText.gameObject.GetComponent(TextMeshProUGUI)
 	self.currentAmmoText = self.targets.currentAmmoText.gameObject.GetComponent(TextMeshProUGUI)
@@ -18,13 +20,24 @@ function PFHud_Base:Start()
 	self.animator = self.gameObject.GetComponent(Animator)
 	self.stateValue = 0
 	self.currentState = false
-	
-	self.rfHitmarker = GameObject.Find("Hitmarker").gameObject.GetComponent(RawImage)
-	self.hitmarker = self.targets.hitmarker.gameObject
 
+	-- Find Ravenfield UI and disable it
+	GameObject.Find("Ingame UI Container(Clone)").Find("Ingame UI/Panel").gameObject.GetComponent(Image).color = Color(0,0,0,0)
+	GameObject.Find("Current Ammo Text").gameObject.SetActive(false)
+	GameObject.Find("Spare Ammo Text").gameObject.SetActive(false)
+	GameObject.Find("Vehicle Health Background").gameObject.SetActive(false)
+	GameObject.Find("Resupply Health").gameObject.SetActive(false)
+	GameObject.Find("Resupply Ammo").gameObject.SetActive(false)
+	GameObject.Find("Squad Text").gameObject.GetComponent(Text).color = Color(0,0,0,0)
+	GameObject.Find("Sight Text").gameObject.SetActive(false)
+	GameObject.Find("Weapon Image").gameObject.SetActive(false)
+	GameObject.Find("Health Text").gameObject.transform.parent.gameObject.SetActive(false)
+
+
+	self.hitmarker = self.targets.hitmarker.gameObject
 	self.ammo = self.targets.ammo.gameObject
 
-	self.hitmarker.GetComponent(RawImage).texture = self.rfHitmarker.texture
+	-- self.hitmarker.GetComponent(RawImage).texture = self.rfHitmarker.texture
 
 	self.canvasGroup = self.gameObject.GetComponent(CanvasGroup)
 
@@ -34,19 +47,29 @@ function PFHud_Base:Start()
 	self.script.AddValueMonitor("MonitorHUD", "OnHudChange")
 	self.script.AddValueMonitor("MonitorHealth", "OnHealthChange")
 	self.script.AddValueMonitor("MonitorVehicleHealth", "OnVehicleHealthChange")
-	self.script.AddValueMonitor("MonitorHitmarker", "OnHitmarkerChange")
+	-- self.script.AddValueMonitor("MonitorHitmarker", "OnHitmarkerChange")
 	-- self.script.AddValueMonitor("MonitorWeaponName", "OnWeaponNameChange")
 
-	GameManager.hudPlayerEnabled = false
+	-- Changes opacity of objects depending on weither they have it enabled
+	local groupAlpha = {
+		["true"] = function (canvasGroupGO)
+			canvasGroupGO.gameObject.GetComponent(CanvasGroup).alpha = 1
+		end,
+		["false"] = function (canvasGroupGO)
+			canvasGroupGO.gameObject.GetComponent(CanvasGroup).alpha = 0
+		end,
+	}
+
+	groupAlpha[tostring(self.script.mutator.GetConfigurationBool("bool_LowHealthBlood"))](self.bloodVignette)
+	groupAlpha[tostring(self.script.mutator.GetConfigurationBool("bool_ShowAmmoCounter"))](self.targets.ammoPanel.gameObject)
+	groupAlpha[tostring(self.script.mutator.GetConfigurationBool("bool_ShowHealthCounter"))](self.targets.healthPanel.gameObject)
+	groupAlpha[tostring(self.script.mutator.GetConfigurationBool("bool_ShowSquad"))](self.targets.squadPanel.gameObject)
 end
 
 -- Event functions
 function PFHud_Base:Update()
+	if not self.enabled then return end
 	self.animator.SetFloat("Blend", self.stateValue, 0.18, Time.unscaledDeltaTime)
-
-	if Input.GetKeyDown(KeyCode.End) then
-		self.gameObject.GetComponent(Canvas).enabled = not self.gameObject.GetComponent(Canvas).enabled
-	end
 end
 
 -- Event Functions
@@ -63,7 +86,9 @@ function PFHud_Base:OnSpareAmmoChange(spareAmmo)
 	self.spareAmmoText.text = tostring(spareAmmo) 
 end
 
-function PFHud_Base:OnHudChange(bool) GameManager.hudPlayerEnabled = false end
+function PFHud_Base:OnHudChange(bool)
+	self.gameObject.GetComponent(Canvas).enabled = bool
+end
 
 function PFHud_Base:OnHealthChange(health)
 	self.healthText.text = tostring(health) 
@@ -77,7 +102,7 @@ function PFHud_Base:OnVehicleHealthChange(vehicleHealth)
 	end
 	self.vehicleHealth.SetActive(true)
 	self.vehicleHealthText.text = tostring(Mathf.FloorToInt(vehicleHealth))
-	self.vehicleNameText.text = Player.actor.activeVehicle.name
+	PhoenixUI.PrintOutString(self.vehicleNameText, Player.actor.activeVehicle.name)
 end
 
 function PFHud_Base:OnHitmarkerChange(bool)
@@ -118,10 +143,21 @@ end
 
 -- Other
 function PFHud_Base:OnWeaponChange()
+	if not self.enabled then return end
+
 	local player = Player.actor
 	if player.isDead or player.isSwimming or player.isFallenOver or player.isInWater or player.isOnLadder or not player.activeVehicle == nil then return end
 	self:FiremodeText()
-	self.weaponNameText.text = Player.actor.activeWeapon.weaponEntry.name
+
+	local data = Player.actor.activeWeapon.gameObject.GetComponent(DataContainer)
+
+	if data ~= nil and data.GetString("weaponName") ~= nil then
+		PhoenixUI.PrintOutString(self.weaponNameText, Player.actor.activeWeapon.gameObject.GetComponent(DataContainer).GetString("weaponName"))
+		return
+	end
+	PhoenixUI.PrintOutString(self.weaponNameText, Player.actor.activeWeapon.weaponEntry.name)
+
+	--self.weaponNameText.text = Player.actor.activeWeapon.weaponEntry.name
 end
 
 function PFHud_Base:MonitorHUD() return GameManager.hudPlayerEnabled end
@@ -137,6 +173,7 @@ function PFHud_Base:FiremodeText()
 			self.firemodeText.text = "[SINGLE]" 
 		end
 	}
+	if not self.script.mutator.GetConfigurationBool("bool_CustomHudEnabled") then return end
 	state[tostring(Player.actor.activeWeapon.isAuto)](self)
 end
 
@@ -151,5 +188,6 @@ function PFHud_Base:FadeUI(stateBool)
 			self.currentState = false
 		end
 	}
+	if not self.script.mutator.GetConfigurationBool("bool_CustomHudEnabled") then return end
 	state[tostring(stateBool)](self)
 end
