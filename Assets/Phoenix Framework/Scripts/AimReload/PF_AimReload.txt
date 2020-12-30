@@ -13,11 +13,8 @@ end
 
 function PF_AimReload:Update()
 	local player = Player.actor
-	if player.isDead or player.isSwimming or player.isFallenOver or player.isInWater or player.isOnLadder or not player.activeVehicle == nil then return end
+	if player.isDead or player.isSwimming or player.isFallenOver or player.isInWater or player.isOnLadder then return end
 	
-	if Input.GetKeyBindButton(KeyBinds.Aim) then
-		self.weaponAnimator.SetFloat("reloadaim", 1, self.transitionDamping, Time.deltaTime)
-	else
-		self.weaponAnimator.SetFloat("reloadaim", 0, self.transitionDamping, Time.deltaTime)
-	end
+	if Input.GetKeyBindButton(KeyBinds.Aim) then self.weaponAnimator.SetFloat("reloadaim", 1, self.transitionDamping, Time.deltaTime) return end
+	self.weaponAnimator.SetFloat("reloadaim", 0, self.transitionDamping, Time.deltaTime)
 end

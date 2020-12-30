@@ -8,23 +8,23 @@ local AttachmentPointBase = {
 				local weapon = Player.actor.activeWeapon
 				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
 
-				weapon.aimFov = attachmentData.GetFloat("aimFov")
+				weapon.aimFov = PhoenixData.GetFloat(attachmentData ,"aimFov", false, 60)
 			end,
 		
 			["muzzles"] = function (self, attachment) -- isLoud and muzzle flash visibilty
 				local weapon = Player.actor.activeWeapon
 				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
 
-				weapon.isLoud = not attachment.gameObject.GetComponent(DataContainer).GetBool("isSilent")
-				weapon.gameObject.GetComponent(DataContainer).GetGameObject("muzzleFlash").SetActive(not attachmentData.GetBool("hideFlash"))
+				weapon.isLoud = not PhoenixData.GetBool(attachmentData ,"isSilent", false, false)
+				PhoenixData.GetGameObject(weapon.gameObject.GetComponent(DataContainer) ,"muzzleFlash", false, nil).SetActive(not PhoenixData.GetBool(attachmentData ,"hideFlash", false, false))
 
 				-- Not needed cause of receiver system
-				if weapon.gameObject.GetComponent(DataContainer).GetBool("useReceiverSystem") == true then
-					m_PhoenixAttachment:RefreshReceiver(false, nil)
+				if PhoenixData.GetBool(weapon.gameObject.GetComponent(DataContainer) ,"useReceiverSystem", false, false) == true then
+					self.attachmentBase:RefreshReceiver(false, nil)
 					return
 				end
-
-				weapon.gameObject.GetComponent(AudioSource).clip = attachmentData.GetAudioClip("FiringSound")
+				
+				weapon.gameObject.GetComponent(AudioSource).clip = PhoenixData.GetAudioClip(attachmentData ,"FiringSound", false, nil)
 			end,
 		
 			["toggleableRail"] = function(self, attachment) -- Toggleable Rail, when pressing x it either enables or disables the rail power
@@ -34,55 +34,47 @@ local AttachmentPointBase = {
 				local weapon = Player.actor.activeWeapon
 				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
 
-				weapon.recoilBaseKickback = attachmentData.GetFloat("kickback")
-				weapon.recoilKickbackProneMultiplier = attachmentData.GetFloat("kickbackProneMultiplier")
-				weapon.recoilRandomKickback = attachmentData.GetFloat("randomKick")
-				weapon.recoilSnapDuration = attachmentData.GetFloat("snapDuration")
-				weapon.recoilSnapFrequency = attachmentData.GetFloat("snapFrequency")
-				weapon.recoilSnapMagnitude = attachmentData.GetFloat("snapMagnitude")
-				weapon.recoilSnapProneMultiplier = attachmentData.GetFloat("snapProneMultiplier")
+				weapon.recoilBaseKickback = PhoenixData.GetFloat(attachmentData ,"kickback", false, 0)
+				weapon.recoilKickbackProneMultiplier = PhoenixData.GetFloat(attachmentData ,"kickbackProneMultiplier", false, 0)
+				weapon.recoilRandomKickback = PhoenixData.GetFloat(attachmentData ,"randomKick", false, 0)
+				weapon.recoilSnapDuration = PhoenixData.GetFloat(attachmentData ,"snapDuration", false, 0)
+				weapon.recoilSnapFrequency = PhoenixData.GetFloat(attachmentData ,"snapFrequency", false, 0)
+				weapon.recoilSnapMagnitude = PhoenixData.GetFloat(attachmentData ,"snapMagnitude", false, 0)
+				weapon.recoilSnapProneMultiplier = PhoenixData.GetFloat(attachmentData ,"snapProneMultiplier", false, 0)
 
-				m_PhoenixAttachment.statsRecoilSlider.value = attachmentData.GetInt("recoilStat")
+				self.attachmentBase.statsRecoilSlider.value = PhoenixData.GetInt(attachmentData, "recoilStat", false, 0)
 		
 			end,
 		
 			["underbarrel"] = function (self, attachment) -- Controls followup spread
 				local weapon = Player.actor.activeWeapon
 				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
-		
-				--if self.script.mutator.GetConfigurationBool("bool_ChangeStats") then
-					weapon.followupSpread.maxSpreadAim = attachmentData.GetFloat("maxSpreadAim")-- * selfVar.statsMulti
-					weapon.followupSpread.maxSpreadHip = attachmentData.GetFloat("maxSpreadHip")-- * selfVar.statsMulti
-					weapon.followupSpread.proneMultiplier = attachmentData.GetFloat("proneMultiplier")-- * selfVar.statsMulti
-					weapon.followupSpread.spreadDissipateTime = attachmentData.GetFloat("spreadDissipateTime")-- * selfVar.statsMulti
-					weapon.followupSpread.spreadGain = attachmentData.GetFloat("spreadGain")-- * selfVar.statsMulti
-					weapon.followupSpread.spreadStayTime = attachmentData.GetFloat("spreadStayTime")-- * selfVar.statsMulti
 
-					m_PhoenixAttachment.statsSpreadSlider.value = attachmentData.GetInt("spreadStat")
-				--end
+				weapon.followupSpread.maxSpreadAim = PhoenixData.GetFloat(attachmentData ,"maxSpreadAim", false, 0)
+				weapon.followupSpread.maxSpreadHip = PhoenixData.GetFloat(attachmentData ,"maxSpreadHip", false, 0)
+				weapon.followupSpread.proneMultiplier = PhoenixData.GetFloat(attachmentData ,"proneMultiplier", false, 0)
+				weapon.followupSpread.spreadDissipateTime = PhoenixData.GetFloat(attachmentData ,"spreadDissipateTime", false, 0)
+				weapon.followupSpread.spreadGain = PhoenixData.GetFloat(attachmentData ,"spreadGain", false, 0)
+				weapon.followupSpread.spreadStayTime = PhoenixData.GetFloat(attachmentData ,"spreadStayTime", false, 0)
+
+				self.attachmentBase.statsSpreadSlider.value = attachmentData.GetInt("spreadStat")
+
 			end,
 		
 			["mag"] = function (self, attachment, emptyMag) -- Changes player movement speed and ammo count		
 				local weapon = Player.actor.activeWeapon
 				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
 		
-				weapon.maxAmmo = attachmentData.GetFloat("magCapacity") --* self.statsMulti
-				Player.actor.speedMultiplier = attachmentData.GetFloat("playerSpeedMultiplier") --* self.statsMulti
-				weapon.SetProjectilePrefab(attachmentData.GetGameObject("projectile"))
-
-				if weapon.gameObject.GetComponent(DataContainer).GetBool("useReceiverSystem") == true then
-					m_PhoenixAttachment:RefreshReceiver(true, attachmentData.GetGameObject("receiver").gameObject, self)
+				weapon.maxAmmo = PhoenixData.GetFloat(attachmentData ,"magCapacity", false, 0)
+				Player.actor.speedMultiplier = PhoenixData.GetFloat(attachmentData ,"playerSpeedMultiplier", false, 0)
+				weapon.SetProjectilePrefab(PhoenixData.GetGameObject(attachmentData ,"projectile", false, 0))
+				
+				if PhoenixData.GetBool(weapon.gameObject.GetComponent(DataContainer) ,"useReceiverSystem", false, false) == true then
+					self.attachmentBase:RefreshReceiver(true, PhoenixData.GetGameObject(attachmentData ,"receiver", false, 0).gameObject, self)
 				end
-
+				
 				if emptyMag then 
 					Player.actor.activeWeapon.ammo = 0
-				end
-
-				weapon.maxAmmo = attachmentData.GetFloat("magCapacity") --* self.statsMulti
-				Player.actor.speedMultiplier = attachmentData.GetFloat("playerSpeedMultiplier") --* self.statsMulti
-				if weapon.gameObject.GetComponent(DataContainer).GetBool("useReceiverSystem") == true then
-					m_PhoenixAttachment:RefreshReceiver(true, attachmentData.GetGameObject("receiver").gameObject, self)
-					return
 				end
 			end,
 		
@@ -216,7 +208,7 @@ local AttachmentPointBase = {
 	end,
 
 	OnClick = function (self)
-		m_PhoenixAttachment.sfxSource.PlayOneShot(self.targets.sfx, 7)
+		self.attachmentBase.sfxSource.PlayOneShot(self.targets.sfx, 7)
 		m_AttachmentPanel:RefreshAttachmentPanel(self.weaponPoint, self)
 	end,
 
@@ -259,10 +251,12 @@ function PF_AttachmentPoint:Initialise()
 	self.targets.right.gameObject.GetComponent(Button).onClick.AddListener(self, "OnClick")
 
 	self.randomBind = PhoenixInput.RandomAttachmentKeybind()
+	
+	self.attachmentBase = m_PhoenixAttachment
 end
 
 function PF_AttachmentPoint:Update()
-	if self.weaponPoint == nil or not m_PhoenixAttachment.menuState then return end
+	if self.weaponPoint == nil or not self.attachmentBase.menuState then return end
 
 	self.gameObject.transform.position = PlayerCamera.activeCamera.WorldToScreenPoint(self.weaponPoint.gameObject.transform.position)
 

@@ -5,17 +5,35 @@ function PFHud_Base:Start()
 
 	self.enabled = self.script.mutator.GetConfigurationBool("bool_CustomHudEnabled")
 	if not self.enabled then return end
+
+	local hudPresets = {
+		[0] = function (self)
+			self.targets.preset1.gameObject.SetActive(true)
+			self.currentPreset = self.targets.preset1.gameObject.GetComponent(DataContainer)
+		end,
+		[1] = function (self)
+			self.targets.preset2.gameObject.SetActive(true)
+			self.currentPreset = self.targets.preset2.gameObject.GetComponent(DataContainer)
+		end,
+	}
+
+	local preset = self.script.mutator.GetConfigurationDropdown("dropdown_HudPreset")
+	hudPresets[preset](self)
+
 	-- Stash objects
-	self.spareAmmoText = self.targets.spareAmmoText.gameObject.GetComponent(TextMeshProUGUI)
-	self.currentAmmoText = self.targets.currentAmmoText.gameObject.GetComponent(TextMeshProUGUI)
-	self.firemodeText = self.targets.firemodeText.gameObject.GetComponent(TextMeshProUGUI)
-	self.healthText = self.targets.healthText.gameObject.GetComponent(TextMeshProUGUI)
-	self.vehicleHealthText = self.targets.vehicleHealthText.gameObject.GetComponent(TextMeshProUGUI)
-	self.weaponNameText = self.targets.weaponNameText.gameObject.GetComponent(TextMeshProUGUI)
-	self.vehicleNameText = self.targets.vehicleNameText.gameObject.GetComponent(TextMeshProUGUI)
+	self.spareAmmoText = self.currentPreset.GetGameObject("spareAmmoText").gameObject.GetComponent(TextMeshProUGUI)
+	self.currentAmmoText = self.currentPreset.GetGameObject("currentAmmoText").gameObject.GetComponent(TextMeshProUGUI)
+	self.firemodeText = self.currentPreset.GetGameObject("firemodeText").gameObject.GetComponent(TextMeshProUGUI)
+	self.healthText = self.currentPreset.GetGameObject("healthText").gameObject.GetComponent(TextMeshProUGUI)
+	self.vehicleHealthText = self.currentPreset.GetGameObject("vehicleHealthText").gameObject.GetComponent(TextMeshProUGUI)
+	self.weaponNameText = self.currentPreset.GetGameObject("weaponNameText").gameObject.GetComponent(TextMeshProUGUI)
+	self.vehicleNameText = self.currentPreset.GetGameObject("vehicleNameText").gameObject.GetComponent(TextMeshProUGUI)
+	self.healthBar = self.currentPreset.GetGameObject("healthBar").gameObject.GetComponent(Image)
+	self.vehicleHealthBar = self.currentPreset.GetGameObject("vehicleHealthBar").gameObject.GetComponent(Image)
 
 	self.bloodVignette = self.targets.bloodVignette.gameObject.GetComponent(Image)
-	self.vehicleHealth = self.targets.vehicleHealth.gameObject
+	self.vehicleHealth = self.currentPreset.GetGameObject("vehicleHealth").gameObject
+	self.weaponNamePanel = self.currentPreset.GetGameObject("weaponNamePanel").gameObject
 	
 	self.animator = self.gameObject.GetComponent(Animator)
 	self.stateValue = 0
@@ -34,8 +52,8 @@ function PFHud_Base:Start()
 	GameObject.Find("Health Text").gameObject.transform.parent.gameObject.SetActive(false)
 
 
-	self.hitmarker = self.targets.hitmarker.gameObject
-	self.ammo = self.targets.ammo.gameObject
+	-- self.hitmarker = self.targets.hitmarker.gameObject
+	self.ammo = self.currentPreset.GetGameObject("ammo").gameObject
 
 	-- self.hitmarker.GetComponent(RawImage).texture = self.rfHitmarker.texture
 
@@ -47,6 +65,7 @@ function PFHud_Base:Start()
 	self.script.AddValueMonitor("MonitorHUD", "OnHudChange")
 	self.script.AddValueMonitor("MonitorHealth", "OnHealthChange")
 	self.script.AddValueMonitor("MonitorVehicleHealth", "OnVehicleHealthChange")
+	self.script.AddValueMonitor("MonitorActiveVehicle", "OnVehicleChange")
 	-- self.script.AddValueMonitor("MonitorHitmarker", "OnHitmarkerChange")
 	-- self.script.AddValueMonitor("MonitorWeaponName", "OnWeaponNameChange")
 
@@ -61,9 +80,9 @@ function PFHud_Base:Start()
 	}
 
 	groupAlpha[tostring(self.script.mutator.GetConfigurationBool("bool_LowHealthBlood"))](self.bloodVignette)
-	groupAlpha[tostring(self.script.mutator.GetConfigurationBool("bool_ShowAmmoCounter"))](self.targets.ammoPanel.gameObject)
-	groupAlpha[tostring(self.script.mutator.GetConfigurationBool("bool_ShowHealthCounter"))](self.targets.healthPanel.gameObject)
-	groupAlpha[tostring(self.script.mutator.GetConfigurationBool("bool_ShowSquad"))](self.targets.squadPanel.gameObject)
+	groupAlpha[tostring(self.script.mutator.GetConfigurationBool("bool_ShowAmmoCounter"))](self.currentPreset.GetGameObject("ammoPanel").gameObject)
+	groupAlpha[tostring(self.script.mutator.GetConfigurationBool("bool_ShowHealthCounter"))](self.currentPreset.GetGameObject("healthPanel").gameObject)
+	groupAlpha[tostring(self.script.mutator.GetConfigurationBool("bool_ShowSquad"))](self.currentPreset.GetGameObject("squadPanel").gameObject)
 end
 
 -- Event functions
@@ -91,7 +110,8 @@ function PFHud_Base:OnHudChange(bool)
 end
 
 function PFHud_Base:OnHealthChange(health)
-	self.healthText.text = tostring(health) 
+	self.healthText.text = tostring(health)
+	self.healthBar.fillAmount = PhoenixMath.Normalize(health, 0, 100, 0, 1)
 	self.bloodVignette.color = Color(1, 1, 1, PhoenixMath.Normalize(health, 0, 40, 0.5, 0)) 
 end
 
@@ -101,8 +121,15 @@ function PFHud_Base:OnVehicleHealthChange(vehicleHealth)
 		return
 	end
 	self.vehicleHealth.SetActive(true)
+	self.vehicleHealthBar.fillAmount = PhoenixMath.Normalize(vehicleHealth, 0, Player.actor.activeVehicle.maxHealth, 0, 1)
 	self.vehicleHealthText.text = tostring(Mathf.FloorToInt(vehicleHealth))
-	PhoenixUI.PrintOutString(self.vehicleNameText, Player.actor.activeVehicle.name)
+
+end
+
+function PFHud_Base:OnVehicleChange(newVehicle)
+	if newVehicle == nil then self.weaponNamePanel.SetActive(true) return end
+	PhoenixUI.PrintOutString(self.vehicleNameText, newVehicle.name)
+	if Player.actor.activeWeapon == nil or Player.actor.activeWeapon.weaponEntry == nil then self.weaponNamePanel.SetActive(false) end
 end
 
 function PFHud_Base:OnHitmarkerChange(bool)
@@ -135,6 +162,11 @@ end
 function PFHud_Base:MonitorVehicleHealth()
 	if Player.actor.activeVehicle == nil then return nil end
 	return Player.actor.activeVehicle.health
+end
+
+function PFHud_Base:MonitorActiveVehicle()
+	if Player.actor.activeVehicle == nil then return nil end
+	return Player.actor.activeVehicle
 end
 
 function PFHud_Base:MonitorHitmarker()

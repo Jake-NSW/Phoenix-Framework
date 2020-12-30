@@ -9,7 +9,7 @@ function PFHud_Squads:Start()
 end
 
 function PFHud_Squads:MonitorSquadOrder()
-	if Player.actor == nil or Player.actor.isDead then return end
+	if Player.actor == nil then return end
 	return self.rfOrderText.text
 end
 

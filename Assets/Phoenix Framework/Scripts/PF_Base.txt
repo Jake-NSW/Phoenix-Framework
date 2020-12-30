@@ -218,26 +218,44 @@ PhoenixData = {
 
 	GetSprite = function (container, id, isArray, nilValue)
 		local isArraySwitch = {
-			["true"] = function ()
-
+			["true"] = function (container, id, nilValue)
+				if container == nil or container.GetSpriteArray(id) == nil then 
+					PhoenixDebug.Print("Could not find " .. id .. " array on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
+					return nilValue 
+				end
+				return container.GetSpritepArray(id)
 			end,
 
-			["false"] = function ()
-
+			["false"] = function (container, id, nilValue)
+				if container == nil or container.HasSprite(id) == nil or not container.GetSprite(id) then 
+					PhoenixDebug.Print("Could not find " .. tostring(id) .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
+					return nilValue 
+				end
+				return container.GetSprite(id)
 			end,
 		}
+		return isArraySwitch[tostring(isArray)](container, id, nilValue)
 	end,
 
 	GetAudioClip = function (container, id, isArray, nilValue)
 		local isArraySwitch = {
-			["true"] = function ()
-
+			["true"] = function (container, id, nilValue)
+				if container == nil or container.GetAudioClipArray(id) == nil then 
+					PhoenixDebug.Print("Could not find " .. id .. " array on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
+					return nilValue 
+				end
+				return container.GetAudioClipArray(id)
 			end,
 
-			["false"] = function ()
-
+			["false"] = function (container, id, nilValue)
+				if container == nil or container.HasAudioClip(id) == nil or not container.GetAudioClip(id) then 
+					PhoenixDebug.Print("Could not find " .. tostring(id) .. " on " .. tostring(container) .. ". Setting value to ".. tostring(nilValue), "warning")
+					return nilValue 
+				end
+				return container.GetAudioClip(id)
 			end,
 		}
+		return isArraySwitch[tostring(isArray)](container, id, nilValue)
 	end,
 
 	GetMaterial = function (container, id, isArray, nilValue)
@@ -321,6 +339,8 @@ local PhoenixBase = {
 
 		self.targets.realtimeCull.gameObject.SetActive(not self.script.mutator.GetConfigurationBool("bool_RealtimeMenu"))
 
+		self.useCameraAnimation = self.script.mutator.GetConfigurationBool("bool_enabledCameraAnim")
+		self.useInspectAnimation = self.script.mutator.GetConfigurationBool("bool_enabledInspectAnim")
 	end,
 
 	StoreComponents = function (self)
@@ -358,8 +378,8 @@ local PhoenixBase = {
 		if not usePhoenix then return end
 
 		self.AttachmentSystem.SetActive(PhoenixData.GetBool(dataContainer, "useAttachmentSystem", false, false))
-		self.CameraAnimation.SetActive(PhoenixData.GetBool(dataContainer, "useCameraAnimation", false, false))
-		self.InspectAnimation.SetActive(PhoenixData.GetBool(dataContainer, "useInspectAnimation", false, false))
+		self.CameraAnimation.SetActive(PhoenixData.GetBool(dataContainer, "useCameraAnimation", false, false) and self.useCameraAnimation)
+		self.InspectAnimation.SetActive(PhoenixData.GetBool(dataContainer, "useInspectAnimation", false, false) and self.useInspectAnimation)
 		self.AimReloading.SetActive(PhoenixData.GetBool(dataContainer, "useAimReload", false, false))
 
 	end,
@@ -371,6 +391,8 @@ local PhoenixEvents = {
 		PhoenixDebug.Print("Player Spawned", "log")
 
 		m_HudBase:FadeUI(true)
+
+		
 	end,
 
 	OnActorDied = function (self, actor)
@@ -383,11 +405,10 @@ local PhoenixEvents = {
 	end,
 
 	OnPlayerWeaponSwitch = function (self, newWeapon)
-		if newWeapon == nil then return end
+		if newWeapon == nil or newWeapon.weaponEntry == nil then PhoenixBase.RefreshSystems(self, nil) return end
 		PhoenixDebug.Print("Player Switched Weapons to " .. newWeapon.weaponEntry.name , "log")
 		PhoenixBase.RefreshSystems(self, newWeapon)
 
-		-- Hud base stuff
 		m_HudBase:OnWeaponChange()
 	end,
 }
@@ -405,13 +426,13 @@ end
 -- Sets up Events
 function PF_Base:OnActorSpawn(actor) PhoenixEvents.OnActorSpawn(self, actor) end
 function PF_Base:OnActorDied(actor) PhoenixEvents.OnActorDied(self, actor) end
-function PF_Base:ReturnActiveWeapon() return Player.actor.activeWeapon end
+
+function PF_Base:ReturnActiveWeapon()
+	if Player.actor.isFallenOver then return nil end
+	return Player.actor.activeWeapon 
+end
 
 function PF_Base:OnWeaponSwitch(newWeapon)
-	if newWeapon == nil or Player.actor.activeVehicle ~= nil then
-		PhoenixEvents.OnPlayerWeaponSwitch(self, nil)
-		return
-	end
 	PhoenixEvents.OnPlayerWeaponSwitch(self, newWeapon)
 end
 

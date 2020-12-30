@@ -303,6 +303,8 @@ function PF_Attachments:Initialise()
 end
 
 function PF_Attachments:Update()
+	if Time.timeScale < 0.02 then return end
+
 	if Input.GetKeyBindButtonDown(KeyBinds.Slowmotion) and self.menuUI.GetFloat("State") ~= 1 and not self.realtimeMenu then
 		local SlowmoState = {
 			["true"] = 0.2,
@@ -313,7 +315,7 @@ function PF_Attachments:Update()
 		self.slowMotionMultiplier = SlowmoState[tostring(self.isSlowMode)]
 	end
 
-	if not Player.actor.isDead and not GameManager.isPaused then
+	if not Player.actor.isDead and not GameManager.isPaused and (self.menuUI.GetFloat("State") ~= 1 or self.menuUI.GetFloat("State") ~= 2) then
 		self.menuUI.SetFloat("State", self.menuStateNumber, 0.2 / self.transitionMultiplier, Time.unscaledDeltaTime)
 
 		if not self.realtimeMenu then
@@ -331,8 +333,9 @@ function PF_Attachments:Update()
 		self:ChangeFiremode()
 	end
 
-	if Input.GetKeyDown(KeyCode.Return) then 
+	if Input.GetKeyBindButtonDown(KeyBinds.OpenLoadout) then
 		AttachmentBase.ToggleMenu(self, false)
+		self.wasDead = true
 	end
 end
 
