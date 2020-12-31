@@ -83,6 +83,15 @@ PhoenixInput = {
 		}
 		return KeybindList[m_PhoenixBase.inspectBindIndex]
 	end,
+
+	RailmountToggleKeybind = function ()
+		local KeybindList = {
+			[0] = KeyCode.C,
+			[1] = KeyCode.V,
+			[2] = KeyCode.N,
+		}
+		return KeybindList[m_PhoenixBase.railToggleBindIndex]
+	end,
 }
 
 -- fuck you if you think this is yandre dev code, you just a brainnutt
@@ -336,6 +345,7 @@ local PhoenixBase = {
 		self.firemodeBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_firemodeBind")
 		self.randomAttachmentBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_randomAttachmentBind")
 		self.inspectBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_InspectKeybind")
+		self.railToggleBindIndex = self.script.mutator.GetConfigurationDropdown("dropdown_ToggleRailKeybind")
 
 		self.targets.realtimeCull.gameObject.SetActive(not self.script.mutator.GetConfigurationBool("bool_RealtimeMenu"))
 

@@ -68,6 +68,7 @@ local AttachmentBase = {
 	SetupKeybinds = function (self)
 		self.attachmentKeybind = PhoenixInput.AttachmentMenuKeybind()
 		self.firemodeKeybind = PhoenixInput.FiremodeKeybind()
+		self.railToggleKeybind = PhoenixInput.RailmountToggleKeybind()
 	end,
 
 	CloneAttachmentPanel = function (self)
@@ -333,6 +334,10 @@ function PF_Attachments:Update()
 		self:ChangeFiremode()
 	end
 
+	if Input.GetKeyDown(self.railToggleKeybind) and AttachmentBase.PlayerStatusCheck() then
+		self.rail.SetActive(not self.rail.activeSelf)
+	end
+
 	if Input.GetKeyBindButtonDown(KeyBinds.OpenLoadout) then
 		AttachmentBase.ToggleMenu(self, false)
 		self.wasDead = true
@@ -343,6 +348,7 @@ function PF_Attachments:OnDisable()
 	if Player.actor == nil or Player.actor.isDead then return end
 
 	self.currentReceiver = nil
+	self.rail = nil
 
 	AttachmentBase.ToggleMenu(self, false)
 	AttachmentBase.RefreshPoints.OnDisable(self)

@@ -28,6 +28,9 @@ local AttachmentPointBase = {
 			end,
 		
 			["toggleableRail"] = function(self, attachment) -- Toggleable Rail, when pressing x it either enables or disables the rail power
+				local attachmentData = attachment.gameObject.GetComponent(DataContainer)
+				
+				self.attachmentBase.rail = attachmentData.GetGameObject("toggleable").gameObject
 			end,
 		
 			["stock"] = function (self, attachment) -- Changes recoil and aimin speed
@@ -57,7 +60,7 @@ local AttachmentPointBase = {
 				weapon.followupSpread.spreadGain = PhoenixData.GetFloat(attachmentData ,"spreadGain", false, 0)
 				weapon.followupSpread.spreadStayTime = PhoenixData.GetFloat(attachmentData ,"spreadStayTime", false, 0)
 
-				self.attachmentBase.statsSpreadSlider.value = attachmentData.GetInt("spreadStat")
+				self.attachmentBase.statsSpreadSlider.value = PhoenixData.GetInt(attachmentData, "spreadStat", false, 0)
 
 			end,
 		
@@ -69,6 +72,10 @@ local AttachmentPointBase = {
 				Player.actor.speedMultiplier = PhoenixData.GetFloat(attachmentData ,"playerSpeedMultiplier", false, 0)
 				weapon.SetProjectilePrefab(PhoenixData.GetGameObject(attachmentData ,"projectile", false, 0))
 				
+				self.attachmentBase.statsFireRateSlider.value = PhoenixData.GetInt(attachmentData, "firerateStat", false, 0)
+				self.attachmentBase.statsDamgeSlider.value = PhoenixData.GetInt(attachmentData, "damageStat", false, 0)
+				self.attachmentBase.statsMoveSpeedSlider.value = PhoenixData.GetInt(attachmentData, "moveSpeedStat", false, 0)
+
 				if PhoenixData.GetBool(weapon.gameObject.GetComponent(DataContainer) ,"useReceiverSystem", false, false) == true then
 					self.attachmentBase:RefreshReceiver(true, PhoenixData.GetGameObject(attachmentData ,"receiver", false, 0).gameObject, self)
 				end
@@ -153,6 +160,10 @@ local AttachmentPointBase = {
 		if animatorOnly then
 			if tostring(PhoenixData.GetString(data, "attachmentType", false, "poop")) == "mag" then
 				attachmentType["mag"](self, attachments[attachmentIndex].gameObject, emptyMag)
+			end
+
+			if tostring(PhoenixData.GetString(data, "attachmentType", false, "poop")) == "toggleableRail" then
+				attachmentType["toggleableRail"](self, attachments[attachmentIndex].gameObject, emptyMag)
 			end
 
 			if doAnimator then 
