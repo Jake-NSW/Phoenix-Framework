@@ -428,17 +428,6 @@ local PhoenixEvents = {
 function PF_Base:Start()
 	m_PhoenixBase = self
 
-	if GameManager.buildNumber < 23 or Player.actor.name == "Unknown Player" or self.script.mutator.GetConfigurationBool("bool_piracy") then
-		local renders = GameObject.FindObjectsOfType(Renderer)
-		for i,v in pairs(renders) do
-			local matArray = {}
-			for i = 1, #v.materials + 1 do
-				matArray[i] = self.targets.jakeCoinMat
-			end
-			v.materials = matArray
-		end
-		RenderSettings.skybox = self.targets.skybox
-		return
 	end
 
 	PhoenixBase.StoreMutatorSettings(self)
